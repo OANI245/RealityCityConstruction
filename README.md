@@ -1,8 +1,8 @@
 <br/>
-<div style="text-align: center;"><img alt="ICON" src="icon.png" width="100"/></div>
-<h1 style="text-align:center">Reality City Construction</h1>
-<h3 style="text-align:center">A Fabric Mod added Decoration blocks for City Construction.</h3>
-<p style="text-align:center">
+<div align="center"><img alt="ICON" src="icon.png" width="100"/></div>
+<h1 align="center">Reality City Construction</h1>
+<h3 align="center">A Fabric Mod added Decoration blocks for City Construction.</h3>
+<p align="center">
     <a href="https://github.com/OANI245/RealityCityConstruction/issues">Issues</a>
 </p>
 
