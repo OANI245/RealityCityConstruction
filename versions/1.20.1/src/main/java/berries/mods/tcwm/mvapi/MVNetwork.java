@@ -2,43 +2,37 @@ package berries.mods.tcwm.mvapi;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 
 public interface MVNetwork {
 
     //@Environment(EnvType.SERVER)
     static <T extends MVCustomPayload> void registerS2C(MVPayloadType<T> type, MVPayloadCodec<T> streamCodec) {
+        //do nothing.
     }
 
     //@Environment(EnvType.CLIENT)
     static <T extends MVCustomPayload> void registerC2S(MVPayloadType<T> type, MVPayloadCodec<T> streamCodec) {
+        //do nothing.
     }
 
     @Environment(EnvType.CLIENT)
     static <T extends MVCustomPayload> void registerReceiverS2C(MVPayloadType<T> type, MVPayloadCodec<T> streamCodec) {
-        ClientPlayNetworking.registerGlobalReceiver(type.id, (m, l, b, p) -> {
-        });
+        //do nothing.
     }
 
     //@Environment(EnvType.SERVER)
     static <T extends MVCustomPayload> void registerReceiverC2S(MVPayloadType<T> type, MVPayloadCodec<T> streamCodec) {
-        ServerPlayNetworking.registerGlobalReceiver(type.type(), (p, c) -> {
-            c.server().execute(() -> { p.receive(c.server(), c.player()); });
-        });
+        //do nothing.
     }
 
     //@Environment(EnvType.SERVER)
     static <T extends MVCustomPayload> void sendS2C(ServerPlayer player, T payload) {
-        ServerPlayNetworking.send(player, payload);
+        //do nothing.
     }
 
     @Environment(EnvType.CLIENT)
     static <T extends MVCustomPayload> void sendC2S(T payload) {
-        ClientPlayNetworking.send(payload);
+        //do nothing.
     }
 }

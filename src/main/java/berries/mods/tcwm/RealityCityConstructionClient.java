@@ -60,6 +60,6 @@ public class RealityCityConstructionClient implements ClientModInitializer {
         MVNetwork.registerS2C(PacketScreen.PacketScreenPayload.TYPE, PacketScreen.PacketScreenPayload.CODEC);
         MVNetwork.registerReceiverS2C(PacketScreen.PacketScreenPayload.TYPE, PacketScreen.PacketScreenPayload.CODEC);
         MVNetwork.registerReceiverC2S(PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.TYPE, PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.CODEC);
-        //nrr.accept(PacketScreen.PACKET_SHOW_SCREEN, PacketScreen::receiveScreenS2C);
+        //nrr.accept(LegacyPacketScreen.PACKET_SHOW_SCREEN, LegacyPacketScreen::receiveScreenS2C);
     }
 }

@@ -9,8 +9,11 @@ import berries.mods.tcwm.network.PacketScreen;
 import berries.mods.tcwm.network.PacketUpdateBlockEntity;
 import berries.mods.tcwm.item.Items;
 import berries.mods.tcwm.item.TcwmCreativeModeTab;
-import msnj.tcwm.network.*;
+import berries.mods.tcwm.network.legacynetwork.LegacyPacketScreen;
+import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -138,6 +141,10 @@ public class RealityCityConstruction implements ModInitializer {
         LOGGER.info("Reality City Construction Mod Items and Blocks Registred.");
         TcwmCreativeModeTab.ITEMS.register();
         LOGGER.info("Reality City Construction Mod Initialized.");
+        //? < 1.20.5 {
+        ClientPlayNetworking.registerGlobalReceiver(PacketScreen.PACKET_SHOW_SCREEN, LegacyPacketScreen.INSTANCE::receive);
+        ServerPlayNetworking.registerGlobalReceiver(PacketUpdateBlockEntity.PACKET_UPDATE_BLOCK_ENTITY, LegacyPacketUpdateBlockEntity.INSTANCE::receive);
+        //? }
     }
 
     public static void server() {

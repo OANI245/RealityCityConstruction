@@ -3,9 +3,9 @@
   "id": "${id}",
   "version": "${version}",
   "name": "${name}",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Decoration some strange building ヾ(≧ ▽ ≦)ゝ",
   "authors": [
-    "Me!"
+    "CodeCat", "yaoxiansen"
   ],
   "contact": {
     "homepage": "https://stonecutter.kikugie.dev/",
