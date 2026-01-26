@@ -1,0 +1,7 @@
+{
+  "parent": "tcwm:block/expwy_bar_type_2_double",
+  "textures": {
+    "particle": "tcwm:block/expwy_bar_type_2_green",
+    "main": "tcwm:block/expwy_bar_type_2_green"
+  }
+}

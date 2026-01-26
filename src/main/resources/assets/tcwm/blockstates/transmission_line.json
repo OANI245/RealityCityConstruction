@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "facing=north": {"model": "tcwm:block/transmissionline"},
+        "facing=south": {"model": "tcwm:block/transmissionline",
+            "y": 180
+        },
+        "facing=west": {"model": "tcwm:block/transmissionline",
+            "y": 270
+        },
+        "facing=east": {"model": "tcwm:block/transmissionline",
+            "y": 90
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tcwm:block/black_blind"
+    },
+    "facing=east": {
+      "model": "tcwm:block/black_blind",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "tcwm:block/black_blind",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tcwm:block/black_blind",
+      "y": 270
+    }
+  }
+}

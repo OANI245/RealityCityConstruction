@@ -1,0 +1,14 @@
+{
+    "replace": false,
+    "values": [
+        "tcwm:marble",
+        "tcwm:white_marble",
+        "tcwm:platform",
+        "tcwm:peoplemangdao",
+        "tcwm:peoplemangdaoblack",
+        "tcwm:peoplemangdao_slab",
+        "tcwm:tunnellight",
+        "tcwm:tunnelline",
+        "tcwm:tunnellinenoblock"
+    ]
+}

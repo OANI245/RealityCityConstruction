@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "powered=false": {
+            "model": "tcwm:block/homo_station_broadcaster"
+        },
+        "powered=true": {
+            "model": "tcwm:block/homo_station_broadcaster_powered"
+        }
+    }
+}

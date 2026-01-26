@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "tcwm:window",
+        "tcwm:windowpane",
+        "tcwm:signpole",
+        "tcwm:tunnellight",
+        "tcwm:sign_1",
+        "tcwm:sign_2",
+        "tcwm:sign_3",
+        "tcwm:tunnellinenoblock"
+    ]
+}

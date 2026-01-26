@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tcwm:block/air_conditioner_external_unit"
+    },
+    "facing=east": {
+      "model": "tcwm:block/air_conditioner_external_unit",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "tcwm:block/air_conditioner_external_unit",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tcwm:block/air_conditioner_external_unit",
+      "y": 270
+    }
+  }
+}

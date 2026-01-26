@@ -1,0 +1,8 @@
+{
+  "parent": "tcwm:block/expwy_bar_type_2_new_double_placeholder",
+  "textures": {
+    "reflective": "tcwm:block/bar_reflective",
+    "particle": "tcwm:block/expwy_bar_type_2_gray",
+    "main": "tcwm:block/expwy_bar_type_2_gray"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "replace": false,
+    "values": [
+        "tcwm:marble",
+        "tcwm:white_marble",
+        "tcwm:metal",
+        "tcwm:platform",
+        "tcwm:peoplemangdao",
+        "tcwm:peoplemangdaoblack",
+        "tcwm:tunnelline"
+    ]
+}

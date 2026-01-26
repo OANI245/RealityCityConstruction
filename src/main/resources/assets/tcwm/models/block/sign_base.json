@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "tcwm:block/marble_white",
+		"main": "tcwm:block/marble_white"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 15],
+			"to": [16, 17, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 14]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#main"},
+				"east": {"uv": [0, 0, 1, 16], "texture": "#main"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#main"},
+				"west": {"uv": [0, 0, 1, 16], "texture": "#main"},
+				"up": {"uv": [0, 0, 16, 1], "texture": "#main"},
+				"down": {"uv": [0, 0, 16, 1], "texture": "#main"}
+			}
+		}
+	]
+}

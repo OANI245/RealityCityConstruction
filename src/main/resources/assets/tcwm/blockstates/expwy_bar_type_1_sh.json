@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "tcwm:block/expwy_bar_type_1_sh"
+        },
+        "facing=east": {
+            "model": "tcwm:block/expwy_bar_type_1_sh",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "tcwm:block/expwy_bar_type_1_sh",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "tcwm:block/expwy_bar_type_1_sh",
+            "y": 270
+        }
+    }
+}

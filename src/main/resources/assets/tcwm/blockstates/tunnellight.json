@@ -1,0 +1,82 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "isold": false,
+                "facing": "north"
+            },
+            "apply": {
+                "model": "tcwm:block/tunnellight"
+            }
+        },
+        {
+            "when": {
+                "isold": true,
+                "facing": "north"
+            },
+            "apply": {
+                "model": "tcwm:block/tunnellight_old",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "isold": false,
+                "facing": "east"
+            },
+            "apply": {
+                "model": "tcwm:block/tunnellight",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "isold": true,
+                "facing": "east"
+            },
+            "apply": {
+                "model": "tcwm:block/tunnellight_old",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "isold": false,
+                "facing": "south"
+            },
+            "apply": {
+                "model": "tcwm:block/tunnellight",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "isold": true,
+                "facing": "south"
+            },
+            "apply": {
+                "model": "tcwm:block/tunnellight_old"
+            }
+        },
+        {
+            "when": {
+                "isold": false,
+                "facing": "west"
+            },
+            "apply": {
+                "model": "tcwm:block/tunnellight",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "isold": true,
+                "facing": "west"
+            },
+            "apply": {
+                "model": "tcwm:block/tunnellight_old",
+                "y": 90
+            }
+        }
+    ]
+}

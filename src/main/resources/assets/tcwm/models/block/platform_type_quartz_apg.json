@@ -1,0 +1,7 @@
+{
+    "parent": "tcwm:block/platform",
+    "textures": {
+        "main": "block/quartz_block_bottom",
+        "top": "mtr:block/platform_hk_2"
+    }
+}

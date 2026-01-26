@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "tcwm:block/marble_white",
+    "particle": "tcwm:block/marble_white"
+  }
+}

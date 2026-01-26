@@ -1,0 +1,7 @@
+{
+    "parent": "tcwm:block/platform",
+    "textures": {
+        "main": "tcwm:block/marble",
+        "top": "mtr:block/transparent"
+    }
+}

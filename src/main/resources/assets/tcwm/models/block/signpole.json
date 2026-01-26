@@ -1,0 +1,97 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "all": "tcwm:block/dex",
+    "particle": "tcwm:block/dex",
+    "0": "tcwm:block/pole"
+  },
+    "texture_size": [
+        32,
+        32
+    ],
+    "elements": [
+        {
+            "name": "pole主要部分",
+            "from": [
+                7,
+                0,
+                7
+            ],
+            "to": [
+                9,
+                16,
+                9
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        1,
+                        1,
+                        2,
+                        9
+                    ],
+                    "texture": "#0"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        1,
+                        1,
+                        9
+                    ],
+                    "texture": "#0"
+                },
+                "south": {
+                    "uv": [
+                        3,
+                        1,
+                        4,
+                        9
+                    ],
+                    "texture": "#0"
+                },
+                "west": {
+                    "uv": [
+                        2,
+                        1,
+                        3,
+                        9
+                    ],
+                    "texture": "#0"
+                },
+                "up": {
+                    "uv": [
+                        2,
+                        1,
+                        1,
+                        0
+                    ],
+                    "texture": "#0"
+                },
+                "down": {
+                    "uv": [
+                        3,
+                        0,
+                        2,
+                        1
+                    ],
+                    "texture": "#0"
+                }
+            }
+        }
+    ],
+    "groups": [
+        {
+            "name": "POLE CUBE",
+            "origin": [
+                8,
+                8,
+                8
+            ],
+            "color": 0,
+            "children": [
+                0
+            ]
+        }
+    ]
+}

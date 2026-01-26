@@ -1,0 +1,73 @@
+{
+    "music.example": {
+        "sounds": [
+            {
+                "name": "tcwm:example",
+                "pitch": 1
+            }
+        ]
+    },
+    "gz_beep_1": {
+        "sounds": [
+            {
+                "name": "tcwm:door_sound/gz_beep_1",
+                "pitch": 0.5,
+                "volume": 1
+            }
+        ]
+    },
+    "gz_beep_2": {
+        "sounds": [
+            {
+                "name": "tcwm:door_sound/gz_beep_1",
+                "pitch": 0.5,
+                "volume": 1
+            }
+        ]
+    },
+    "mtr_door": {
+        "sounds": [
+            {
+                "name": "tcwm:door_sound/mtr_door_sound",
+                "pitch": 0.5,
+                "volume": 1
+            }
+        ]
+    },
+    "amtr_door": {
+        "sounds": [
+            {
+                "name": "tcwm:door_sound/amtr_door_sound",
+                "pitch": 0.5,
+                "volume": 1
+            }
+        ]
+    },
+    "universal_beep1": {
+        "sounds": [
+            {
+                "name": "tcwm:door_sound/universal_beep_three",
+                "pitch": 0.5,
+                "volume": 1
+            }
+        ]
+    },
+    "universal_beep2": {
+        "sounds": [
+            {
+                "name": "tcwm:door_sound/universal_beep_six",
+                "pitch": 0.5,
+                "volume": 1
+            }
+        ]
+    },
+    "universal_beep3": {
+        "sounds": [
+            {
+                "name": "tcwm:door_sound/universal_beep_instance",
+                "pitch": 0.5,
+                "volume": 1
+            }
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "tcwm:block/black_blind",
+	"textures": {
+		"body": "block/polished_andesite",
+		"3d_top": "block/polished_andesite",
+		"particle": "block/polished_andesite"
+	}
+}

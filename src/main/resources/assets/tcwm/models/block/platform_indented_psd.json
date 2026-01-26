@@ -1,0 +1,9 @@
+{
+    "parent": "tcwm:block/platform_indented",
+    "textures": {
+        "main": "tcwm:block/marble",
+        "front": "tcwm:block/marble",
+        "inner": "block/light_gray_concrete",
+        "top": "mtr:block/transparent"
+    }
+}
