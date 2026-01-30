@@ -8,7 +8,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -31,9 +31,9 @@ public interface Blocks {
         //? }
     }
 
-    static BlockBehaviour.Properties propertiesOf(Identifier id, BlockBehaviour.Properties a) {
+    static BlockBehaviour.Properties propertiesOf(ResourceLocation id, BlockBehaviour.Properties a) {
         //? > 1.21.2
-        a.setId(ResourceKey.create(Registries.BLOCK, id));
+        //a.setId(ResourceKey.create(Registries.BLOCK, id));
         return a;
     }
     
@@ -100,9 +100,9 @@ public interface Blocks {
 */
     interface BlockEntityTypes {
         //? < 1.21.2 {
-        /*BlockEntityType<StationBroadcaster.StationBroadcasterEntity> HOMO_STATION_BROADCASTER = new BlockEntityType<>(StationBroadcaster.StationBroadcasterEntity::new, Collections.singleton(Blocks.STATION_BROADCASTER), null);
-        *///? } else {
-        BlockEntityType<?> HOMO_STATION_BROADCASTER = FabricBlockEntityTypeBuilder.create(StationBroadcaster.StationBroadcasterEntity::new, Blocks.STATION_BROADCASTER).build();
-        //? }
+        BlockEntityType<StationBroadcaster.StationBroadcasterEntity> HOMO_STATION_BROADCASTER = new BlockEntityType<>(StationBroadcaster.StationBroadcasterEntity::new, Collections.singleton(Blocks.STATION_BROADCASTER), null);
+        //? } else {
+        /*BlockEntityType<?> HOMO_STATION_BROADCASTER = FabricBlockEntityTypeBuilder.create(StationBroadcaster.StationBroadcasterEntity::new, Blocks.STATION_BROADCASTER).build();
+        *///? }
     }
 }

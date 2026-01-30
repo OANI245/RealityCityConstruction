@@ -15,7 +15,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 //? >= 1.20.5
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class PacketUpdateBlockEntity {
-    public static Identifier PACKET_UPDATE_BLOCK_ENTITY = MVIdentifier.get(RealityCityConstruction.MOD_ID, "update_block_entity");
+    public static ResourceLocation PACKET_UPDATE_BLOCK_ENTITY = MVIdentifier.get(RealityCityConstruction.MOD_ID, "update_block_entity");
 
     public record PacketUpdateBlockEntityPayload(BlockEntityType<? extends BlockEntity> entityType,
                                                  BlockPos pos, CompoundTag tag) implements MVCustomPayload {
@@ -40,10 +40,10 @@ public class PacketUpdateBlockEntity {
                                     @Override
                                     public @NotNull BlockEntityType<? extends BlockEntity> decode(ByteBuf object) {
                                         //? < 1.21.5 {
-                                        /*return Objects.requireNonNull(BuiltInRegistries.BLOCK_ENTITY_TYPE.get(Identifier.parse(FriendlyByteBuf.readNbt(object).getString("value"))));
-                                        *///? } else {
-                                        return BuiltInRegistries.BLOCK_ENTITY_TYPE.get(Identifier.parse(FriendlyByteBuf.readNbt(object).getString("value").orElseThrow())).orElseThrow().value();
-                                        //? }
+                                        return Objects.requireNonNull(BuiltInRegistries.BLOCK_ENTITY_TYPE.get(ResourceLocation.parse(FriendlyByteBuf.readNbt(object).getString("value"))));
+                                        //? } else {
+                                        /*return BuiltInRegistries.BLOCK_ENTITY_TYPE.get(ResourceLocation.parse(FriendlyByteBuf.readNbt(object).getString("value").orElseThrow())).orElseThrow().value();
+                                        *///? }
                                     }
 
                                     @Override
@@ -94,7 +94,7 @@ public class PacketUpdateBlockEntity {
             if (entityType == null) return;
             level.getBlockEntity(pos, entityType).ifPresent(blockEntity -> {
                 //? < 1.21.5 {
-                /*RealityCityConstruction.LOGGER.info("A new tag received: " + tag.toString() + " at " + pos + " from " + player.getName());
+                RealityCityConstruction.LOGGER.info("A new tag received: " + tag.toString() + " at " + pos + " from " + player.getName());
                 if (blockEntity instanceof TcwmBlockEntity) {
                     RealityCityConstruction.LOGGER.info("Applying...");
                     if (blockEntity instanceof StationBroadcaster.StationBroadcasterEntity) {
@@ -106,8 +106,8 @@ public class PacketUpdateBlockEntity {
                     blockEntity.setChanged();
                     level.blockEntityChanged(pos);
                 }
-                *///? } else {
-                RealityCityConstruction.LOGGER.info("A new tag received: " + tag.toString() + " at " + pos + " from " + player.getName());
+                //? } else {
+                /*RealityCityConstruction.LOGGER.info("A new tag received: " + tag.toString() + " at " + pos + " from " + player.getName());
                 if (blockEntity instanceof TcwmBlockEntity) {
                     RealityCityConstruction.LOGGER.info("Applying...");
                     if (blockEntity instanceof StationBroadcaster.StationBroadcasterEntity) {
@@ -119,7 +119,7 @@ public class PacketUpdateBlockEntity {
                     blockEntity.setChanged();
                     level.blockEntityChanged(pos);
                 }
-                //? }
+                *///? }
             });
         }
     }

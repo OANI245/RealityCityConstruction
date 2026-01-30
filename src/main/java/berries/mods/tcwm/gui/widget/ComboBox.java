@@ -7,15 +7,15 @@ import berries.mods.tcwm.mvapi.MVComponent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 //? >= 1.21.9 {
-import net.minecraft.client.input.InputWithModifiers;
+/*import net.minecraft.client.input.InputWithModifiers;
 import net.minecraft.client.input.MouseButtonEvent;
-//? }
+*///? }
 import net.minecraft.client.renderer.GameRenderer;
 //? >= 1.21.6 {
-import net.minecraft.client.renderer.RenderPipelines;
-//? } else {
-/*import net.minecraft.util.FastColor;
-*///? }
+/*import net.minecraft.client.renderer.RenderPipelines;
+*///? } else {
+import net.minecraft.util.FastColor;
+//? }
 import net.minecraft.network.chat.Component;
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class ComboBox extends Button {
     }
 
     //? < 1.21.9 {
-    /*@Override
+    @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         for (int i = 0; i < items.size(); i++) {
             if (opened && mouseY > (this.getY() + 2 + this.getHeight()) && mouseX >= (this.getX()) && mouseX < (this.getX() + this.getWidth()) && mouseY < getY() + 3 + this.height + (16 * (i + 1))) {
@@ -59,8 +59,8 @@ public class ComboBox extends Button {
         }
         return super.mouseClicked(mouseX, mouseY, button);
     }
-    *///? } else {
-    @Override
+    //? } else {
+    /*@Override
     public boolean mouseClicked(MouseButtonEvent e, boolean bl) {
         for (int i = 0; i < items.size(); i++) {
             if (opened && e.y() > (this.getY() + 2 + this.getHeight()) && e.x() >= (this.getX()) && e.x() < (this.getX() + this.getWidth()) && e.y() < getY() + 3 + this.height + (16 * (i + 1))) {
@@ -72,14 +72,14 @@ public class ComboBox extends Button {
         }
         return super.mouseClicked(e, bl);
     }
-    //? }
+    *///? }
 
     @Override
     //? < 1.21.9 {
     
-    /*public void onPress() {*///? } else {
-    public void onPress(InputWithModifiers inputWithModifiers) {
-    //? }
+    public void onPress() {//? } else {
+    /*public void onPress(InputWithModifiers inputWithModifiers) {
+    *///? }
         if (opened) {
             closeList();
         } else {
@@ -115,10 +115,10 @@ public class ComboBox extends Button {
 
     @Override
             //? < 1.21.11 {
-    /*protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-            *///? } else {
-    protected void renderContents(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        //? }
+    protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            //? } else {
+    /*protected void renderContents(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        *///? }
         Minecraft minecraft = Minecraft.getInstance();
         int buttonBackground = (
                 (!this.isHovered() ? FlueroUI.rgb(45,45,45) : FlueroUI.rgb(50,50,50)));
@@ -137,14 +137,14 @@ public class ComboBox extends Button {
         }
         guiGraphics.drawString(minecraft.font, this.getMessage(), (this.getX() + 5), (this.getY() + height / 2 - minecraft.font.lineHeight / 2), FlueroUI.textColor(0xFFFFFF), false);
         //? < 1.21.6 {
-        /*RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                 guiGraphics.blit(opened ? Icons.ARROW_UP : Icons.ARROW_DOWN,
                 getX() + width - 12, getY() + 5, 0, 0, 9, 9, 9, 9);
-        *///? } else {
-        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, opened ? Icons.ARROW_UP : Icons.ARROW_DOWN,
+        //? } else {
+        /*guiGraphics.blit(RenderPipelines.GUI_TEXTURED, opened ? Icons.ARROW_UP : Icons.ARROW_DOWN,
                 getX() + width - 12, getY() + 5, 0, 0, 9, 9, 9, 9);
-        //? }
+        *///? }
 
         if (opened) {
             renderComboBoxList(guiGraphics, mouseX, mouseY);

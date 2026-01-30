@@ -9,7 +9,7 @@ import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 //? >= 1.21.9
-import net.minecraft.client.input.MouseButtonEvent;
+//import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 
 import java.util.ArrayList;
@@ -104,7 +104,7 @@ public class PropertiesList {
 
         //? < 1.21.9 {
 
-        /*@Override
+        @Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
             return false;
         }
@@ -118,8 +118,8 @@ public class PropertiesList {
         public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
             return false;
         }
-        *///? } else {
-        @Override
+        //? } else {
+        /*@Override
         public boolean mouseClicked(MouseButtonEvent e, boolean b) {
             return false;
         }
@@ -133,7 +133,7 @@ public class PropertiesList {
         public boolean mouseDragged(MouseButtonEvent e, double d, double g) {
             return false;
         }
-        //? }
+        *///? }
 
         @Override
         protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {

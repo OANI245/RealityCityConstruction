@@ -30,10 +30,10 @@ public class ExpwyCautionBar extends MVSimpleCodecHorizontalDirectionalBlock {
     @SuppressWarnings("all")
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         //? < 1.21.5 {
-        /*Vec3 offset = state.getOffset(level, pos);
-         *///? } else {
-        Vec3 offset = state.getOffset(pos);
-        //? }
+        Vec3 offset = state.getOffset(level, pos);
+         //? } else {
+        /*Vec3 offset = state.getOffset(pos);
+        *///? }
         return Block.box(6, 0, 6, 10, 19, 10).move(offset.x, offset.y, offset.z);
     }
 
@@ -41,10 +41,10 @@ public class ExpwyCautionBar extends MVSimpleCodecHorizontalDirectionalBlock {
     @SuppressWarnings("all")
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         //? < 1.21.5 {
-        /*Vec3 offset = state.getOffset(level, pos);
-         *///? } else {
-        Vec3 offset = state.getOffset(pos);
-        //? }
+        Vec3 offset = state.getOffset(level, pos);
+         //? } else {
+        /*Vec3 offset = state.getOffset(pos);
+        *///? }
         return Block.box(6, 0, 6, 10, 24, 10).move(offset.x, offset.y, offset.z);
     }
 

@@ -13,5 +13,5 @@ public class TcwmCreativeModeTab {
             e.accept(i);
         }
     });
-    //public static final CreativeModeTabs.Wrapper RAILS = new CreativeModeTabs.Wrapper(new Identifier("tcwm","rails"), () -> new ItemStack(() -> Items.RAIL_CONNECTOR_HOMO.get()));
+    //public static final CreativeModeTabs.Wrapper RAILS = new CreativeModeTabs.Wrapper(new ResourceLocation("tcwm","rails"), () -> new ItemStack(() -> Items.RAIL_CONNECTOR_HOMO.get()));
 }

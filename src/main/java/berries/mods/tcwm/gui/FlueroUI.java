@@ -2,10 +2,10 @@ package berries.mods.tcwm.gui;
 
 import net.minecraft.client.gui.GuiGraphics;
 //? >= 1.21.6 {
-import net.minecraft.util.ARGB;
-//? } else {
-/*import net.minecraft.util.FastColor;
-*///? }
+/*import net.minecraft.util.ARGB;
+*///? } else {
+import net.minecraft.util.FastColor;
+//? }
 
 public class FlueroUI {
     public static void renderCenteredDialog(GuiGraphics graphics, int screenWidth, int screenHeight, int width, int height) {
@@ -22,29 +22,29 @@ public class FlueroUI {
 
     public static int rgb(int r, int g, int b) {
         //? < 1.21.6 {
-        /*return FastColor.ARGB32.color(255, r, g, b);
-        *///? } else {
-        return ARGB.color(r, g, b);
-        //? }
+        return FastColor.ARGB32.color(255, r, g, b);
+        //? } else {
+        /*return ARGB.color(r, g, b);
+        *///? }
     }
 
     public static int argb(int a, int r, int g, int b) {
         //? < 1.21.6 {
-        /*return FastColor.ARGB32.color(a, r, g, b);
-         *///? } else {
-        return ARGB.color(a, r, g, b);
-        //? }
+        return FastColor.ARGB32.color(a, r, g, b);
+         //? } else {
+        /*return ARGB.color(a, r, g, b);
+        *///? }
     }
 
     public static int textColor(int hex) {
         //? < 1.21.6 {
-        /*return hex;
-        *///? } else {
-        int r = hex >> 16 & 0xff;
+        return hex;
+        //? } else {
+        /*int r = hex >> 16 & 0xff;
         int g = hex >> 8 & 0xff;
         int b = hex & 0xff;
 
         return rgb(r, g, b);
-        //? }
+        *///? }
     }
 }

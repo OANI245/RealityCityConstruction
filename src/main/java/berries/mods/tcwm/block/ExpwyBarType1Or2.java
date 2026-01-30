@@ -52,24 +52,24 @@ public class ExpwyBarType1Or2 extends MVSimpleCodecHorizontalDirectionalBlock {
     }
 
     //? < 1.21.5 {
-    /*@Override
+    @Override
     //? < 1.20.5 {
-    /^public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter ctx, List<Component> list, TooltipFlag tooltipFlag) {
-    ^///? } else {
+    /*public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter ctx, List<Component> list, TooltipFlag tooltipFlag) {
+    *///? } else {
     public void appendHoverText(ItemStack itemStack, @Nullable Item.TooltipContext ctx, List<Component> list, TooltipFlag tooltipFlag) {
         //? }
         super.appendHoverText(itemStack, ctx, list, tooltipFlag);
         list.add(MCText.translatable(hoverText));
     }
-    *///? }
+    //? }
 
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         //? < 1.21.5 {
-        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
-         *///? } else {
-        Vec3 offset = blockState.getOffset(blockPos);
-        //? }
+        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         //? } else {
+        /*Vec3 offset = blockState.getOffset(blockPos);
+        *///? }
         switch ((Direction) blockState.getValue(FACING)) {
             case SOUTH:
                 if (blockState.getValue(ROTATE_TYPE) == R22_5) {
@@ -110,10 +110,10 @@ public class ExpwyBarType1Or2 extends MVSimpleCodecHorizontalDirectionalBlock {
     @Override
     public VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext context) {
         //? < 1.21.5 {
-        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
-         *///? } else {
-        Vec3 offset = blockState.getOffset(blockPos);
-        //? }
+        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         //? } else {
+        /*Vec3 offset = blockState.getOffset(blockPos);
+        *///? }
         switch ((Direction) blockState.getValue(FACING)) {
             case SOUTH:
                 if (blockState.getValue(ROTATE_TYPE) == R22_5) {

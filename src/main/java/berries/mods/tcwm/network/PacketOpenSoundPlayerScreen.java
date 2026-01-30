@@ -16,7 +16,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.codec.StreamCodec;
 //? }
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -28,7 +28,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import java.util.Objects;
 
 public class PacketOpenSoundPlayerScreen {
-    public static Identifier PACKET_SHOW_SCREEN = MVIdentifier.get(RealityCityConstruction.MOD_ID, "show_screen");
+    public static ResourceLocation PACKET_SHOW_SCREEN = MVIdentifier.get(RealityCityConstruction.MOD_ID, "show_screen");
 
     public record PacketScreenPayload(BlockPos pos, String blockName, String soundID, float range, float pitch) implements MVCustomPayload {
         public static final MVPayloadType<PacketScreenPayload> TYPE = new MVPayloadType<>(PACKET_SHOW_SCREEN);

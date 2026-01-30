@@ -1,5 +1,6 @@
 package berries.mods.tcwm.mvapi;
 
+import net.minecraft.CrashReport;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.screens.Screen;
@@ -23,13 +24,16 @@ public abstract class MVScreen extends Screen {
         //super.render(graphics, mouseX, mouseY, f);
         Field field = null;
         try {
-            field = Screen.class.getDeclaredField("renderables");
+            field = Screen.class.getDeclaredField("field_33816");
             field.setAccessible(true);
             List<Renderable> lr = (List<Renderable>) (field.get(this));
             for (Renderable r : lr) {
                 r.render(graphics, mouseX, mouseY, f);
             }
-        } catch (NoSuchFieldException | IllegalAccessException ignored) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            if (minecraft != null) {
+                minecraft.emergencySaveAndCrash(new CrashReport("Screen Render Failed", e));
+            }
         }
     }
 

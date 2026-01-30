@@ -16,7 +16,7 @@ import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.client.Minecraft;
 import org.slf4j.LoggerFactory;
 //? < 1.21.6
-//import org.slf4j.LoggerFactory;
+import org.slf4j.LoggerFactory;
 
 public class RealityCityConstructionClient implements ClientModInitializer {
     public String MIN_MTRVERSION = "3.2.0";

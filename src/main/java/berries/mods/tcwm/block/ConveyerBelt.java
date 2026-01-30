@@ -8,10 +8,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 //? >= 1.20.5 && < 1.21.5
-//import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 //? >=  1.21.5
-import net.minecraft.world.entity.InsideBlockEffectApplier;
+//import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -68,7 +68,7 @@ public class ConveyerBelt extends MVSimpleCodecHorizontalDirectionalBlock {//mtr
     }
 
     //? >= 1.21.5 {
-    @Override
+    /*@Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player.isHolding(Items.FORGE_TOOL)) {
             brushUse(state, pos, level);
@@ -76,8 +76,8 @@ public class ConveyerBelt extends MVSimpleCodecHorizontalDirectionalBlock {//mtr
         }
         return InteractionResult.FAIL;
     }
-    //? } else if >= 1.20.5 {
-    /*@Override
+    *///? } else if >= 1.20.5 {
+    @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player.isHolding(Items.FORGE_TOOL)) {
             brushUse(state, pos, level);
@@ -85,7 +85,7 @@ public class ConveyerBelt extends MVSimpleCodecHorizontalDirectionalBlock {//mtr
         }
         return ItemInteractionResult.FAIL;
     }
-    *///? } else {
+    //? } else {
     /*@Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         if (player.isHolding(Items.FORGE_TOOL)) {
@@ -115,12 +115,12 @@ public class ConveyerBelt extends MVSimpleCodecHorizontalDirectionalBlock {//mtr
 
     @Override
     //? < 1.21.5 {
-    /*public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-    *///? } else < 1.21.9 {
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+    //? } else < 1.21.9 {
     /*protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier) {*/
         //? } else {
-        protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier, boolean bl) {
-        //? }
+        /*protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier, boolean bl) {
+        *///? }
         Direction facing = (Direction) state.getValue(FACING);
         float speed = 0.1F;
         switch (facing) {

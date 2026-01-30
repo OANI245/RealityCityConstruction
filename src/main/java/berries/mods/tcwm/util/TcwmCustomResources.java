@@ -13,7 +13,7 @@ public class TcwmCustomResources {
             try{
               JsonObject jsonObject = ((JsonElement)entry.getValue()).getAsJsonObject();
               String name = (String)getOrDefault(jsonObject, "name", entry.getKey(), JsonElement::getAsString);
-              SoundEvent soundEvent = RegistryUtilities.createSoundEvent(new Identifier((String)getOrDefault(jsonObject, "soundID", entry.getKey(), JsonElement::getAsString)));
+              SoundEvent soundEvent = RegistryUtilities.createSoundEvent(new ResourceLocation((String)getOrDefault(jsonObject, "soundID", entry.getKey(), JsonElement::getAsString)));
               int volume = (Integer)getOrDefault(jsonObject, "volume", 100, JsonElement::getAsInt);
               String color = (String)getOrDefault(jsonObject, "color", "#FFFFFF", JsonElement::getAsString);
               CUSTOM_SOUNDS.put("tcwm_player_sound_" + entry.getKey(), new CustomPlayerSounds(name, soundEvent, volume, colorStringToInt(color)));
@@ -54,7 +54,7 @@ public class TcwmCustomResources {
 
   private static void readResource(ResourceManager manager, String path, Consumer<JsonObject> callback) throws IOException {
     try {
-      UtilitiesClient.getResources(manager, new Identifier(path)).forEach((resource) -> {
+      UtilitiesClient.getResources(manager, new ResourceLocation(path)).forEach((resource) -> {
         try {
           InputStream stream = Utilities.getInputStream(resource);
 

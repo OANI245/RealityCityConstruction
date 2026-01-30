@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 //? >= 1.21.5
-import net.minecraft.world.level.redstone.Orientation;
+//import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -51,10 +51,10 @@ public class TunnelWires2 extends Block implements SimpleWaterloggedBlock {
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         //? < 1.21.5 {
-        /*Vec3 offset = state.getOffset(world, pos);
-        *///? } else {
-        Vec3 offset = state.getOffset(pos);
-        //? }
+        Vec3 offset = state.getOffset(world, pos);
+        //? } else {
+        /*Vec3 offset = state.getOffset(pos);
+        *///? }
         switch ((Direction) state.getValue(FACING)) {
             case SOUTH -> {
                 VoxelShape vs0 = box(0, 0, 0, 16, 16, 2);
@@ -119,10 +119,10 @@ public class TunnelWires2 extends Block implements SimpleWaterloggedBlock {
     protected
         //? }
     //? < 1.21.5 {
-    /*void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos2, boolean bl)
-    *///? } else {
-    void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, @Nullable Orientation orientation, boolean bl)
-    //? }
+    void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos2, boolean bl)
+    //? } else {
+    /*void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, @Nullable Orientation orientation, boolean bl)
+    *///? }
     {
         BlockPos bottomNeighborPos = blockPos.below();
         BlockPos topNeighborPos = blockPos.above();
@@ -179,10 +179,10 @@ public class TunnelWires2 extends Block implements SimpleWaterloggedBlock {
         }
         level.setBlockAndUpdate(blockPos, blockState);
         //? < 1.21.5 {
-        /*super.neighborChanged(blockState, level, blockPos, block, blockPos2, bl);
-        *///? } else {
-        super.neighborChanged(blockState, level, blockPos, block, orientation, bl);
-        //? }
+        super.neighborChanged(blockState, level, blockPos, block, blockPos2, bl);
+        //? } else {
+        /*super.neighborChanged(blockState, level, blockPos, block, orientation, bl);
+        *///? }
     }
 
     @Override

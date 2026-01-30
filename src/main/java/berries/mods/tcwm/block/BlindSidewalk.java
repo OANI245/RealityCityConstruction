@@ -34,10 +34,10 @@ public class BlindSidewalk extends MVSimpleCodecHorizontalDirectionalBlock {
 
     public VoxelShape getOutlineShape(BlockState state, BlockGetter world, BlockView view, BlockPos pos, CollisionContext ctx) {
         //? < 1.21.5 {
-        /*Vec3 offset = state.getOffset(world, pos);
-         *///? } else {
-        Vec3 offset = state.getOffset(pos);
-        //? }
+        Vec3 offset = state.getOffset(world, pos);
+         //? } else {
+        /*Vec3 offset = state.getOffset(pos);
+        *///? }
         switch ((Direction) state.getValue(FACING)) {
             case SOUTH:
                 return box(0, 0, 0, 16, 17, 16).move(offset.x, offset.y, offset.z);

@@ -8,8 +8,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 //? >= 1.20.5 && < 1.21.5 {
-/*import net.minecraft.world.ItemInteractionResult;
-*///? }
+import net.minecraft.world.ItemInteractionResult;
+//? }
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -53,7 +53,7 @@ public class ExpwyBarType2Placeholder extends MVSimpleCodecHorizontalDirectional
         return InteractionResult.FAIL;
     }
     *///? } else if < 1.21.5 {
-    /*@Override
+    @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player.isHolding(Items.FORGE_TOOL)) {
             level.setBlock(pos, Blocks.EXPWY_BAR_TYPE_2.defaultBlockState().setValue(FACING, state.getValue(FACING)), 18);
@@ -61,8 +61,8 @@ public class ExpwyBarType2Placeholder extends MVSimpleCodecHorizontalDirectional
         }
         return ItemInteractionResult.FAIL;
     }
-    *///? } else {
-    @Override
+    //? } else {
+    /*@Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player.isHolding(Items.FORGE_TOOL)) {
             level.setBlock(pos, Blocks.EXPWY_BAR_TYPE_2.defaultBlockState().setValue(FACING, state.getValue(FACING)), 18);
@@ -70,7 +70,7 @@ public class ExpwyBarType2Placeholder extends MVSimpleCodecHorizontalDirectional
         }
         return InteractionResult.FAIL;
     }
-    //? }
+    *///? }
 
     public BlockState rotate(BlockState state, Rotation rot) {
         return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
@@ -83,10 +83,10 @@ public class ExpwyBarType2Placeholder extends MVSimpleCodecHorizontalDirectional
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         //? < 1.21.5 {
-        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
-         *///? } else {
-        Vec3 offset = blockState.getOffset(blockPos);
-        //? }
+        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         //? } else {
+        /*Vec3 offset = blockState.getOffset(blockPos);
+        *///? }
         switch ((Direction) blockState.getValue(FACING)) {
             case SOUTH:
                 return Block.box(0, 8, 0, 16, 16, 10).move(offset.x, offset.y, offset.z);
@@ -103,10 +103,10 @@ public class ExpwyBarType2Placeholder extends MVSimpleCodecHorizontalDirectional
     @Override
     public VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext context) {
         //? < 1.21.5 {
-        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
-         *///? } else {
-        Vec3 offset = blockState.getOffset(blockPos);
-        //? }
+        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         //? } else {
+        /*Vec3 offset = blockState.getOffset(blockPos);
+        *///? }
         switch ((Direction) blockState.getValue(FACING)) {
             case SOUTH:
                 return Block.box(0, 8, 0, 16, 24, 10).move(offset.x, offset.y, offset.z);
@@ -121,16 +121,16 @@ public class ExpwyBarType2Placeholder extends MVSimpleCodecHorizontalDirectional
     }
 
     //? < 1.21.5 {
-    /*@Override
+    @Override
             //? < 1.20.5 {
-    /^public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter ctx, List<Component> list, TooltipFlag tooltipFlag) {
-        ^///? } else {
+    /*public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter ctx, List<Component> list, TooltipFlag tooltipFlag) {
+        *///? } else {
         public void appendHoverText(ItemStack itemStack, @Nullable Item.TooltipContext ctx, List<Component> list, TooltipFlag tooltipFlag) {
          //? }
         super.appendHoverText(itemStack, ctx, list, tooltipFlag);
         list.add(MCText.translatable("tooltip.expwy_bar_type_2_placeholder"));
     }
-    *///? }
+    //? }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {

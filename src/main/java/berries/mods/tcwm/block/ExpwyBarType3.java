@@ -35,10 +35,10 @@ public class ExpwyBarType3 extends MVSimpleCodecHorizontalDirectionalBlock {
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         //? < 1.21.5 {
-        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
-         *///? } else {
-        Vec3 offset = blockState.getOffset(blockPos);
-        //? }
+        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         //? } else {
+        /*Vec3 offset = blockState.getOffset(blockPos);
+        *///? }
         switch ((Direction) blockState.getValue(FACING)) {
             case NORTH:
                 return Block.box(0, 0, 9, 16, 16, 16).move(offset.x, offset.y, offset.z);
@@ -56,10 +56,10 @@ public class ExpwyBarType3 extends MVSimpleCodecHorizontalDirectionalBlock {
     @Override
     public VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         //? < 1.21.5 {
-        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
-         *///? } else {
-        Vec3 offset = blockState.getOffset(blockPos);
-        //? }
+        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         //? } else {
+        /*Vec3 offset = blockState.getOffset(blockPos);
+        *///? }
         switch ((Direction) blockState.getValue(FACING)) {
             case NORTH:
                 return Block.box(0, 0, 9, 16, 24, 16).move(offset.x, offset.y, offset.z);

@@ -7,7 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 //? >= 1.20.5 && < 1.21.6
-//import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -43,21 +43,21 @@ public class TunnelLight extends Block implements SimpleWaterloggedBlock {
     }
 
     //? < 1.21.5 {
-    /*@Override
+    @Override
     public void appendHoverText(ItemStack itemstack,
                                 //? >= 1.20.5 {
                                 Item.TooltipContext ctx
                                 //? } else {
-                                /^BlockGetter ctx
-                                ^///? }
+                                /*BlockGetter ctx
+                                *///? }
             , List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, ctx, list, flag);
         list.add(MCText.translatable("tooltip.tunnel_light"));
     }
-    *///? }
+    //? }
 
     //? >= 1.21.6 {
-    @Override
+    /*@Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player.isHolding(Items.FORGE_TOOL)) {
             if (state.getValue(ISOLD)) {
@@ -69,8 +69,8 @@ public class TunnelLight extends Block implements SimpleWaterloggedBlock {
         }
         return InteractionResult.FAIL;
     }
-    //? } else if >= 1.20.5 {
-    /*@Override
+    *///? } else if >= 1.20.5 {
+    @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player.isHolding(Items.FORGE_TOOL)) {
             if (state.getValue(ISOLD)) {
@@ -82,7 +82,7 @@ public class TunnelLight extends Block implements SimpleWaterloggedBlock {
         }
         return ItemInteractionResult.FAIL;
     }
-    *///? } else {
+    //? } else {
     /*@Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         if (player.isHolding(Items.FORGE_TOOL)) {
@@ -100,10 +100,10 @@ public class TunnelLight extends Block implements SimpleWaterloggedBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         //? < 1.21.5 {
-        /*Vec3 offset = state.getOffset(world, pos);
-         *///? } else {
-        Vec3 offset = state.getOffset(pos);
-        //? }
+        Vec3 offset = state.getOffset(world, pos);
+         //? } else {
+        /*Vec3 offset = state.getOffset(pos);
+        *///? }
         switch ((Direction) state.getValue(FACING)) {
             case SOUTH:
             default:
