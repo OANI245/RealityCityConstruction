@@ -1,7 +1,11 @@
 package berries.mods.tcwm.mvapi;
 
+import berries.mods.tcwm.RealityCityConstruction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -16,31 +20,35 @@ public class MVBlockEntity extends BlockEntity {
     }
 
     public CompoundTag getTag() {
-        CompoundTag tag = new CompoundTag();
-        saveAdditional(tag);
+        CompoundTag tag = null;
+        if (level != null) {
+            tag = saveWithoutMetadata();
+        }
         return tag;
     }
 
     public void setTag(CompoundTag tag) {
-        load(tag);
+        if (level != null) {
+            load(tag);
+        }
     }
 
     @Override
-    public final void load(CompoundTag compoundTag) {
-        super.load(compoundTag);
-        loadTag(compoundTag);
+    public final void load(CompoundTag in) {
+        super.load(in);
+        loadTag(new MVBlockEntityComponent(in));
     }
 
     @Override
-    protected final void saveAdditional(CompoundTag compoundTag) {
-        super.saveAdditional(compoundTag);
-        saveTag(compoundTag);
+    protected final void saveAdditional(CompoundTag out) {
+        super.saveAdditional(out);
+        saveTag(new MVBlockEntityComponent(out));
     }
 
-    public void loadTag(CompoundTag tag) {
+    public void loadTag(MVBlockEntityComponent tag) {
     }
 
-    public void saveTag(CompoundTag tag) {
+    public void saveTag(MVBlockEntityComponent tag) {
     }
 
     @Override

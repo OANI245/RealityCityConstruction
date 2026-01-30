@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "description": "PBR Textures for Reality City Construction Blocks",
+    "supported_formats": [
+      64,
+      64
+    ],
+    "pack_format": 64
+  }
+}

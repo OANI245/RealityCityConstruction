@@ -1,15 +1,25 @@
 package berries.mods.tcwm.block;
 
+import berries.mods.tcwm.RealityCityConstruction;
+import berries.mods.tcwm.mvapi.MVIdentifier;
+import berries.mods.tcwm.mvapi.MVRegistry;
 import berries.mods.tcwm.util.RegistryObject;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.Collections;
+import java.util.Set;
 
+import static berries.mods.tcwm.RealityCityConstruction.modIdLocation;
 import static net.minecraft.world.level.block.Blocks.*;
 
 public interface Blocks {
@@ -21,75 +31,58 @@ public interface Blocks {
         //? }
     }
 
-    RegistryObject<Block> MARBLE = new RegistryObject<>(() -> new Block(copyProperties(DIORITE).requiresCorrectToolForDrops()));
-    RegistryObject<Block> WHITE_MARBLE = new RegistryObject<>(() -> new Block(copyProperties(DIORITE).requiresCorrectToolForDrops()));
-    //RegistryObject<Block> METAL = new RegistryObject<>(() -> new MetalBlock(copyProperties(IRON_BLOCK).requiresCorrectToolForDrops().sound(SoundType.METAL)));
-    //RegistryObject<Block> D_YELLOW_BLIND = new RegistryObject<>(() -> new DeprecatedBlind(copyProperties(YELLOW_CONCRETE).requiresCorrectToolForDrops().noOcclusion()));
-    //RegistryObject<Block> D_BLACK_BLIND = new RegistryObject<>(() -> new DeprecatedBlind(copyProperties(GRAY_CONCRETE).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> YELLOW_BLIND_SIDEWALK = new RegistryObject<>(() -> new BlindSidewalk(copyProperties(YELLOW_CONCRETE).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> BLACK_BLIND_SIDEWALK = new RegistryObject<>(() -> new BlindSidewalk(copyProperties(GRAY_CONCRETE).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> YELLOW_BLIND_SIDEWALK_CORNER = new RegistryObject<>(() -> new BlindSidewalk(copyProperties(YELLOW_CONCRETE).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> BLACK_BLIND_SIDEWALK_CORNER = new RegistryObject<>(() -> new BlindSidewalk(copyProperties(GRAY_CONCRETE).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> ANDESITE_BLIND_SIDEWALK = new RegistryObject<>(() -> new BlindSidewalk(copyProperties(ANDESITE).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> ANDESITE_BLIND_SIDEWALK_CORNER = new RegistryObject<>(() -> new BlindSidewalk(copyProperties(ANDESITE).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> YELLOW_BLIND_SIDEWALK_SLAB = new RegistryObject<>(() -> new BlindSidewalkSlab(copyProperties(YELLOW_CONCRETE).requiresCorrectToolForDrops()));
-    RegistryObject<Block> BLACK_BLIND_SIDEWALK_SLAB = new RegistryObject<>(() -> new BlindSidewalkSlab(copyProperties(GRAY_CONCRETE).requiresCorrectToolForDrops()));
-    RegistryObject<Block> ANDESITE_BLIND_SIDEWALK_SLAB = new RegistryObject<>(() -> new BlindSidewalkSlab(copyProperties(ANDESITE).requiresCorrectToolForDrops()));
-    RegistryObject<Block> TUNNEL_WIRES_STYLE_1 = new RegistryObject<>(() -> new TunnelWires1(copyProperties(LIGHT_GRAY_CONCRETE).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> LOGO_BLOCK = new RegistryObject<>(() -> new Block(copyProperties(BEDROCK).lightLevel(s -> 5).requiresCorrectToolForDrops().noOcclusion()));
-    RegistryObject<Block> TUNNEL_WIRES_STYLE_2 = new RegistryObject<>(() -> new TunnelWires2(copyProperties(IRON_BARS).requiresCorrectToolForDrops().noOcclusion()));
-    //RegistryObject<Block> D_YELLOW_BLIND_SLAB = new RegistryObject<>(() -> new DeprecatedBlindSlab(copyProperties(YELLOW_CONCRETE).requiresCorrectToolForDrops()));
-    //RegistryObject<Block> D_BLACK_BLIND_SLAB = new RegistryObject<>(() -> new DeprecatedBlindSlab(copyProperties(GRAY_CONCRETE).requiresCorrectToolForDrops()));
-    RegistryObject<Block> TUNNEL_LIGHT = new RegistryObject<>(() -> new TunnelLight(copyProperties(GLOWSTONE).lightLevel(s -> 9).noOcclusion().requiresCorrectToolForDrops()));
-    RegistryObject<Block> WINDOW = new RegistryObject<>(() -> new Window(copyProperties(GLASS).requiresCorrectToolForDrops().sound(SoundType.GLASS).noOcclusion()));
-    RegistryObject<Block> WINDOW_PANE = new RegistryObject<>(() -> new WindowPane(DyeColor.BLACK, copyProperties(GLASS_PANE).requiresCorrectToolForDrops().sound(SoundType.GLASS).noOcclusion()));
-    /*RegistryObject<Block> PLATFORM = getPlatform(copyProperties(STONE).requiresCorrectToolForDrops().noOcclusion(), false);
-    RegistryObject<Block> PLATFORM_TYP_QUARTZ = getPlatform(copyProperties(SMOOTH_QUARTZ).requiresCorrectToolForDrops().noOcclusion(), false);
-    RegistryObject<Block> PLATFORM_INDENTED = getPlatform(copyProperties(STONE).requiresCorrectToolForDrops().noOcclusion(), true);*/
-    RegistryObject<Block> BOAT_DOCK = new RegistryObject<>(() -> new Block(copyProperties(OAK_PLANKS).noOcclusion()));
-    RegistryObject<Block> EXPWY_BAR_TYPE_1 = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(WHITE_CONCRETE)
-            .requiresCorrectToolForDrops()
-            .noOcclusion()
-            , "tooltip.expwy_bar_type_1", 1));
-    RegistryObject<Block> EXPWY_BAR_TYPE_1_BEIJING_4 = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_1.get()), "tooltip.expwy_bar_type_1", 1));
-    RegistryObject<Block> EXPWY_BAR_TYPE_1_SHANGHAI = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_1.get()), "tooltip.expwy_bar_type_1", 1));
-    RegistryObject<Block> EXPWY_BAR_TYPE_1_OC_NEW = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_1.get()), "tooltip.expwy_bar_type_1", 1));
-    RegistryObject<Block> EXPWY_BAR_TYPE_1_OC_NEW_REF = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_1.get()), "tooltip.expwy_bar_type_1", 1));
-    RegistryObject<Block> EXPWY_BAR_TYPE_1_OC_NEW_2 = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_1.get()), "tooltip.expwy_bar_type_1", 1));
-    RegistryObject<Block> EXPWY_BAR_TYPE_1_OC_NEW_2_REF = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_1.get()), "tooltip.expwy_bar_type_1", 1));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2 = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(IRON_BARS)
-            .requiresCorrectToolForDrops()
-            .noOcclusion()
-            , "tooltip.expwy_bar_type_2", 2));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_DOUBLE = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_2.get()), "tooltip.expwy_bar_type_2", 2));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_NEW = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_2.get()), "tooltip.expwy_bar_type_2", 2));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_NEW_DOUBLE = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_2.get()), "tooltip.expwy_bar_type_2", 2));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_GR = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_2.get()), "tooltip.expwy_bar_type_2", 2));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_DOUBLE_GR = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_2.get()), "tooltip.expwy_bar_type_2", 2));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_NEW_GR = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_2.get()), "tooltip.expwy_bar_type_2", 2));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_NEW_DOUBLE_GR = new RegistryObject<>(() -> new ExpwyBarType1Or2(copyProperties(EXPWY_BAR_TYPE_2.get()), "tooltip.expwy_bar_type_2", 2));
-    RegistryObject<Block> EXPWY_BAR_TYPE_3 = new RegistryObject<>(() -> new ExpwyBarType3(copyProperties(IRON_BARS)
-            .requiresCorrectToolForDrops()
-            .noOcclusion()
-    ));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_PLACEHOLDER = new RegistryObject<>(() -> new ExpwyBarType2Placeholder(Direction.NORTH));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_DOUBLE_PLACEHOLDER = new RegistryObject<>(() -> new ExpwyBarType2Placeholder(Direction.NORTH));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_NEW_PLACEHOLDER = new RegistryObject<>(() -> new ExpwyBarType2Placeholder(Direction.NORTH));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_NEW_DOUBLE_PLACEHOLDER = new RegistryObject<>(() -> new ExpwyBarType2Placeholder(Direction.NORTH));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_PLACEHOLDER_GR = new RegistryObject<>(() -> new ExpwyBarType2Placeholder(Direction.NORTH));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_DOUBLE_PLACEHOLDER_GR = new RegistryObject<>(() -> new ExpwyBarType2Placeholder(Direction.NORTH));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_NEW_PLACEHOLDER_GR = new RegistryObject<>(() -> new ExpwyBarType2Placeholder(Direction.NORTH));
-    RegistryObject<Block> EXPWY_BAR_TYPE_2_NEW_DOUBLE_PLACEHOLDER_GR = new RegistryObject<>(() -> new ExpwyBarType2Placeholder(Direction.NORTH));
-    RegistryObject<Block> STATION_BROADCASTER = new RegistryObject<>(StationBroadcaster::new);
-    RegistryObject<Block> CONVEYER_BELT = new RegistryObject<>(() -> new ConveyerBelt(copyProperties(net.minecraft.world.level.block.Blocks.IRON_BLOCK)));
+    static BlockBehaviour.Properties propertiesOf(Identifier id, BlockBehaviour.Properties a) {
+        //? > 1.21.2
+        a.setId(ResourceKey.create(Registries.BLOCK, id));
+        return a;
+    }
+    
+    Block YELLOW_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(YELLOW_CONCRETE).noOcclusion());
+    Block BLACK_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(GRAY_CONCRETE).noOcclusion());
+    Block ANDESITE_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(ANDESITE).noOcclusion());
+    Block YELLOW_BLIND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(YELLOW_CONCRETE).noOcclusion());
+    Block BLACK_BILND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(GRAY_CONCRETE).noOcclusion());
+    Block ANDESITE_BLIND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(ANDESITE).noOcclusion());
+    Block YELLOW_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(YELLOW_CONCRETE).noOcclusion());
+    Block BLACK_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(GRAY_CONCRETE).noOcclusion());
+    Block ANDESITE_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(ANDESITE).noOcclusion());
 
-    RegistryObject<Block> EXPWY_CAUTION_BAR = new RegistryObject<>(() -> new ExpwyCautionBar(copyProperties(net.minecraft.world.level.block.Blocks.STONE).noOcclusion()));
-    RegistryObject<Block> ANTI_GLARE_BOARD_1 = new RegistryObject<>(AntiGlareBoard::new);
-    RegistryObject<Block> ANTI_GLARE_BOARD_2 = new RegistryObject<>(AntiGlareBoard::new);
-    //RegistryObject<Block> AIR_CONDITIONER = new RegistryObject<>(() -> new AirConditioner(copyProperties(net.minecraft.world.level.block.Blocks.SMOOTH_QUARTZ).noOcclusion()));
-    //RegistryObject<Block> AIR_CONDITIONER_EU = new RegistryObject<>(() -> new AirConditionerExternalUnit(copyProperties(net.minecraft.world.level.block.Blocks.SMOOTH_QUARTZ).noOcclusion()));
+    Block LOGO_BLOCK = MVRegistry.BLOCK.register(modIdLocation("logo"), Block::new, Blocks.copyProperties(BEDROCK).lightLevel(s -> 5).noOcclusion());
+    Block WINDOW = MVRegistry.BLOCK.register(modIdLocation("window"), Window::new, Blocks.copyProperties(GLASS));
+    Block WINDOW_PANE = MVRegistry.BLOCK.register(modIdLocation("windowpane"), WindowPane::new, Blocks.copyProperties(GLASS_PANE));
+    /*Block PLATFORM = getPlatform(copyProperties(STONE).noOcclusion(), false);
+    Block PLATFORM_TYP_QUARTZ = getPlatform(copyProperties(SMOOTH_QUARTZ).noOcclusion(), false);
+    Block PLATFORM_INDENTED = getPlatform(copyProperties(STONE).noOcclusion(), true);*/
+    Block EXPWY_BAR_TYPE_1 = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_1"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_1_BEIJING_4 = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_1_bj_4"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_1_SHANGHAI = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_1_sh"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_1_OC_NEW = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_1_oc_new"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_1_OC_NEW_REF = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_1_oc_new_ref"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_1_OC_NEW_2 = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_1_oc_new_2"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_1_OC_NEW_2_REF = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_1_oc_new_2_ref"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2 = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_DOUBLE = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_double_gray"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_NEW = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_gray"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_NEW_DOUBLE = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_double_gray"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_green"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_DOUBLE_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_double_green"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_NEW_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_green"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_NEW_DOUBLE_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_double_green"), ExpwyBarType1Or2::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_3 = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_3"), ExpwyBarType3::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_PLACEHOLDER = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_placeholder"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_DOUBLE_PLACEHOLDER = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_double_placeholder_gray"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_NEW_PLACEHOLDER = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_placeholder_gray"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_NEW_DOUBLE_PLACEHOLDER = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_double_placeholder_gray"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_PLACEHOLDER_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_placeholder_green"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_DOUBLE_PLACEHOLDER_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_double_placeholder_green"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_NEW_PLACEHOLDER_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_placeholder_green"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
+    Block EXPWY_BAR_TYPE_2_NEW_DOUBLE_PLACEHOLDER_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_double_placeholder_green"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
+    Block STATION_BROADCASTER = MVRegistry.BLOCK_ONLY.register(modIdLocation("homo_station_broadcaster"), StationBroadcaster::new, Blocks.copyProperties(STONE));;
 
-    /*static RegistryObject<Block> getPlatform(BlockBehaviour.Properties properties, boolean i) {
+    //Block AIR_CONDITIONER = new RegistryObject<>(() -> new AirConditioner(copyProperties(net.minecraft.world.level.block.Blocks.SMOOTH_QUARTZ).noOcclusion()));
+    //Block AIR_CONDITIONER_EU = new RegistryObject<>(() -> new AirConditionerExternalUnit(copyProperties(net.minecraft.world.level.block.Blocks.SMOOTH_QUARTZ).noOcclusion()));
+
+    /*static Block getPlatform(BlockBehaviour.Properties properties, boolean i) {
         if (Info.isMTRInstalled) {
             return new RegistryObject<>(() ->
             {
@@ -106,6 +99,10 @@ public interface Blocks {
     }
 */
     interface BlockEntityTypes {
-        RegistryObject<BlockEntityType<StationBroadcaster.StationBroadcasterEntity>> HOMO_STATION_BROADCASTER = new RegistryObject<>(() -> new BlockEntityType<>(StationBroadcaster.StationBroadcasterEntity::new, Collections.singleton(Blocks.STATION_BROADCASTER.get()), null));
+        //? < 1.21.2 {
+        /*BlockEntityType<StationBroadcaster.StationBroadcasterEntity> HOMO_STATION_BROADCASTER = new BlockEntityType<>(StationBroadcaster.StationBroadcasterEntity::new, Collections.singleton(Blocks.STATION_BROADCASTER), null);
+        *///? } else {
+        BlockEntityType<?> HOMO_STATION_BROADCASTER = FabricBlockEntityTypeBuilder.create(StationBroadcaster.StationBroadcasterEntity::new, Blocks.STATION_BROADCASTER).build();
+        //? }
     }
 }

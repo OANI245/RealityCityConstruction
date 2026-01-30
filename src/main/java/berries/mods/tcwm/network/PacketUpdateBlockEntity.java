@@ -2,7 +2,7 @@ package berries.mods.tcwm.network;
 
 import berries.mods.tcwm.mvapi.*;
 //? < 1.20.5
-import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
+//import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
 import berries.mods.tcwm.util.Packets;
 import io.netty.buffer.ByteBuf;
 import berries.mods.tcwm.RealityCityConstruction;
@@ -14,8 +14,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 //? >= 1.20.5
-//import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class PacketUpdateBlockEntity {
-    public static ResourceLocation PACKET_UPDATE_BLOCK_ENTITY = MVIdentifier.get(RealityCityConstruction.MOD_ID, "update_block_entity");
+    public static Identifier PACKET_UPDATE_BLOCK_ENTITY = MVIdentifier.get(RealityCityConstruction.MOD_ID, "update_block_entity");
 
     public record PacketUpdateBlockEntityPayload(BlockEntityType<? extends BlockEntity> entityType,
                                                  BlockPos pos, CompoundTag tag) implements MVCustomPayload {
@@ -35,11 +35,15 @@ public class PacketUpdateBlockEntity {
         public static final MVPayloadCodec<PacketUpdateBlockEntityPayload> CODEC =
                 new MVPayloadCodec<>(
                         //? >= 1.20.5 {
-                        /*StreamCodec.composite(
+                        StreamCodec.composite(
                                 new StreamCodec<ByteBuf, BlockEntityType<? extends BlockEntity>>() {
                                     @Override
                                     public @NotNull BlockEntityType<? extends BlockEntity> decode(ByteBuf object) {
-                                        return Objects.requireNonNull(BuiltInRegistries.BLOCK_ENTITY_TYPE.get(ResourceLocation.parse(FriendlyByteBuf.readNbt(object).getString("value"))));
+                                        //? < 1.21.5 {
+                                        /*return Objects.requireNonNull(BuiltInRegistries.BLOCK_ENTITY_TYPE.get(Identifier.parse(FriendlyByteBuf.readNbt(object).getString("value"))));
+                                        *///? } else {
+                                        return BuiltInRegistries.BLOCK_ENTITY_TYPE.get(Identifier.parse(FriendlyByteBuf.readNbt(object).getString("value").orElseThrow())).orElseThrow().value();
+                                        //? }
                                     }
 
                                     @Override
@@ -66,16 +70,16 @@ public class PacketUpdateBlockEntity {
                                 PacketUpdateBlockEntityPayload::tag,
                                 PacketUpdateBlockEntityPayload::new
                         )
-                        *///? }
+                        //? }
                 );
 
         @Override
         public @NotNull
             //? < 1.20.5 {
-        Object
-        //? } else {
-        /*Type<? extends MVCustomPayload>
-         *///? }
+        /*Object
+        *///? } else {
+        Type<? extends MVCustomPayload>
+         //? }
         type() {
             return TYPE.type();
         }
@@ -89,7 +93,8 @@ public class PacketUpdateBlockEntity {
             Level level = ((ServerPlayer) player).level();
             if (entityType == null) return;
             level.getBlockEntity(pos, entityType).ifPresent(blockEntity -> {
-                RealityCityConstruction.LOGGER.info("A new tag received: " + tag.getAsString() + " at " + pos);
+                //? < 1.21.5 {
+                /*RealityCityConstruction.LOGGER.info("A new tag received: " + tag.toString() + " at " + pos + " from " + player.getName());
                 if (blockEntity instanceof TcwmBlockEntity) {
                     RealityCityConstruction.LOGGER.info("Applying...");
                     if (blockEntity instanceof StationBroadcaster.StationBroadcasterEntity) {
@@ -101,6 +106,20 @@ public class PacketUpdateBlockEntity {
                     blockEntity.setChanged();
                     level.blockEntityChanged(pos);
                 }
+                *///? } else {
+                RealityCityConstruction.LOGGER.info("A new tag received: " + tag.toString() + " at " + pos + " from " + player.getName());
+                if (blockEntity instanceof TcwmBlockEntity) {
+                    RealityCityConstruction.LOGGER.info("Applying...");
+                    if (blockEntity instanceof StationBroadcaster.StationBroadcasterEntity) {
+                        ((StationBroadcaster.StationBroadcasterEntity) blockEntity).setName(tag.getString("name").orElse(""));
+                        ((StationBroadcaster.StationBroadcasterEntity) blockEntity).setSoundID(tag.getString("soundID").orElse("minecraft:block.stone.break"));
+                        ((StationBroadcaster.StationBroadcasterEntity) blockEntity).setRange(tag.getFloat("range").orElse(1.4f));
+                        ((StationBroadcaster.StationBroadcasterEntity) blockEntity).setPitch(StationBroadcaster.StationBroadcasterEntity.Pitch.getValue(tag.getFloat("pitch").orElse(1.0f)));
+                    }
+                    blockEntity.setChanged();
+                    level.blockEntityChanged(pos);
+                }
+                //? }
             });
         }
     }
@@ -111,8 +130,8 @@ public class PacketUpdateBlockEntity {
         CompoundTag tag = blockEntity.getTag();
         Packets.versionedPacketSendC2S(new PacketUpdateBlockEntityPayload(blockEntity.getType(), pos, tag), () -> {
             //? < 1.20.5 {
-            LegacyPacketUpdateBlockEntity.INSTANCE.send(blockEntity.getType(), pos, tag);
-            //? }
+            /*LegacyPacketUpdateBlockEntity.INSTANCE.send(blockEntity.getType(), pos, tag);
+            *///? }
         });
     }
 

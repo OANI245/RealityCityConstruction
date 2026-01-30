@@ -1,0 +1,10 @@
+{
+	"credit": "Made with Blockbench",
+    "parent": "tcwm:block/black_blind_sidewalk_slab",
+	"textures": {
+		"body": "block/yellow_concrete",
+		"top": "block/yellow_concrete",
+		"3d_top": "block/yellow_terracotta",
+		"particle": "block/yellow_concrete"
+	}
+}

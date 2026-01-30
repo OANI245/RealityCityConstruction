@@ -1,7 +1,7 @@
 {
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
-	"parent": "tcwm:block/black_blind",
+	"parent": "tcwm:block/black_blind_sidewalk",
 	"textures": {
 		"body": "block/polished_andesite",
 		"3d_top": "block/polished_andesite",

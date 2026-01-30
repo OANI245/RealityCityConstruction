@@ -1,7 +1,10 @@
 package berries.mods.tcwm.item;
 
+import berries.mods.tcwm.mvapi.MVRegistry;
 import berries.mods.tcwm.util.RegistryObject;
 import net.minecraft.world.item.Item;
+
+import static berries.mods.tcwm.RealityCityConstruction.modIdLocation;
 
 public interface Items {
   //deprecated
@@ -17,5 +20,5 @@ public interface Items {
 //  RegistryObject<Item> RAIL_CONNECTOR_350_ONE_WAY = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, true, RailType.END));
 //  RegistryObject<Item> RAIL_CONNECTOR_420_ONE_WAY = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, true, RailType.NETHERITE));
 //  RegistryObject<Item> RAIL_CONNECTOR_600_ONE_WAY = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, true, RailType.BEDROCK));\
-  RegistryObject<Item> FORGE_TOOL = new RegistryObject<>(() -> new Item(new Item.Properties()));
+  Item FORGE_TOOL = MVRegistry.ITEM.register(modIdLocation("forge_tool"), Item::new, new Item.Properties());
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tcwm:block/yellow_blind_sidewalk"
+    },
+    "facing=east": {
+      "model": "tcwm:block/yellow_blind_sidewalk",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "tcwm:block/yellow_blind_sidewalk",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tcwm:block/yellow_blind_sidewalk",
+      "y": 270
+    }
+  }
+}

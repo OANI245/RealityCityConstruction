@@ -11,15 +11,15 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ExpwyBarType3 extends MVSimpleCodecHorizontalDirectionalBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final Property<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
-    protected ExpwyBarType3(Properties properties) {
+    public ExpwyBarType3(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
@@ -34,7 +34,11 @@ public class ExpwyBarType3 extends MVSimpleCodecHorizontalDirectionalBlock {
 
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+        //? < 1.21.5 {
+        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         *///? } else {
+        Vec3 offset = blockState.getOffset(blockPos);
+        //? }
         switch ((Direction) blockState.getValue(FACING)) {
             case NORTH:
                 return Block.box(0, 0, 9, 16, 16, 16).move(offset.x, offset.y, offset.z);
@@ -51,7 +55,11 @@ public class ExpwyBarType3 extends MVSimpleCodecHorizontalDirectionalBlock {
 
     @Override
     public VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+        //? < 1.21.5 {
+        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         *///? } else {
+        Vec3 offset = blockState.getOffset(blockPos);
+        //? }
         switch ((Direction) blockState.getValue(FACING)) {
             case NORTH:
                 return Block.box(0, 0, 9, 16, 24, 16).move(offset.x, offset.y, offset.z);

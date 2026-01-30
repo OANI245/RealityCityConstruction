@@ -1,5 +1,6 @@
 package berries.mods.tcwm.gui.widget;
 
+import berries.mods.tcwm.gui.FlueroUI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -7,6 +8,8 @@ import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+//? >= 1.21.9
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 
 import java.util.ArrayList;
@@ -15,8 +18,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class PropertiesList {
-    List<Item<AbstractWidget>> items;
-    List<Item<StackPanel>> stackPanels;
+    public List<Item<AbstractWidget>> items;
+    public List<Item<StackPanel>> stackPanels;
 
     protected PropertiesList() {}
 
@@ -46,19 +49,17 @@ public class PropertiesList {
     }
 
     public <T extends GuiEventListener & Renderable & NarratableEntry>
-    void reload(Function<T, T> addFunction, Consumer<T> removeFunction) {
+    void reload(Function<T, T> addFunction, Consumer<T> removeFunction, Function<T, Boolean> containsFunction) {
         for(Item<?> item : items) {
-            removeFunction.accept((T)item);
-            addFunction.apply((T)item);
             if (item instanceof Item<?>) {
-                removeFunction.accept((T) item.widget);
+                if (containsFunction.apply((T) item.widget)) {
+                    removeFunction.accept((T) item.widget);
+                }
                 addFunction.apply((T) item.widget);
             }
         }
 
         for(Item<StackPanel> item : stackPanels) {
-            removeFunction.accept((T)item);
-            addFunction.apply((T)item);
             ((StackPanel) item.widget).reload(addFunction, removeFunction);
         }
     }
@@ -101,7 +102,9 @@ public class PropertiesList {
             super(x, y, width, height, message);
         }
 
-        @Override
+        //? < 1.21.9 {
+
+        /*@Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
             return false;
         }
@@ -115,11 +118,27 @@ public class PropertiesList {
         public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
             return false;
         }
+        *///? } else {
+        @Override
+        public boolean mouseClicked(MouseButtonEvent e, boolean b) {
+            return false;
+        }
+
+        @Override
+        public boolean mouseReleased(MouseButtonEvent e) {
+            return false;
+        }
+
+        @Override
+        public boolean mouseDragged(MouseButtonEvent e, double d, double g) {
+            return false;
+        }
+        //? }
 
         @Override
         protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
             Minecraft minecraft = Minecraft.getInstance();
-            guiGraphics.drawString(minecraft.font, this.getMessage(), getX() + 10, getY() + height / 2, 0xFFFFFF);
+            guiGraphics.drawString(minecraft.font, this.getMessage(), getX() + 10, getY() + height / 2, FlueroUI.textColor(0xFFFFFF));
         }
 
         @Override

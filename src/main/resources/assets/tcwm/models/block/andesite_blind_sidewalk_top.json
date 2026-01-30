@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "tcwm:block/black_blind_top",
+	"parent": "tcwm:block/black_blind_sidewalk_top",
 	"textures": {
 		"body": "block/polished_andesite",
 		"top": "block/polished_andesite",

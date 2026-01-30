@@ -14,7 +14,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ExpwyCautionBar extends MVSimpleCodecHorizontalDirectionalBlock {
-    protected ExpwyCautionBar(Properties properties) {
+    public ExpwyCautionBar(Properties properties) {
         super(properties);
     }
 
@@ -29,14 +29,22 @@ public class ExpwyCautionBar extends MVSimpleCodecHorizontalDirectionalBlock {
     @Override
     @SuppressWarnings("all")
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Vec3 offset = state.getOffset(level, pos);
+        //? < 1.21.5 {
+        /*Vec3 offset = state.getOffset(level, pos);
+         *///? } else {
+        Vec3 offset = state.getOffset(pos);
+        //? }
         return Block.box(6, 0, 6, 10, 19, 10).move(offset.x, offset.y, offset.z);
     }
 
     @Override
     @SuppressWarnings("all")
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Vec3 offset = state.getOffset(level, pos);
+        //? < 1.21.5 {
+        /*Vec3 offset = state.getOffset(level, pos);
+         *///? } else {
+        Vec3 offset = state.getOffset(pos);
+        //? }
         return Block.box(6, 0, 6, 10, 24, 10).move(offset.x, offset.y, offset.z);
     }
 

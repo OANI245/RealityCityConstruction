@@ -3,13 +3,15 @@
   "id": "${id}",
   "version": "${version}",
   "name": "${name}",
-  "description": "Decoration some strange building ヾ(≧ ▽ ≦)ゝ",
+  "description": "Decorating some strange building ヾ(≧ ▽ ≦)ゝ",
   "authors": [
     "CodeCat", "yaoxiansen"
   ],
   "contact": {
-    "homepage": "https://stonecutter.kikugie.dev/",
-    "sources": "https://codeberg.org/stonecutter/template-fabric"
+    "homepage": "https://modrinth.com/mod/reality-city-construction",
+    "sources": "https://github.com/OANI245/RealityCityConstruction",
+    "issues": "https://github.com/OANI245/RealityCityConstruction/issues",
+    "bilibili": "https://space.bilibili.com/489942446"
   },
   "license": "LGPL-v3",
   "icon": "assets/tcwm/icon.png",

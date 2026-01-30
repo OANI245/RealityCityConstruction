@@ -14,6 +14,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.level.Level;
@@ -48,14 +49,15 @@ public class LegacyPacketUpdateBlockEntity implements LegacyC2SPacket {
 
     @Override
     public void receive(MinecraftServer server, ServerPlayer player, ServerGamePacketListenerImpl handler, FriendlyByteBuf pkt, PacketSender responseSender) {
-        Level level = player.level();
         BlockEntityType<?> entityType = BuiltInRegistries.BLOCK_ENTITY_TYPE.get(pkt.readResourceLocation());
         BlockPos pos = pkt.readBlockPos();
         CompoundTag tag = pkt.readNbt();
         if (entityType == null) return;
-        level.getBlockEntity(pos, entityType).ifPresent(blockEntity -> {
-            if (tag != null) {
-                RealityCityConstruction.LOGGER.info("A new tag received: " + tag.getAsString() + " at " + pos);
+        server.tell(new TickTask(1, () -> {
+            Level level = player.level();
+            BlockEntity blockEntity = level.getBlockEntity(pos, entityType).orElse(null);
+            if (tag != null && blockEntity != null) {
+                RealityCityConstruction.LOGGER.info("A new tag received: " + tag.getAsString() + " at " + pos + " from " + player.getName());
                 if (blockEntity instanceof TcwmBlockEntity) {
                     RealityCityConstruction.LOGGER.info("Applying...");
                     if (blockEntity instanceof StationBroadcaster.StationBroadcasterEntity) {
@@ -68,6 +70,6 @@ public class LegacyPacketUpdateBlockEntity implements LegacyC2SPacket {
                     level.blockEntityChanged(pos);
                 }
             }
-        });
+        }));
     }
 }

@@ -17,8 +17,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -31,7 +31,7 @@ import static berries.mods.tcwm.util.EnumExpwyBarRotateType.*;
 import static berries.mods.tcwm.util.EnumExpwyBarRotateType.DISABLE;
 
 public class ExpwyBarType1Or2 extends MVSimpleCodecHorizontalDirectionalBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final Property<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public final String hoverText;
     public static final EnumProperty<BarEndType> END_TYPE = EnumProperty.create("end_type", BarEndType.class);
     public static final EnumProperty<EnumExpwyBarRotateType> ROTATE_TYPE = EnumProperty.create("rotate_type", EnumExpwyBarRotateType.class);
@@ -51,19 +51,25 @@ public class ExpwyBarType1Or2 extends MVSimpleCodecHorizontalDirectionalBlock {
         this(properties, "", 0);
     }
 
-    @Override
+    //? < 1.21.5 {
+    /*@Override
     //? < 1.20.5 {
-    /*public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter ctx, List<Component> list, TooltipFlag tooltipFlag) {
-    *///? } else {
+    /^public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter ctx, List<Component> list, TooltipFlag tooltipFlag) {
+    ^///? } else {
     public void appendHoverText(ItemStack itemStack, @Nullable Item.TooltipContext ctx, List<Component> list, TooltipFlag tooltipFlag) {
         //? }
         super.appendHoverText(itemStack, ctx, list, tooltipFlag);
         list.add(MCText.translatable(hoverText));
     }
+    *///? }
 
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+        //? < 1.21.5 {
+        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         *///? } else {
+        Vec3 offset = blockState.getOffset(blockPos);
+        //? }
         switch ((Direction) blockState.getValue(FACING)) {
             case SOUTH:
                 if (blockState.getValue(ROTATE_TYPE) == R22_5) {
@@ -103,7 +109,11 @@ public class ExpwyBarType1Or2 extends MVSimpleCodecHorizontalDirectionalBlock {
 
     @Override
     public VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext context) {
-        Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+        //? < 1.21.5 {
+        /*Vec3 offset = blockState.getOffset(blockGetter, blockPos);
+         *///? } else {
+        Vec3 offset = blockState.getOffset(blockPos);
+        //? }
         switch ((Direction) blockState.getValue(FACING)) {
             case SOUTH:
                 if (blockState.getValue(ROTATE_TYPE) == R22_5) {
@@ -189,32 +199,6 @@ public class ExpwyBarType1Or2 extends MVSimpleCodecHorizontalDirectionalBlock {
 //            }
 //        }
         return this.defaultBlockState().setValue(FACING, facing).setValue(END_TYPE, test);
-    }
-
-    @Override
-    public BlockState updateShape(BlockState state, Direction facing, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        BarEndType test = BarEndType.NO_END;
-//        var ccw = level.getBlockState(pos.relative(facing.getCounterClockWise()));
-//        var cw = level.getBlockState(pos.relative(facing.getClockWise()));
-//        if (ccw.getBlock() instanceof AirBlock && !ccw.isFaceSturdy(level, pos.relative(facing.getCounterClockWise()), facing.getOpposite())) {
-//            test = BarEndType.END_RIGHT;
-//        } else if (ccw.getBlock() instanceof ExpwyBarType1Or2) {
-//            if (barType == 1 && ((ExpwyBarType1Or2) ccw.getBlock()).barType == 2) {
-//                test = BarEndType.END_RIGHT;
-//            }
-//        }
-//        if (cw.getBlock() instanceof AirBlock && !cw.isFaceSturdy(level, pos.relative(facing.getClockWise()), facing.getOpposite())) {
-//            if (test != BarEndType.NO_END) {
-//                test = BarEndType.NO_END;
-//            } else {
-//                test = BarEndType.END_LEFT;
-//            }
-//        } else if (cw.getBlock() instanceof ExpwyBarType1Or2) {
-//            if (barType == 1 && ((ExpwyBarType1Or2) cw.getBlock()).barType == 2) {
-//                test = BarEndType.END_LEFT;
-//            }
-//        }
-        return state.setValue(END_TYPE, test);
     }
 
     public static enum BarEndType implements StringRepresentable {

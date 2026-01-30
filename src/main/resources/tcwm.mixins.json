@@ -1,8 +1,9 @@
 {
   "required": true,
-  "package": "msnj.tcwm.mixin",
+  "package": "berries.mods.tcwm.mixin",
   "compatibilityLevel": "${java}",
   "mixins": [
+    "MixinMinecraft"
   ],
   "injectors": {
     "defaultRequire": 1

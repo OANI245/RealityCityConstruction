@@ -1,0 +1,121 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "facing": "north",
+        "type": "bottom"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_slab"
+      }
+    },
+    {
+      "when": {
+        "facing": "north",
+        "type": "top"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_top"
+      }
+    },
+    {
+      "when": {
+        "facing": "north",
+        "type": "double"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_full"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "type": "bottom"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_slab",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "type": "top"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_top",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "type": "double"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_full",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "type": "bottom"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_slab",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "type": "top"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_top",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "type": "double"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_full",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "type": "bottom"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_slab",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "type": "top"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_top",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "type": "double"
+      },
+      "apply": {
+        "model": "tcwm:block/black_blind_sidewalk_full",
+        "y": 270
+      }
+    }
+  ]
+}

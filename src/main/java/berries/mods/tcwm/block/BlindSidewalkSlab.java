@@ -8,8 +8,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class BlindSidewalkSlab extends SlabBlock {
     public static final EnumProperty<SlabType> TYPE = SlabBlock.TYPE;
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final Property<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
     public BlindSidewalkSlab(Properties settings) {
         super(settings);

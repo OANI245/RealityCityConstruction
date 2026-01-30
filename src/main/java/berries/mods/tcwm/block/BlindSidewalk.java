@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class BlindSidewalk extends MVSimpleCodecHorizontalDirectionalBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final Property<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
     public BlindSidewalk(Properties settings) {
         super(settings);
@@ -33,7 +33,11 @@ public class BlindSidewalk extends MVSimpleCodecHorizontalDirectionalBlock {
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockGetter world, BlockView view, BlockPos pos, CollisionContext ctx) {
-        Vec3 offset = state.getOffset(world, pos);
+        //? < 1.21.5 {
+        /*Vec3 offset = state.getOffset(world, pos);
+         *///? } else {
+        Vec3 offset = state.getOffset(pos);
+        //? }
         switch ((Direction) state.getValue(FACING)) {
             case SOUTH:
                 return box(0, 0, 0, 16, 17, 16).move(offset.x, offset.y, offset.z);

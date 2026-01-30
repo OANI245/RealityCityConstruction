@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "facing=north": {"model": "tcwm:block/conveyer_belt"},
+        "facing=south": {"model": "tcwm:block/conveyer_belt",
+            "y": 180
+        },
+        "facing=west": {"model": "tcwm:block/conveyer_belt",
+            "y": 270
+        },
+        "facing=east": {"model": "tcwm:block/conveyer_belt",
+            "y": 90
+        }
+    }
+}

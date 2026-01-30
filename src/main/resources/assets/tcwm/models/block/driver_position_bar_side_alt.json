@@ -1,7 +1,0 @@
-{
-  "parent": "block/template_glass_pane_side_alt",
-  "textures": {
-    "edge": "tcwm:block/dex",
-    "pane": "tcwm:block/driver_position_bar"
-  }
-}

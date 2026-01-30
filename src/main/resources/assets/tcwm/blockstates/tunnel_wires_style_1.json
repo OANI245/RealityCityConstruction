@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tcwm:block/tunnel_wires_style_1"
+    },
+    "facing=east": {
+      "model": "tcwm:block/tunnel_wires_style_1",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "tcwm:block/tunnel_wires_style_1",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tcwm:block/tunnel_wires_style_1",
+      "y": 270
+    }
+  }
+}

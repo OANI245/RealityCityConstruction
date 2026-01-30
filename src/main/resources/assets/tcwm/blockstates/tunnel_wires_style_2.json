@@ -1,0 +1,698 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "facing": "north",
+        "top": false,
+        "bottom": false,
+        "left": false,
+        "right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_bracket"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "top": false,
+        "bottom": false,
+        "left": false,
+        "right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_bracket",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "top": false,
+        "bottom": false,
+        "left": false,
+        "right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_bracket",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "top": false,
+        "bottom": false,
+        "left": false,
+        "right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_bracket",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "top": false,
+        "bottom": false,
+        "left": true,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "top": false,
+        "bottom": false,
+        "left": true,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "top": false,
+        "bottom": false,
+        "left": true,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "top": false,
+        "bottom": false,
+        "left": true,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "top": false,
+        "bottom": false,
+        "left": false,
+        "right": true,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "top": false,
+        "bottom": false,
+        "left": false,
+        "right": true,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "top": false,
+        "bottom": false,
+        "left": false,
+        "right": true,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "top": false,
+        "bottom": false,
+        "left": false,
+        "right": true,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "left": true,
+        "right": true,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "left": true,
+        "right": true,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "left": true,
+        "right": true,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "left": true,
+        "right": true,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "top": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_up_down"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "top": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_up_down",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "top": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_up_down",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "top": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_up_down",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "left": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left_down"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "left": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left_down",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "left": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left_down",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "left": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left_down",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "left": true,
+        "top": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left_up"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "left": true,
+        "top": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left_up",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "left": true,
+        "top": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left_up",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "left": true,
+        "top": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_left_up",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "right": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right_down"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "right": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right_down",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "right": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right_down",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "right": true,
+        "bottom": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right_down",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "right": true,
+        "top": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right_up"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "right": true,
+        "top": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right_up",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "right": true,
+        "top": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right_up",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "right": true,
+        "top": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_right_up",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "corner_left": true,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_left"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "corner_left": true,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_left",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "corner_left": true,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_left",
+        "y": 180
+      }
+    },    {
+      "when": {
+        "facing": "west",
+        "corner_left": true,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_left",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "corner_left": false,
+        "corner_right": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_right"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "corner_left": false,
+        "corner_right": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_right",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "corner_left": false,
+        "corner_right": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_right",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "corner_left": false,
+        "corner_right": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_right",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "corner_left": true,
+        "corner_right": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_left_right"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "corner_left": true,
+        "corner_right": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_left_right",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "corner_left": true,
+        "corner_right": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_left_right",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "corner_left": true,
+        "corner_right": true
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_corner_left_right",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "top": true,
+        "bottom": false,
+        "left": false,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_up"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "top": true,
+        "bottom": false,
+        "left": false,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_up",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "top": true,
+        "bottom": false,
+        "left": false,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_up",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "top": true,
+        "bottom": false,
+        "left": false,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_up",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "top": false,
+        "bottom": true,
+        "left": false,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_down"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "top": false,
+        "bottom": true,
+        "left": false,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_down",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "top": false,
+        "bottom": true,
+        "left": false,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_down",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "top": false,
+        "bottom": true,
+        "left": false,
+        "right": false,
+        "corner_left": false,
+        "corner_right": false
+      },
+      "apply": {
+        "model": "tcwm:block/tunnel_wires_style_2_down",
+        "y": 270
+      }
+    }
+  ]
+}

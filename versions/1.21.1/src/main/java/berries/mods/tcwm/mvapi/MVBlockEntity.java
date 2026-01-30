@@ -1,10 +1,15 @@
 package berries.mods.tcwm.mvapi;
 
+import berries.mods.tcwm.RealityCityConstruction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,31 +21,35 @@ public class MVBlockEntity extends BlockEntity {
     }
 
     public CompoundTag getTag() {
-        CompoundTag tag = new CompoundTag();
-        saveAdditional(tag, null);
+        CompoundTag tag = null;
+        if (level != null) {
+            tag = saveWithoutMetadata(level.registryAccess());
+        }
         return tag;
     }
 
     public void setTag(CompoundTag tag) {
-        loadAdditional(tag, null);
+        if (level != null) {
+            loadAdditional(tag, level.registryAccess());
+        }
     }
 
     @Override
-    protected final void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
-        super.loadAdditional(compoundTag, provider);
-        loadTag(compoundTag);
+    protected final void loadAdditional(CompoundTag in, HolderLookup.Provider provider) {
+        super.loadAdditional(in, provider);
+        loadTag(new MVBlockEntityComponent(in));
     }
 
     @Override
-    protected final void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
-        super.saveAdditional(compoundTag, provider);
-        saveTag(compoundTag);
+    protected final void saveAdditional(CompoundTag out, HolderLookup.Provider provider) {
+        super.saveAdditional(out, provider);
+        saveTag(new MVBlockEntityComponent(out));
     }
 
-    public void loadTag(CompoundTag tag) {
+    public void loadTag(MVBlockEntityComponent tag) {
     }
 
-    public void saveTag(CompoundTag tag) {
+    public void saveTag(MVBlockEntityComponent tag) {
     }
 
     @Override

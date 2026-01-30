@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "tcwm:block/ceiling_normal"},
+    "facing=east":  { "model": "tcwm:block/ceiling_normal", "y":  90},
+    "facing=south": { "model": "tcwm:block/ceiling_normal", "y": 180},
+    "facing=west":  { "model": "tcwm:block/ceiling_normal", "y": 270}
+  }
+}

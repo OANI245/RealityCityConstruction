@@ -1,6 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "tcwm:item/group_not_found"
-    }
-}

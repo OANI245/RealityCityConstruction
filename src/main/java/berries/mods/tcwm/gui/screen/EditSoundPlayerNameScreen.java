@@ -7,7 +7,6 @@ import berries.mods.tcwm.mvapi.MVScreen;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.resources.language.I18n;
-import net.minecraft.util.FastColor;
 
 public class EditSoundPlayerNameScreen extends MVScreen {
     protected final EditSoundPlayerScreen previous;
@@ -24,7 +23,7 @@ public class EditSoundPlayerNameScreen extends MVScreen {
 
         nameEditBox = new EditBox(minecraft.font, width / 2 - 50, height / 2 - 13, 100, 18, MVComponent.EMPTY);
         nameEditBox.setValue(previous.name.trim().isEmpty() ? I18n.get("block.tcwm.homo_station_broadcaster.default_name") : previous.name.trim());
-        nameEditBox.setTextColor(FastColor.ARGB32.color(16, 192, 16));
+        nameEditBox.setTextColor(FlueroUI.rgb(16, 192, 16));
         addRenderableWidget(nameEditBox);
         addRenderableWidget(new Button(width / 2 - 25, height / 2 + 11, 50, 18, MVComponent.text("确定"), true, (button) -> saveChangesAndBack()));
     }
@@ -44,9 +43,13 @@ public class EditSoundPlayerNameScreen extends MVScreen {
     @Override
     public void renderScreen(GuiGraphics graphics, int mouseX, int mouseY, float f) {
         if (minecraft == null) return;
-        renderBackground(graphics, mouseX, mouseY, f);
+        //? < 1.20.5 {
+        /*renderBackground(graphics);
+        *///? } else if < 1.21.6 {
+        /*renderBackground(graphics, mouseX, mouseY, f);
+        *///? }
         FlueroUI.renderCenteredDialog(graphics, this.width, this.height, 120, 74);
         super.renderScreen(graphics, mouseX, mouseY, f);
-        graphics.drawCenteredString(minecraft.font, this.getTitle(), width / 2, height / 2 - 29, 0xFFFFFF);
+        graphics.drawCenteredString(minecraft.font, this.getTitle(), width / 2, height / 2 - 29, FlueroUI.textColor(0xFFFFFF));
     }
 }

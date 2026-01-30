@@ -1,4 +1,3 @@
-<br/>
 <div align="center"><img alt="ICON" src="icon.png" width="100"/></div>
 <h1 align="center">Reality City Construction</h1>
 <h3 align="center">A Fabric Mod added Decoration blocks for City Construction.</h3>
@@ -13,7 +12,7 @@ To build the mod, run the following commands in the root directory of the projec
 `./gradlew :<minecraft-version>:build` \
 The mod jar file should be generated in the following directory:
 `<root>/versions/<minecraft-version>/build/libs/<jar-name>.jar`
-## All Version
+## Multi Versions
 To build the mod, run the following commands in the root directory of the project: \
 `./gradlew build` \
 The mod jar file should be generated in the following directory:
