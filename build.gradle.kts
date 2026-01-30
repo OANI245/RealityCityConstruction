@@ -8,7 +8,7 @@ plugins {
 }
 
 version = "${property("mod.version")}+${sc.current.version}"
-base.archivesName = property("mod.id") as String
+base.archivesName = "RCC"
 
 val requiredJava = when {
     sc.current.parsed >= "1.20.6" -> JavaVersion.VERSION_21
@@ -105,7 +105,7 @@ tasks {
     register<Copy>("buildAndCollect") {
         group = "build"
         from(remapJar.map { it.archiveFile }, remapSourcesJar.map { it.archiveFile })
-        into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
+        into(rootProject.layout.buildDirectory.file("libs/RCC-fabric-${sc.current.version}-${project.property("mod.version")}"))
         dependsOn("build")
     }
 }
