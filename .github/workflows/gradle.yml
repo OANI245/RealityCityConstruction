@@ -49,7 +49,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v5 # v4.0.0
 
       - name: Build with Gradle Wrapper
-        run: ./gradlew clean setupLibrary :${{matrix.minecraft}}:build
+        run: ./gradlew clean :${{matrix.minecraft}}:build
 
       - name: Get Mod Version
         run: |
