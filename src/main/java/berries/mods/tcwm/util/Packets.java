@@ -38,4 +38,17 @@ public interface Packets {
         }
         return input;
     }
+
+    @NotNull
+    static <T> T getReadValue(Optional<T> input, T _else) {
+        return input.orElse(_else);
+    }
+
+    @NotNull
+    static <T> T getReadValue(T input, T _else) {
+        if (input == null) {
+            throw new IllegalArgumentException();
+        }
+        return input;
+    }
 }

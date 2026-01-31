@@ -117,8 +117,8 @@ public class ConveyerBelt extends MVSimpleCodecHorizontalDirectionalBlock {//mtr
     //? < 1.21.5 {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
     //? } else < 1.21.9 {
-    /*protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier) {*/
-        //? } else {
+    /*protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier) {
+        *///? } else {
         /*protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier, boolean bl) {
         *///? }
         Direction facing = (Direction) state.getValue(FACING);

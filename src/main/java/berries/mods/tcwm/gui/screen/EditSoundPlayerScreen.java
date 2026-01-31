@@ -303,8 +303,8 @@ public class EditSoundPlayerScreen extends MVScreen {
     //? >= 1.21.6 && < 1.21.9 {
     /*@Override public boolean mouseClicked(double d, double e, int i) {
         return pitchComboBox.mouseClicked(d, e, i) || super.mouseClicked(d, e, i);
-    }*/
-    //? } else if >= 1.21.9 {
+    }
+    *///? } else if >= 1.21.9 {
     /*@Override public boolean mouseClicked(MouseButtonEvent e, boolean bl) {
         return pitchComboBox.mouseClicked(e, bl) || super.mouseClicked(e, bl);
     }

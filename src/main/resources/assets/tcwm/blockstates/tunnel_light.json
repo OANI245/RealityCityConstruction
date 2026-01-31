@@ -6,7 +6,7 @@
                 "facing": "north"
             },
             "apply": {
-                "model": "tcwm:block/tunnellight"
+                "model": "tcwm:block/tunnel_light"
             }
         },
         {
@@ -15,7 +15,7 @@
                 "facing": "north"
             },
             "apply": {
-                "model": "tcwm:block/tunnellight_old",
+                "model": "tcwm:block/tunnel_light_old",
                 "y": 180
             }
         },
@@ -25,7 +25,7 @@
                 "facing": "east"
             },
             "apply": {
-                "model": "tcwm:block/tunnellight",
+                "model": "tcwm:block/tunnel_light",
                 "y": 90
             }
         },
@@ -35,7 +35,7 @@
                 "facing": "east"
             },
             "apply": {
-                "model": "tcwm:block/tunnellight_old",
+                "model": "tcwm:block/tunnel_light_old",
                 "y": 270
             }
         },
@@ -45,7 +45,7 @@
                 "facing": "south"
             },
             "apply": {
-                "model": "tcwm:block/tunnellight",
+                "model": "tcwm:block/tunnel_light",
                 "y": 180
             }
         },
@@ -55,7 +55,7 @@
                 "facing": "south"
             },
             "apply": {
-                "model": "tcwm:block/tunnellight_old"
+                "model": "tcwm:block/tunnel_light_old"
             }
         },
         {
@@ -64,7 +64,7 @@
                 "facing": "west"
             },
             "apply": {
-                "model": "tcwm:block/tunnellight",
+                "model": "tcwm:block/tunnel_light",
                 "y": 270
             }
         },
@@ -74,7 +74,7 @@
                 "facing": "west"
             },
             "apply": {
-                "model": "tcwm:block/tunnellight_old",
+                "model": "tcwm:block/tunnel_light_old",
                 "y": 90
             }
         }

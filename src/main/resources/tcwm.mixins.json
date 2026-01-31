@@ -3,6 +3,7 @@
   "package": "berries.mods.tcwm.mixin",
   "compatibilityLevel": "${java}",
   "mixins": [
+    "MixinChunkSerializer",
     "MixinMinecraft"
   ],
   "injectors": {

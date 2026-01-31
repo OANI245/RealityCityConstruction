@@ -48,7 +48,7 @@ public class RealityCityConstruction implements ModInitializer {
 
         MVRegistry.BLOCK.register(modIdLocation("tunnel_wires_style_1"), TunnelWires1::new, Blocks.copyProperties(LIGHT_GRAY_CONCRETE).noOcclusion());
         MVRegistry.BLOCK.register(modIdLocation("tunnel_wires_style_2"), TunnelWires2::new, Blocks.copyProperties(COPPER_BLOCK).noOcclusion());
-        MVRegistry.BLOCK.register(modIdLocation("tunnellight"), TunnelLight::new, Blocks.copyProperties(SEA_LANTERN).noOcclusion());
+        MVRegistry.BLOCK.register(modIdLocation("tunnel_light"), TunnelLight::new, Blocks.copyProperties(SEA_LANTERN).noOcclusion());
         /*MVRegistry.BLOCK.register(modIdLocation("platform"), Blocks.PLATFORM.get());
         MVRegistry.ITEM.register(modIdLocation("platform"), defaultBlockItem(Blocks.PLATFORM.get()));
         MVRegistry.BLOCK.register(modIdLocation("platform_type_quartz"), Blocks.PLATFORM_TYP_QUARTZ.get());
@@ -62,9 +62,7 @@ public class RealityCityConstruction implements ModInitializer {
         MVRegistry.BLOCK.register(modIdLocation("conveyer_belt"), ConveyerBelt::new, Blocks.copyProperties(DEEPSLATE));
         MVRegistry.BLOCK.register(modIdLocation("expwy_caution_bar"), ExpwyCautionBar::new, Blocks.copyProperties(LIGHT_GRAY_CONCRETE));
         MVRegistry.BLOCK.register(modIdLocation("anti_glare_board_type_1"), AntiGlareBoard::new, Blocks.copyProperties(GREEN_STAINED_GLASS));
-        REPLACE_BLOCKS.put("tcwm:shading_panel_type_1", "tcwm:anti_glare_board_type_1");
         MVRegistry.BLOCK.register(modIdLocation("anti_glare_board_type_2"), AntiGlareBoard::new, Blocks.copyProperties(GREEN_STAINED_GLASS));
-        REPLACE_BLOCKS.put("tcwm:shading_panel_type_2", "tcwm:anti_glare_board_type_2");
         //sys.bi("air_conditioner", Blocks.AIR_CONDITIONER);
         //sys.bi("air_conditioner_external_unit", Blocks.AIR_CONDITIONER_EU);
         MVRegistry.BLOCK_ENTITY_TYPE.register(modIdLocation("homo_station_broadcaster_entity"), null, Blocks.BlockEntityTypes.HOMO_STATION_BROADCASTER);
@@ -76,6 +74,22 @@ public class RealityCityConstruction implements ModInitializer {
         /*ClientPlayNetworking.registerGlobalReceiver(PacketOpenSoundPlayerScreen.PACKET_SHOW_SCREEN, LegacyPacketOpenSoundPlayerScreen.INSTANCE::receive);
         ServerPlayNetworking.registerGlobalReceiver(PacketUpdateBlockEntity.PACKET_UPDATE_BLOCK_ENTITY, LegacyPacketUpdateBlockEntity.INSTANCE::receive);
         *///? }
+
+        REPLACE_BLOCKS.put("tcwm:yellow_blind", "tcwm:yellow_blind_sidewalk");
+        REPLACE_BLOCKS.put("tcwm:black_blind", "tcwm:black_blind_sidewalk");
+        REPLACE_BLOCKS.put("tcwm:yellow_blind_corner", "tcwm:yellow_blind_sidewalk_corner");
+        REPLACE_BLOCKS.put("tcwm:black_blind_corner", "tcwm:black_blind_sidewalk_corner");
+        REPLACE_BLOCKS.put("tcwm:yellow_blind_slab", "tcwm:yellow_blind_sidewalk_slab");
+        REPLACE_BLOCKS.put("tcwm:black_blind_slab", "tcwm:black_blind_sidewalk_slab");
+        REPLACE_BLOCKS.put("tcwm:transmission_line", "tcwm:conveyer_belt");
+        REPLACE_BLOCKS.put("tcwm:platform", "mtr:platform");
+        REPLACE_BLOCKS.put("tcwm:platform_indented", "mtr:platform_indented");
+        REPLACE_BLOCKS.put("tcwm:platform_type_quartz", "minecraft:quartz_block");
+        REPLACE_BLOCKS.put("tcwm:tunnelline", "tcwm:tunnel_wires_style_1");
+        REPLACE_BLOCKS.put("tcwm:tunnellinenoblock", "tcwm:tunnel_wires_style_2");
+        REPLACE_BLOCKS.put("tcwm:tunnellight", "tcwm:tunnel_light");
+        REPLACE_BLOCKS.put("tcwm:shading_panel_type_1", "tcwm:anti_glare_board_type_1");
+        REPLACE_BLOCKS.put("tcwm:shading_panel_type_2", "tcwm:anti_glare_board_type_2");
     }
 
     public static void server() {
