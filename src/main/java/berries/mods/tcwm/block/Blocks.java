@@ -77,10 +77,10 @@ public interface Blocks {
     Block EXPWY_BAR_TYPE_2_DOUBLE_PLACEHOLDER_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_double_placeholder_green"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
     Block EXPWY_BAR_TYPE_2_NEW_PLACEHOLDER_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_placeholder_green"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
     Block EXPWY_BAR_TYPE_2_NEW_DOUBLE_PLACEHOLDER_GR = MVRegistry.BLOCK.register(modIdLocation("expwy_bar_type_2_new_double_placeholder_green"), ExpwyBarType2Placeholder::new, Blocks.copyProperties(IRON_BARS));
-    Block STATION_BROADCASTER = MVRegistry.BLOCK_ONLY.register(modIdLocation("homo_station_broadcaster"), StationBroadcaster::new, Blocks.copyProperties(STONE));;
+    Block STATION_BROADCASTER = MVRegistry.BLOCK_ONLY.register(modIdLocation("homo_station_broadcaster"), StationBroadcaster::new, Blocks.copyProperties(STONE));
 
-    //Block AIR_CONDITIONER = new RegistryObject<>(() -> new AirConditioner(copyProperties(net.minecraft.world.level.block.Blocks.SMOOTH_QUARTZ).noOcclusion()));
-    //Block AIR_CONDITIONER_EU = new RegistryObject<>(() -> new AirConditionerExternalUnit(copyProperties(net.minecraft.world.level.block.Blocks.SMOOTH_QUARTZ).noOcclusion()));
+    Block AIR_CONDITIONER = MVRegistry.BLOCK.register(modIdLocation("air_conditioner"), AirConditioner::new, Blocks.copyProperties(QUARTZ_BLOCK).noOcclusion());
+    Block AIR_CONDITIONER_EXTERNAL_UNIT = MVRegistry.BLOCK.register(modIdLocation("air_conditioner_external_unit"), AirConditionerExternalUnit::new, Blocks.copyProperties(QUARTZ_BLOCK).noOcclusion());
 
     /*static Block getPlatform(BlockBehaviour.Properties properties, boolean i) {
         if (Info.isMTRInstalled) {

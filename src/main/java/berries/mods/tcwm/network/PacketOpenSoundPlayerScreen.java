@@ -8,8 +8,9 @@ import berries.mods.tcwm.util.Packets;
 import berries.mods.tcwm.RealityCityConstruction;
 //import msnj.tcwm.mappings.NetworkUtilities;
 //import mtr.Registry;
-import berries.mods.tcwm.gui.screen.EditSoundPlayerScreen;
 import io.netty.buffer.ByteBuf;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 //? >= 1.20.5 {
@@ -109,13 +110,10 @@ public class PacketOpenSoundPlayerScreen {
             return TYPE.type();
         }
 
+        @Environment(EnvType.CLIENT)
         @Override
         public void receive(Object platform, Player player) {
-            if (platform instanceof Minecraft) {
-                ((Minecraft) platform).execute(() -> {
-                    ((Minecraft) platform).setScreen(new EditSoundPlayerScreen(pos, blockName, soundID, range, pitch));/*StationBroadcaster.propertiesScreen.apply(pos)*/
-                });
-            }
+            ScreenReceiver.open(pos, blockName, soundID, range, pitch);
         }
     }
 
@@ -125,7 +123,7 @@ public class PacketOpenSoundPlayerScreen {
         if (blockEntity instanceof StationBroadcaster.StationBroadcasterEntity) {
             Packets.versionedPacketSendS2C(player, new PacketScreenPayload(pos, ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getName(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getSoundID(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getRange(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getPitch().getFloat()), (p) -> {
                 //? < 1.20.5 {
-                /*LegacyPacketOpenSoundPlayerScreen.INSTANCE.send(p, pos, ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getName(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getSoundID(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getRange(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getPitch().getFloat());
+                /*LegacyPacketOpenSoundPlayerScreen.INSTANCE.send(player, pos, ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getName(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getSoundID(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getRange(), ((StationBroadcaster.StationBroadcasterEntity) blockEntity).getPitch().getFloat());
                  *///? }
             });
         }

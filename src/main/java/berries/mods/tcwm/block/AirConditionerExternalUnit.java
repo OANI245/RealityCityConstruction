@@ -1,5 +1,6 @@
-package msnj.tcwm.block;
+package berries.mods.tcwm.block;
 
+import berries.mods.tcwm.mvapi.MVSimpleCodecHorizontalDirectionalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
@@ -22,16 +23,10 @@ import javax.swing.text.html.BlockView;
 import java.util.Collections;
 import java.util.List;
 
-public class AirConditionerExternalUnit extends HorizontalDirectionalBlock {
-    public static final MapCodec<AirConditionerExternalUnit> CODEC = Block.simpleCodec(AirConditionerExternalUnit::new);
+public class AirConditionerExternalUnit extends MVSimpleCodecHorizontalDirectionalBlock {
 
-    protected AirConditionerExternalUnit(Properties properties) {
+    public AirConditionerExternalUnit(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    protected @NotNull MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 
 public interface MVNetwork {
 
@@ -22,7 +23,7 @@ public interface MVNetwork {
     @Environment(EnvType.CLIENT)
     static <T extends MVCustomPayload> void registerReceiverS2C(MVPayloadType<T> type, MVPayloadCodec<T> streamCodec) {
         ClientPlayNetworking.registerGlobalReceiver(type.type(), (p, c) -> {
-            c.client().execute(() -> { p.receive(c.client(), c.player()); });
+            c.client().execute(() -> { p.receive(c.client(), (Player)((Object) c.player())); });
         });
     }
 

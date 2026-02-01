@@ -22,17 +22,25 @@ public abstract class MVScreen extends Screen {
 
     public void renderScreen(GuiGraphics graphics, int mouseX, int mouseY, float f) {
         //super.render(graphics, mouseX, mouseY, f);
-        Field field = null;
         try {
-            field = Screen.class.getDeclaredField("field_33816");
-            field.setAccessible(true);
-            List<Renderable> lr = (List<Renderable>) (field.get(this));
+            Field field0 = Screen.class.getDeclaredField("field_33816");
+            field0.setAccessible(true);
+            List<Renderable> lr = (List<Renderable>) (field0.get(this));
             for (Renderable r : lr) {
                 r.render(graphics, mouseX, mouseY, f);
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            if (minecraft != null) {
-                minecraft.emergencySaveAndCrash(new CrashReport("Screen Render Failed", e));
+            try {
+                Field field1 = Screen.class.getDeclaredField("renderables");
+                field1.setAccessible(true);
+                List<Renderable> lr = (List<Renderable>) (field1.get(this));
+                for (Renderable r : lr) {
+                    r.render(graphics, mouseX, mouseY, f);
+                }
+            } catch (NoSuchFieldException | IllegalAccessException g) {
+                if (minecraft != null) {
+                    minecraft.emergencySaveAndCrash(new CrashReport("Screen Render Failed", g));
+                }
             }
         }
     }

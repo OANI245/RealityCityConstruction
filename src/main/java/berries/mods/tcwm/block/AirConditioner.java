@@ -1,17 +1,17 @@
-package msnj.tcwm.block;
+package berries.mods.tcwm.block;
 
+import berries.mods.tcwm.mvapi.MVSimpleCodecHorizontalDirectionalBlock;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,18 +24,12 @@ import com.mojang.serialization.MapCodec;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class AirConditioner extends HorizontalDirectionalBlock {
-    public static final MapCodec<AirConditioner> CODEC = Block.simpleCodec(AirConditioner::new);
+public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock {
     public static EnumProperty<EnumSide> SIDE = EnumProperty.create("side", EnumSide.class);
 
     public AirConditioner(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(SIDE, EnumSide.LEFT));
-    }
-
-    @Override
-    protected @NotNull MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -52,7 +46,6 @@ public class AirConditioner extends HorizontalDirectionalBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Vec3 offset = state.getOffset(level, pos);
         switch (state.getValue(FACING)) {
             default:
             case NORTH:
@@ -66,6 +59,16 @@ public class AirConditioner extends HorizontalDirectionalBlock {
         }
     }
 
+    @Override
+    //? >= 1.21.5 {
+    /*protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource randomSource) {
+        if (direction == getNeighbourDirection(state.getValue(SIDE), state.getValue(FACING))) {
+            return neighborState.is(this) && neighborState.getValue(SIDE) != state.getValue(SIDE) ? state : Blocks.AIR.defaultBlockState();
+        } else {
+            return super.updateShape(state, levelReader, scheduledTickAccess, blockPos, direction, neighborPos, neighborState, randomSource);
+        }
+    }
+    *///? } else {
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (direction == getNeighbourDirection(state.getValue(SIDE), state.getValue(FACING))) {
             return neighborState.is(this) && neighborState.getValue(SIDE) != state.getValue(SIDE) ? state : Blocks.AIR.defaultBlockState();
@@ -73,13 +76,14 @@ public class AirConditioner extends HorizontalDirectionalBlock {
             return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
         }
     }
+    //? }
 
     Direction getNeighbourDirection(EnumSide side, Direction direction) {
         return side == EnumSide.LEFT ? direction.getCounterClockWise() : direction.getClockWise();
     }
 
     public @NotNull BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-        if (!level.isClientSide && player.isCreative()) {
+        if (!level.isClientSide() && player.isCreative()) {
             if (state.getValue(SIDE) == EnumSide.LEFT) {
                 BlockPos rightPos = pos.relative(getNeighbourDirection(state.getValue(SIDE), state.getValue(FACING)));
                 BlockState blockState = level.getBlockState(rightPos);
@@ -96,10 +100,9 @@ public class AirConditioner extends HorizontalDirectionalBlock {
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             BlockPos blockPos = pos.relative((Direction)getNeighbourDirection(EnumSide.LEFT, state.getValue(FACING)));
             level.setBlock(blockPos, (BlockState)state.setValue(SIDE, EnumSide.RIGHT), 3);
-            level.blockUpdated(pos, Blocks.AIR);
             state.updateNeighbourShapes(level, pos, 3);
         }
     }

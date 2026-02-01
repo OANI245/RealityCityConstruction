@@ -56,7 +56,7 @@ public class SoundListScreen extends MVScreen {
     protected ResourceLocation currentSound;
 
     public SoundListScreen(EditSoundPlayerScreen previous) {
-        super(MVComponent.text("浏览音频"));
+        super(MVComponent.translatable("gui.tcwm.SPSLS.title"));
         this.previous = previous;
         // 处理空值/非法格式
         String soundId = previous.soundID == null ? "" : previous.soundID.trim();
@@ -77,7 +77,7 @@ public class SoundListScreen extends MVScreen {
         //? < 1.20.3 {
         /*this.listWidget = addWidget(new SoundList(availableSounds.toList(), currentSound));
         GridLayout.RowHelper rowHelper = new GridLayout().columnSpacing(SPACING_MEDIUM).createRowHelper(2);
-        this.cancelButton = rowHelper.addChild(net.minecraft.client.gui.components.Button.builder(MVComponent.text("返回"), (button) -> {
+        this.cancelButton = rowHelper.addChild(net.minecraft.client.gui.components.Button.builder(MVComponent.translatable("gui.tcwm.SPSLS.back_button"), (button) -> {
             minecraft.setScreen(previous);
         }).build());
         rowHelper.getGrid().visitWidgets(this::addRenderableWidget);
@@ -87,17 +87,17 @@ public class SoundListScreen extends MVScreen {
         searchBox.setResponder((str) -> {
             listWidget.search(searchBox.getValue());
         });
-        searchBox.setHint(MVComponent.text("音频 ID..."));
+        searchBox.setHint(MVComponent.translatable("gui.tcwm.SPSLS.search_box.hint"));
         *///? } else {
         this.listWidget = this.layout.addToContents(new SoundList(availableSounds.toList(), currentSound));
         LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(SPACING_MEDIUM));
-        this.cancelButton = footer.addChild(new Button(0, 0, 100, BUTTON_SIZE, MVComponent.text("返回"), true, (button) -> {
+        this.cancelButton = footer.addChild(new Button(0, 0, 100, BUTTON_SIZE, MVComponent.translatable("gui.tcwm.SPSLS.back_button"), true, (button) -> {
             minecraft.setScreen(previous);
         }));
         this.layout.setHeaderHeight(HEADER_HEIGHT);
         LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(SPACING_SMALL));
         header.defaultCellSetting().alignHorizontallyCenter();
-        Component titleComponent = MVComponent.text("选择音频");
+        Component titleComponent = MVComponent.translatable("gui.tcwm.SPSLS.title");
         //? < 1.21.11 {
         header.addChild(new StringWidget(minecraft.font.width(titleComponent.getVisualOrderText()), minecraft.font.lineHeight, titleComponent, minecraft.font));
         this.searchBox = header.addChild(new EditBox(minecraft.font, SEARCH_BOX_WIDTH, SEARCH_BOX_HEIGHT, MVComponent.EMPTY));
@@ -108,7 +108,7 @@ public class SoundListScreen extends MVScreen {
         searchBox.setResponder((str) -> {
             listWidget.search(searchBox.getValue());
         });
-        searchBox.setHint(MVComponent.text("音频 ID..."));
+        searchBox.setHint(MVComponent.translatable("gui.tcwm.SPSLS.search_box.hint"));
         //? }
         this.layout.visitWidgets(this::addRenderableWidget);
         this.repositionElements();

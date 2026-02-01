@@ -10,11 +10,10 @@ import berries.mods.tcwm.network.PacketUpdateBlockEntity;
 import berries.mods.tcwm.item.Items;
 import berries.mods.tcwm.item.TcwmCreativeModeTab;
 //? < 1.20.5 {
-/*import berries.mods.tcwm.network.legacynetwork.LegacyPacketOpenSoundPlayerScreen;
+/*
 import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
 *///? }
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -71,7 +70,7 @@ public class RealityCityConstruction implements ModInitializer {
         TcwmCreativeModeTab.ITEMS.register();
         LOGGER.info("Reality City Construction Mod Initialized.");
         //? < 1.20.5 {
-        /*ClientPlayNetworking.registerGlobalReceiver(PacketOpenSoundPlayerScreen.PACKET_SHOW_SCREEN, LegacyPacketOpenSoundPlayerScreen.INSTANCE::receive);
+        /*
         ServerPlayNetworking.registerGlobalReceiver(PacketUpdateBlockEntity.PACKET_UPDATE_BLOCK_ENTITY, LegacyPacketUpdateBlockEntity.INSTANCE::receive);
         *///? }
 
@@ -93,9 +92,11 @@ public class RealityCityConstruction implements ModInitializer {
     }
 
     public static void server() {
+        //? >= 1.20.5 {
         MVNetwork.registerC2S(PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.TYPE, PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.CODEC);
         MVNetwork.registerS2C(PacketOpenSoundPlayerScreen.PacketScreenPayload.TYPE, PacketOpenSoundPlayerScreen.PacketScreenPayload.CODEC);
         MVNetwork.registerReceiverC2S(PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.TYPE, PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.CODEC);
+        //? }
     }
 
     public static ResourceLocation modIdLocation(String path) {

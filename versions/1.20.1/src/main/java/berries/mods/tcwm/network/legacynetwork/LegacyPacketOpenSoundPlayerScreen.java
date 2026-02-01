@@ -1,8 +1,10 @@
 package berries.mods.tcwm.network.legacynetwork;
 
-import berries.mods.tcwm.gui.screen.EditSoundPlayerScreen;
 import berries.mods.tcwm.network.PacketOpenSoundPlayerScreen;
+import berries.mods.tcwm.network.ScreenReceiver;
 import io.netty.buffer.Unpooled;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.Minecraft;
@@ -36,14 +38,13 @@ public class LegacyPacketOpenSoundPlayerScreen implements LegacyS2CPacket {
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public void receive(Minecraft mc, ClientPacketListener ignored, FriendlyByteBuf pkt, PacketSender ignored_1) {
         BlockPos pos = pkt.readBlockPos();
         String name = pkt.readUtf();
         String soundID = pkt.readUtf();
         float range = pkt.readFloat();
         float pitch = pkt.readFloat();
-        mc.execute(() -> {
-            mc.setScreen(new EditSoundPlayerScreen(pos, name, soundID, range, pitch));
-        });
+        ScreenReceiver.open(pos, name, soundID, range, pitch);
     }
 }

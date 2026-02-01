@@ -46,7 +46,9 @@ dependencies {
     }
 
     minecraft("com.mojang:minecraft:${sc.current.version}")
-    mappings(loom.officialMojangMappings())
+    if (sc.current.parsed <= "1.21.11" && !sc.current.parsed.toString().contains("-snapshot-")) {
+        mappings(loom.officialMojangMappings())
+    }
     modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
     modImplementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")

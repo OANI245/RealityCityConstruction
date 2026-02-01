@@ -185,7 +185,7 @@ public class EditSoundPlayerScreen extends MVScreen {
 
         list = PropertiesList.newList(width / 2 - 105, height / 2 - 49, 210, 100, List.of(
                 PropertiesList.ItemProperties.newInstance(
-                        MVComponent.text("音频 ID"),
+                        MVComponent.translatable("gui.tcwm.SSBAS.control1title"),
                         new PropertiesList.StackPanel(
                                 18,
                                 idBox,
@@ -194,14 +194,14 @@ public class EditSoundPlayerScreen extends MVScreen {
                                 })
                         )
                 ),
-                PropertiesList.ItemProperties.newInstance(MVComponent.text("音频范围（区块）"), rangeEditBox),
+                PropertiesList.ItemProperties.newInstance(MVComponent.translatable("gui.tcwm.SSBAS.control2title"), rangeEditBox),
                 PropertiesList.ItemProperties.newInstance(
-                        MVComponent.text("速度"),
+                        MVComponent.translatable("gui.tcwm.SSBAS.control3title"),
                         pitchComboBox
                 )
         ));
 
-        this.finishButton = addRenderableWidget(new Button(width / 2 + 34, height / 2 + 56, 60, 18, MVComponent.text("确定"), true, (button) -> {
+        this.finishButton = addRenderableWidget(new Button(width / 2 + 34, height / 2 + 56, 60, 18, MVComponent.translatable("gui.tcwm.global.submit_button"), true, (button) -> {
             saveChanges();
             minecraft.setScreen(null);
         }));
@@ -220,9 +220,9 @@ public class EditSoundPlayerScreen extends MVScreen {
             } catch (NumberFormatException e) {
                 if (minecraft.player != null) {
                     //? < 1.21.5 {
-                    minecraft.player.sendSystemMessage(MVComponent.text("\u00A7l[音频播放器] \u00A7r\u00A7c范围数值输入有误，请重新编辑。"));
+                    minecraft.player.sendSystemMessage(MVComponent.translatable("gui.tcwm.SSBAS.failed_message"));
                     //? } else {
-                    /*minecraft.player.displayClientMessage(MVComponent.text("\u00A7l[音频播放器] \u00A7r\u00A7c范围数值输入有误，请重新编辑。"), true);
+                    /*minecraft.player.displayClientMessage(MVComponent.translatable("gui.tcwm.SSBAS.failed_message"), true);
                      *///? }
                 }
             }

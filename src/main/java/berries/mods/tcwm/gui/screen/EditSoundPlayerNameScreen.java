@@ -25,7 +25,7 @@ public class EditSoundPlayerNameScreen extends MVScreen {
         nameEditBox.setValue(previous.name.trim().isEmpty() ? I18n.get("block.tcwm.homo_station_broadcaster.default_name") : previous.name.trim());
         nameEditBox.setTextColor(FlueroUI.rgb(16, 192, 16));
         addRenderableWidget(nameEditBox);
-        addRenderableWidget(new Button(width / 2 - 25, height / 2 + 11, 50, 18, MVComponent.text("确定"), true, (button) -> saveChangesAndBack()));
+        addRenderableWidget(new Button(width / 2 - 25, height / 2 + 11, 50, 18, MVComponent.translatable("gui.tcwm.global.submit_button"), true, (button) -> saveChangesAndBack()));
     }
 
     @Override
