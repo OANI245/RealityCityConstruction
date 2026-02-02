@@ -50,42 +50,4 @@ public abstract class MixinMinecraft {
     @Shadow
     @Nullable
     private Supplier<CrashReport> delayedCrash;
-
-    @Inject(
-            method = "destroy",
-            at = @At("HEAD"),
-            cancellable = true)
-    public void destory(CallbackInfo ci) {
-        try {
-            LOGGER.info("Stopping!");
-
-            try {
-                this.narrator.destroy();
-            } catch (Throwable ignored) {
-            }
-
-            try {
-                if (this.level != null) {
-                    setScreen(new GenericMessageScreen(Component.translatable("menu.savingLevel")));
-                    this.level.disconnect(ClientLevel.DEFAULT_QUIT_MESSAGE);
-                }
-
-                this.disconnect(this.screen, false);
-            } catch (Throwable ignored) {
-            }
-
-            if (this.screen != null) {
-                this.screen.removed();
-            }
-
-            this.close();
-        } finally {
-            Util.timeSource = System::nanoTime;
-            if (this.delayedCrash == null) {
-                System.exit(0);
-            }
-        }
-
-        ci.cancel();
-    }
 }

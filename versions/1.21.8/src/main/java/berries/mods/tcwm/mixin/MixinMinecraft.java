@@ -6,9 +6,14 @@ import net.minecraft.Util;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.GenericMessageScreen;
+import net.minecraft.client.gui.screens.ProgressScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.client.server.IntegratedServer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.profiling.Profiler;
+import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Final;
@@ -38,9 +43,6 @@ public abstract class MixinMinecraft {
     private GameNarrator narrator;
 
     @Shadow
-    public abstract void disconnect(@Nullable Screen screen, boolean b);
-
-    @Shadow
     @Nullable
     public Screen screen;
 
@@ -50,6 +52,18 @@ public abstract class MixinMinecraft {
     @Shadow
     @Nullable
     private Supplier<CrashReport> delayedCrash;
+
+    @Shadow
+    private @Nullable IntegratedServer singleplayerServer;
+
+    @Shadow
+    public abstract void disconnectWithProgressScreen();
+
+    @Shadow
+    public abstract @Nullable ClientPacketListener getConnection();
+
+    @Shadow
+    public abstract void disconnect(Screen par1, boolean par2);
 
     @Inject(
             method = "destroy",
@@ -66,11 +80,13 @@ public abstract class MixinMinecraft {
 
             try {
                 if (this.level != null) {
-                    setScreen(new GenericMessageScreen(Component.translatable("menu.savingLevel")));
+                    if (this.singleplayerServer != null) {
+                        setScreen(new GenericMessageScreen(Component.translatable("menu.savingLevel")));
+                    }
                     this.level.disconnect(ClientLevel.DEFAULT_QUIT_MESSAGE);
                 }
 
-                this.disconnect(this.screen, false);
+                this.disconnect(this.singleplayerServer != null ? this.screen : new ProgressScreen(true), false);
             } catch (Throwable ignored) {
             }
 

@@ -10,8 +10,8 @@ import berries.mods.tcwm.network.PacketUpdateBlockEntity;
 import berries.mods.tcwm.item.Items;
 import berries.mods.tcwm.item.TcwmCreativeModeTab;
 //? < 1.20.5 {
-/*
-import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
+
+/*import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
 *///? }
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -65,13 +65,14 @@ public class RealityCityConstruction implements ModInitializer {
         //sys.bi("air_conditioner", Blocks.AIR_CONDITIONER);
         //sys.bi("air_conditioner_external_unit", Blocks.AIR_CONDITIONER_EU);
         MVRegistry.BLOCK_ENTITY_TYPE.register(modIdLocation("homo_station_broadcaster_entity"), null, Blocks.BlockEntityTypes.HOMO_STATION_BROADCASTER);
+        MVRegistry.BLOCK_ENTITY_TYPE.register(modIdLocation("air_conditioner_entity"), null, Blocks.BlockEntityTypes.AIR_CONDITIONER);
         Items.FORGE_TOOL.asItem();
         LOGGER.info("Reality City Construction Mod Items and Blocks Registred.");
         TcwmCreativeModeTab.ITEMS.register();
         LOGGER.info("Reality City Construction Mod Initialized.");
         //? < 1.20.5 {
-        /*
-        ServerPlayNetworking.registerGlobalReceiver(PacketUpdateBlockEntity.PACKET_UPDATE_BLOCK_ENTITY, LegacyPacketUpdateBlockEntity.INSTANCE::receive);
+        
+        /*ServerPlayNetworking.registerGlobalReceiver(PacketUpdateBlockEntity.PACKET_UPDATE_BLOCK_ENTITY, LegacyPacketUpdateBlockEntity.INSTANCE::receive);
         *///? }
 
         REPLACE_BLOCKS.put("tcwm:yellow_blind", "tcwm:yellow_blind_sidewalk");

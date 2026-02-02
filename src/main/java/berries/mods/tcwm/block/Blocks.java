@@ -37,15 +37,15 @@ public interface Blocks {
         return a;
     }
     
-    Block YELLOW_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(YELLOW_CONCRETE).noOcclusion());
-    Block BLACK_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(GRAY_CONCRETE).noOcclusion());
-    Block ANDESITE_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(ANDESITE).noOcclusion());
-    Block YELLOW_BLIND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(YELLOW_CONCRETE).noOcclusion());
-    Block BLACK_BILND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(GRAY_CONCRETE).noOcclusion());
-    Block ANDESITE_BLIND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(ANDESITE).noOcclusion());
-    Block YELLOW_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(YELLOW_CONCRETE).noOcclusion());
-    Block BLACK_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(GRAY_CONCRETE).noOcclusion());
-    Block ANDESITE_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(ANDESITE).noOcclusion());
+    Block YELLOW_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(YELLOW_CONCRETE)/*.noOcclusion()*/);
+    Block BLACK_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(GRAY_CONCRETE)/*.noOcclusion()*/);
+    Block ANDESITE_BLIND_SIDEWALK = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk"), BlindSidewalk::new, Blocks.copyProperties(ANDESITE)/*.noOcclusion()*/);
+    Block YELLOW_BLIND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(YELLOW_CONCRETE)/*.noOcclusion()*/);
+    Block BLACK_BILND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(GRAY_CONCRETE)/*.noOcclusion()*/);
+    Block ANDESITE_BLIND_SIDEWALK_CORNER = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk_corner"), BlindSidewalk::new, Blocks.copyProperties(ANDESITE)/*.noOcclusion()*/);
+    Block YELLOW_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("yellow_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(YELLOW_CONCRETE)/*.noOcclusion()*/);
+    Block BLACK_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("black_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(GRAY_CONCRETE)/*.noOcclusion()*/);
+    Block ANDESITE_BLIND_SIDEWALK_SLAB = MVRegistry.BLOCK.register(modIdLocation("andesite_blind_sidewalk_slab"), BlindSidewalkSlab::new, Blocks.copyProperties(ANDESITE)/*.noOcclusion()*/);
 
     Block LOGO_BLOCK = MVRegistry.BLOCK.register(modIdLocation("logo"), Block::new, Blocks.copyProperties(BEDROCK).lightLevel(s -> 5).noOcclusion());
     Block WINDOW = MVRegistry.BLOCK.register(modIdLocation("window"), Window::new, Blocks.copyProperties(GLASS));
@@ -101,8 +101,10 @@ public interface Blocks {
     interface BlockEntityTypes {
         //? < 1.21.2 {
         BlockEntityType<StationBroadcaster.StationBroadcasterEntity> HOMO_STATION_BROADCASTER = new BlockEntityType<>(StationBroadcaster.StationBroadcasterEntity::new, Collections.singleton(Blocks.STATION_BROADCASTER), null);
+        BlockEntityType<AirConditioner.AirConditionerEntity> AIR_CONDITIONER = new BlockEntityType<>(AirConditioner.AirConditionerEntity::new, Collections.singleton(Blocks.AIR_CONDITIONER), null);
         //? } else {
         /*BlockEntityType<?> HOMO_STATION_BROADCASTER = FabricBlockEntityTypeBuilder.create(StationBroadcaster.StationBroadcasterEntity::new, Blocks.STATION_BROADCASTER).build();
+        BlockEntityType<?> AIR_CONDITIONER = FabricBlockEntityTypeBuilder.create(AirConditioner.AirConditionerEntity::new, Blocks.AIR_CONDITIONER).build();
         *///? }
     }
 }

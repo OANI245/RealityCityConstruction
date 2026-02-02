@@ -5,8 +5,10 @@ import net.minecraft.Util;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.GenericMessageScreen;
+import net.minecraft.client.gui.screens.ProgressScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.server.IntegratedServer;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -53,6 +55,9 @@ public abstract class MixinMinecraft {
     @Nullable
     private Supplier<CrashReport> delayedCrash;
 
+    @Shadow
+    private @Nullable IntegratedServer singleplayerServer;
+
     @Inject(
             method = "destroy",
             at = @At("HEAD"),
@@ -68,11 +73,13 @@ public abstract class MixinMinecraft {
 
             try {
                 if (this.level != null) {
-                    setScreen(new GenericMessageScreen(Component.translatable("menu.savingLevel")));
+                    if (this.singleplayerServer != null) {
+                        setScreen(new GenericMessageScreen(Component.translatable("menu.savingLevel")));
+                    }
                     this.level.disconnect();
                 }
 
-                this.disconnect(this.screen, false);
+                this.disconnect(this.singleplayerServer != null ? this.screen : new ProgressScreen(true), false);
             } catch (Throwable ignored) {
             }
 

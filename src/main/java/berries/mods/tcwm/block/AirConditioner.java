@@ -1,5 +1,7 @@
 package berries.mods.tcwm.block;
 
+import berries.mods.tcwm.mvapi.MVBlockEntity;
+import berries.mods.tcwm.mvapi.MVBlockEntityComponent;
 import berries.mods.tcwm.mvapi.MVSimpleCodecHorizontalDirectionalBlock;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,17 +16,16 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import com.mojang.serialization.MapCodec;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock {
+public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock implements EntityBlock {
     public static EnumProperty<EnumSide> SIDE = EnumProperty.create("side", EnumSide.class);
 
     public AirConditioner(Properties properties) {
@@ -60,7 +61,7 @@ public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock {
     }
 
     @Override
-    //? >= 1.21.5 {
+            //? >= 1.21.5 {
     /*protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource randomSource) {
         if (direction == getNeighbourDirection(state.getValue(SIDE), state.getValue(FACING))) {
             return neighborState.is(this) && neighborState.getValue(SIDE) != state.getValue(SIDE) ? state : Blocks.AIR.defaultBlockState();
@@ -82,7 +83,12 @@ public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock {
         return side == EnumSide.LEFT ? direction.getCounterClockWise() : direction.getClockWise();
     }
 
-    public @NotNull BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    //? < 1.20.5 {
+    /*public @NotNull void
+    *///? } else {
+    public @NotNull BlockState
+    //? }
+    playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (!level.isClientSide() && player.isCreative()) {
             if (state.getValue(SIDE) == EnumSide.LEFT) {
                 BlockPos rightPos = pos.relative(getNeighbourDirection(state.getValue(SIDE), state.getValue(FACING)));
@@ -93,17 +99,23 @@ public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock {
                 }
             }
         }
-
-        return super.playerWillDestroy(level, pos, state, player);
+        //? >= 1.20.5
+        return
+        super.playerWillDestroy(level, pos, state, player);
     }
 
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         if (!level.isClientSide()) {
-            BlockPos blockPos = pos.relative((Direction)getNeighbourDirection(EnumSide.LEFT, state.getValue(FACING)));
-            level.setBlock(blockPos, (BlockState)state.setValue(SIDE, EnumSide.RIGHT), 3);
+            BlockPos blockPos = pos.relative((Direction) getNeighbourDirection(EnumSide.LEFT, state.getValue(FACING)));
+            level.setBlock(blockPos, (BlockState) state.setValue(SIDE, EnumSide.RIGHT), 3);
             state.updateNeighbourShapes(level, pos, 3);
+            BlockEntity entity = level.getBlockEntity(pos);
+            BlockEntity neighborEntity = level.getBlockEntity(blockPos);
+            if (entity instanceof AirConditionerEntity && neighborEntity instanceof AirConditionerEntity) {
+                ((AirConditionerEntity) neighborEntity).setTemperatureOnly(((AirConditionerEntity) entity).getTemperature());
+            }
         }
     }
 
@@ -130,6 +142,11 @@ public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock {
         return state.getValue(SIDE) == EnumSide.LEFT ? DoubleBlockCombiner.BlockType.FIRST : DoubleBlockCombiner.BlockType.SECOND;
     }
 
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new AirConditionerEntity(blockPos, blockState);
+    }
+
     public enum EnumSide implements StringRepresentable {
         LEFT("left"), RIGHT("right");
 
@@ -140,8 +157,63 @@ public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock {
         }
 
         @Override
-        public String getSerializedName() {
+        public @NotNull String getSerializedName() {
             return name;
+        }
+    }
+
+    public static class AirConditionerEntity extends MVBlockEntity {
+        protected float temperature = 26.0f;
+
+        public AirConditionerEntity(BlockPos blockPos, BlockState blockState) {
+            super(berries.mods.tcwm.block.Blocks.BlockEntityTypes.AIR_CONDITIONER, blockPos, blockState);
+        }
+
+        protected void setTemperatureOnly(float temperature) {
+            this.temperature = temperature;
+        }
+
+        public float getTemperature() {
+            return temperature;
+        }
+
+        public void setTemperature(float temperature) {
+            this.temperature = temperature;
+            syncTwoSidesData(0);
+        }
+
+        @Override
+        public void loadTag(MVBlockEntityComponent tag) {
+            super.loadTag(tag);
+            this.temperature = tag.getFloat("temperature");
+            syncTwoSidesData(0);
+        }
+
+        @Override
+        public void saveTag(MVBlockEntityComponent tag) {
+            super.saveTag(tag);
+            tag.putFloat("temperature", this.temperature);
+        }
+
+        public void syncTwoSidesData(int sideOnly) {
+            if (this.getLevel() == null) return;
+            Level level0 = this.getLevel();
+            BlockState state0 = level0.getBlockState(this.getBlockPos());
+            BlockPos neighborPos;
+            if (state0.getValue(SIDE) == EnumSide.RIGHT && sideOnly != 0) {
+                neighborPos = this.getBlockPos().relative(state0.getValue(FACING).getClockWise());
+            } else if (sideOnly != 1) {
+                neighborPos = this.getBlockPos().relative(state0.getValue(FACING).getCounterClockWise());
+            } else {
+                return;
+            }
+            BlockState neighborState = level0.getBlockState(neighborPos);
+            BlockEntity neighborBlockEntity = level0.getBlockEntity(neighborPos);
+            if (neighborState.getBlock() instanceof AirConditioner && neighborState.getValue(SIDE) != state0.getValue(SIDE) && neighborBlockEntity instanceof AirConditionerEntity) {
+                ((AirConditionerEntity) neighborBlockEntity).setTemperatureOnly(this.temperature);
+                neighborBlockEntity.setChanged();
+                level0.blockEntityChanged(neighborPos);
+            }
         }
     }
 }

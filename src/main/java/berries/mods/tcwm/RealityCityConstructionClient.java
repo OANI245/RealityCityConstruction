@@ -71,8 +71,6 @@ public class RealityCityConstructionClient implements ClientModInitializer {
         MVBlockRenderLayerMap.put(1, Blocks.EXPWY_BAR_TYPE_2_NEW_DOUBLE_PLACEHOLDER);
         MVBlockRenderLayerMap.put(1, Blocks.EXPWY_BAR_TYPE_2_NEW_DOUBLE_PLACEHOLDER_GR);
         MVBlockRenderLayerMap.put(1, Blocks.EXPWY_BAR_TYPE_3);
-        MVBlockRenderLayerMap.put(1, Blocks.BLACK_BLIND_SIDEWALK);
-        MVBlockRenderLayerMap.put(1, Blocks.YELLOW_BLIND_SIDEWALK);
         MVBlockRenderLayerMap.put(1, Blocks.AIR_CONDITIONER);
         MVBlockRenderLayerMap.put(1, Blocks.AIR_CONDITIONER_EXTERNAL_UNIT);
         //MVBlockRenderLayerMap.put(1, Blocks.BOAT_DOCK);
