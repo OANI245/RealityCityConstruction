@@ -28,6 +28,7 @@
     "block.tcwm.conveyer_belt": "Conveyer Belt",
     "block.tcwm.boat_dock": "Dock Platform",
     "item.tcwm.forge_tool": "Forge",
+    "item.tcwm.air_conditioner_controller": "Air Conditioner Controller",
     "gui.tcwm.MNCS.Title": "WARNING",
     "gui.tcwm.MNCS.content": "Reality City Construction模组的前置 Minecraft Transit Railway 低于模组支持的最低版本：%s\n请更新到最新版本，以保证不会崩溃。\n\n您的MTR版本：%s",
     "gui.tcwm.MNCS.button1.content": "Close game",
@@ -91,6 +92,11 @@
     "gui.tcwm.SPSLS.search_box.hint": "Sound ID...",
     "gui.tcwm.SPSLS.back_button": "Back",
     "pack.tcwm.pbr_texture": "PBR Texture",
-    "gui.tcwm.SSBAS.failed_message": "\u00A7l[Sound Player] \u00A7r\u00A7cProperties is illegal, please modify the properties again."
+    "gui.tcwm.SSBAS.failed_message": "\u00A7l[Sound Player] \u00A7r\u00A7cProperties is illegal, please modify the properties again.",
+    "gui.tcwm.air_conditioner.too_far": "You can't controlling the Air Conditioner because it's too far",
+    "gui.tcwm.air_conditioner.linked": "Linked Air Conditioner (%d %d %d)",
+    "key.category.tcwm.general": "Reality City Construction Key Binding",
+    "key.tcwm.air_conditioner.direction_up": "Wind Direction Up",
+    "key.tcwm.air_conditioner.direction_down": "Wind Direction Down"
 }
 

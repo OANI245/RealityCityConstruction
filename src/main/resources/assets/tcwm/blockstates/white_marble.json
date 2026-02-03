@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tcwm:block/white_marble"
-    }
+    "": [
+      {
+        "model": "tcwm:block/white_marble"
+      },
+      {
+        "model": "tcwm:block/white_marble",
+        "y": 90
+      },
+      {
+        "model": "tcwm:block/white_marble",
+        "y": 180
+      },
+      {
+        "model": "tcwm:block/white_marble",
+        "y": 270
+      }
+    ]
   }
 }

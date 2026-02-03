@@ -3,7 +3,8 @@
     {
       "when": {
         "side": "left",
-        "facing": "north"
+        "facing": "north",
+        "open": 0
       },
       "apply": {
         "model": "tcwm:block/air_conditioner_left",
@@ -13,7 +14,8 @@
     {
       "when": {
         "side": "left",
-        "facing": "east"
+        "facing": "east",
+        "open": 0
       },
       "apply": {
         "model": "tcwm:block/air_conditioner_left",
@@ -23,7 +25,8 @@
     {
       "when": {
         "side": "left",
-        "facing": "south"
+        "facing": "south",
+        "open": 0
       },
       "apply": {
         "model": "tcwm:block/air_conditioner_left",
@@ -33,7 +36,8 @@
     {
       "when": {
         "side": "left",
-        "facing": "west"
+        "facing": "west",
+        "open": 0
       },
       "apply": {
         "model": "tcwm:block/air_conditioner_left",
@@ -43,7 +47,8 @@
     {
       "when": {
         "side": "right",
-        "facing": "north"
+        "facing": "north",
+        "open": 0
       },
       "apply": {
         "model": "tcwm:block/air_conditioner_right",
@@ -53,7 +58,8 @@
     {
       "when": {
         "side": "right",
-        "facing": "east"
+        "facing": "east",
+        "open": 0
       },
       "apply": {
         "model": "tcwm:block/air_conditioner_right",
@@ -63,7 +69,8 @@
     {
       "when": {
         "side": "right",
-        "facing": "south"
+        "facing": "south",
+        "open": 0
       },
       "apply": {
         "model": "tcwm:block/air_conditioner_right",
@@ -73,10 +80,278 @@
     {
       "when": {
         "side": "right",
-        "facing": "west"
+        "facing": "west",
+        "open": 0
       },
       "apply": {
         "model": "tcwm:block/air_conditioner_right",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "side": "left",
+        "facing": "north",
+        "open": 1
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_1",
+        "y": 0
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "east",
+        "open": 1
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_1",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "south",
+        "open": 1
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_1",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "west",
+        "open": 1
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_1",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "north",
+        "open": 1
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_1",
+        "y": 0
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "east",
+        "open": 1
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_1",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "south",
+        "open": 1
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_1",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "west",
+        "open": 1
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_1",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "side": "left",
+        "facing": "north",
+        "open": 2
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_2",
+        "y": 0
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "east",
+        "open": 2
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "south",
+        "open": 2
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "west",
+        "open": 2
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_2",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "north",
+        "open": 2
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_2",
+        "y": 0
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "east",
+        "open": 2
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "south",
+        "open": 2
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "west",
+        "open": 2
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_2",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "side": "left",
+        "facing": "north",
+        "open": 3
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_3",
+        "y": 0
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "east",
+        "open": 3
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_3",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "south",
+        "open": 3
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_3",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "side": "left",
+        "facing": "west",
+        "open": 3
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_left_3",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "north",
+        "open": 3
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_3",
+        "y": 0
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "east",
+        "open": 3
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_3",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "south",
+        "open": 3
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_3",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "side": "right",
+        "facing": "west",
+        "open": 3
+      },
+      "apply": {
+        "model": "tcwm:block/air_conditioner_right_3",
         "y": 270
       }
     }

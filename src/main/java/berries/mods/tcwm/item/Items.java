@@ -3,11 +3,13 @@ package berries.mods.tcwm.item;
 import berries.mods.tcwm.mvapi.MVRegistry;
 import berries.mods.tcwm.util.RegistryObject;
 import net.minecraft.world.item.Item;
+//? >= 1.21.4
+//import net.minecraft.world.item.ToolMaterial;
 
 import static berries.mods.tcwm.RealityCityConstruction.modIdLocation;
 
 public interface Items {
-  //deprecated
+    //deprecated
 //  RegistryObject<Item> RAIL_CONNECTOR_HOMO = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, false, RailType.HOMO));
 //  RegistryObject<Item> RAIL_CONNECTOR_140 = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, false, RailType.NETHER));
 //  RegistryObject<Item> RAIL_CONNECTOR_250 = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, false, RailType.REDSTONE));
@@ -20,5 +22,9 @@ public interface Items {
 //  RegistryObject<Item> RAIL_CONNECTOR_350_ONE_WAY = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, true, RailType.END));
 //  RegistryObject<Item> RAIL_CONNECTOR_420_ONE_WAY = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, true, RailType.NETHERITE));
 //  RegistryObject<Item> RAIL_CONNECTOR_600_ONE_WAY = new RegistryObject<>(() -> new ItemRailModifier(true, false, true, true, RailType.BEDROCK));\
-  Item FORGE_TOOL = MVRegistry.ITEM.register(modIdLocation("forge_tool"), Item::new, new Item.Properties());
+    Item FORGE_TOOL = MVRegistry.ITEM.register(modIdLocation("forge_tool"), Item::new, new Item.Properties());
+    Item AIR_CONDITIONER_CONTROLLER = MVRegistry.ITEM.register(modIdLocation("air_conditioner_controller"), AirConditionerController::new, new Item.Properties()
+            //? >= 1.21.11
+            //.spear(ToolMaterial.STONE, 0.75f, 0.82f, 0.7f, 4.5f, 10.0f, 9.0f, 5.1f, 13.75f, 4.6f)
+    );
 }

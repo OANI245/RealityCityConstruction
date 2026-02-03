@@ -3,6 +3,7 @@ package berries.mods.tcwm.block;
 import berries.mods.tcwm.mvapi.MVBlockEntity;
 import berries.mods.tcwm.mvapi.MVBlockEntityComponent;
 import berries.mods.tcwm.mvapi.MVSimpleCodecHorizontalDirectionalBlock;
+import berries.mods.tcwm.mvapi.MVStateProperties;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.core.BlockPos;
@@ -26,15 +27,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock implements EntityBlock {
-    public static EnumProperty<EnumSide> SIDE = EnumProperty.create("side", EnumSide.class);
+    public static EnumProperty<EnumSide> SIDE = MVStateProperties.fEnum("side", EnumSide.class);
+    public static IntegerProperty OPEN = MVStateProperties.integer("open", 0, 3);
 
     public AirConditioner(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(SIDE, EnumSide.LEFT));
+        this.registerDefaultState(
+                this.getStateDefinition().any().setValue(FACING, Direction.NORTH)
+                        .setValue(SIDE, EnumSide.LEFT)
+                        .setValue(OPEN, 0)
+        );
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, SIDE);
+        builder.add(FACING, SIDE, OPEN);
     }
 
     public BlockState rotate(BlockState state, Rotation rot) {
@@ -85,7 +91,7 @@ public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock impl
 
     //? < 1.20.5 {
     /*public @NotNull void
-    *///? } else {
+     *///? } else {
     public @NotNull BlockState
     //? }
     playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
@@ -101,7 +107,7 @@ public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock impl
         }
         //? >= 1.20.5
         return
-        super.playerWillDestroy(level, pos, state, player);
+                super.playerWillDestroy(level, pos, state, player);
     }
 
     @Override

@@ -5,13 +5,15 @@ import berries.mods.tcwm.item.StationBroadCasterBlockItem;
 import berries.mods.tcwm.mvapi.MVIdentifier;
 import berries.mods.tcwm.mvapi.MVNetwork;
 import berries.mods.tcwm.mvapi.MVRegistry;
+import berries.mods.tcwm.network.PacketModifyAirConditionerState;
 import berries.mods.tcwm.network.PacketOpenSoundPlayerScreen;
 import berries.mods.tcwm.network.PacketUpdateBlockEntity;
 import berries.mods.tcwm.item.Items;
 import berries.mods.tcwm.item.TcwmCreativeModeTab;
 //? < 1.20.5 {
 
-/*import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
+/*import berries.mods.tcwm.network.legacynetwork.LegacyPacketModifyAirConditionerState;
+import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
 *///? }
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -71,8 +73,8 @@ public class RealityCityConstruction implements ModInitializer {
         TcwmCreativeModeTab.ITEMS.register();
         LOGGER.info("Reality City Construction Mod Initialized.");
         //? < 1.20.5 {
-        
-        /*ServerPlayNetworking.registerGlobalReceiver(PacketUpdateBlockEntity.PACKET_UPDATE_BLOCK_ENTITY, LegacyPacketUpdateBlockEntity.INSTANCE::receive);
+        /*ServerPlayNetworking.registerGlobalReceiver(PacketModifyAirConditionerState.PACKET_MODIFY_AIR_CONDITIONER_STATE, LegacyPacketModifyAirConditionerState.INSTANCE::receive);
+        ServerPlayNetworking.registerGlobalReceiver(PacketUpdateBlockEntity.PACKET_UPDATE_BLOCK_ENTITY, LegacyPacketUpdateBlockEntity.INSTANCE::receive);
         *///? }
 
         REPLACE_BLOCKS.put("tcwm:yellow_blind", "tcwm:yellow_blind_sidewalk");
@@ -97,6 +99,7 @@ public class RealityCityConstruction implements ModInitializer {
         MVNetwork.registerC2S(PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.TYPE, PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.CODEC);
         MVNetwork.registerS2C(PacketOpenSoundPlayerScreen.PacketScreenPayload.TYPE, PacketOpenSoundPlayerScreen.PacketScreenPayload.CODEC);
         MVNetwork.registerReceiverC2S(PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.TYPE, PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.CODEC);
+        MVNetwork.registerReceiverC2S(PacketModifyAirConditionerState.PacketChangeAirConditionerStatePayload.TYPE, PacketModifyAirConditionerState.PacketChangeAirConditionerStatePayload.CODEC);
         //? }
     }
 
