@@ -10,7 +10,6 @@ import berries.mods.tcwm.util.TcwmBlockEntity;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
 //? >= 1.20.5 {
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
@@ -51,6 +50,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+//? >= 1.20.5
+import net.minecraft.core.HolderLookup;
 
 import java.util.function.Function;
 
@@ -339,8 +340,8 @@ public class StationBroadcaster extends Block implements EntityBlock {
         }
         //? } else {
         /*@Override
-        public CompoundTag getUpdateTag() {
-            return super.getUpdateTag();
+        public @NotNull CompoundTag getUpdateTag() {
+            return getTag();
         }
         *///? }
 

@@ -97,6 +97,8 @@
     "gui.tcwm.air_conditioner.linked": "Linked Air Conditioner (%d %d %d)",
     "key.category.tcwm.general": "Reality City Construction Key Binding",
     "key.tcwm.air_conditioner.direction_up": "Wind Direction Up",
-    "key.tcwm.air_conditioner.direction_down": "Wind Direction Down"
+    "key.tcwm.air_conditioner.direction_down": "Wind Direction Down",
+    "key.tcwm.air_conditioner.temperature_up": "Temperature Up",
+    "key.tcwm.air_conditioner.temperature_down": "Temperature Down"
 }
 

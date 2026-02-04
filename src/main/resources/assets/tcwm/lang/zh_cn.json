@@ -97,5 +97,7 @@
   "gui.tcwm.air_conditioner.linked": "已绑定空调（%d %d %d）",
   "key.category.tcwm.general": "Reality City Construction 按键绑定",
   "key.tcwm.air_conditioner.direction_up": "（空调）风向向上",
-  "key.tcwm.air_conditioner.direction_down": "（空调）风向向下"
+  "key.tcwm.air_conditioner.direction_down": "（空调）风向向下",
+  "key.tcwm.air_conditioner.temperature_up": "（空调）提高温度",
+  "key.tcwm.air_conditioner.temperature_down": "（空调）降低温度"
 }

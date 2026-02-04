@@ -97,6 +97,7 @@ public class RealityCityConstruction implements ModInitializer {
     public static void server() {
         //? >= 1.20.5 {
         MVNetwork.registerC2S(PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.TYPE, PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.CODEC);
+        MVNetwork.registerC2S(PacketModifyAirConditionerState.PacketChangeAirConditionerStatePayload.TYPE, PacketModifyAirConditionerState.PacketChangeAirConditionerStatePayload.CODEC);
         MVNetwork.registerS2C(PacketOpenSoundPlayerScreen.PacketScreenPayload.TYPE, PacketOpenSoundPlayerScreen.PacketScreenPayload.CODEC);
         MVNetwork.registerReceiverC2S(PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.TYPE, PacketUpdateBlockEntity.PacketUpdateBlockEntityPayload.CODEC);
         MVNetwork.registerReceiverC2S(PacketModifyAirConditionerState.PacketChangeAirConditionerStatePayload.TYPE, PacketModifyAirConditionerState.PacketChangeAirConditionerStatePayload.CODEC);
