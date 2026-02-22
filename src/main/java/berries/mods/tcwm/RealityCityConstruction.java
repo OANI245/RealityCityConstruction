@@ -92,6 +92,30 @@ public class RealityCityConstruction implements ModInitializer {
         REPLACE_BLOCKS.put("tcwm:tunnellight", "tcwm:tunnel_light");
         REPLACE_BLOCKS.put("tcwm:shading_panel_type_1", "tcwm:anti_glare_board_type_1");
         REPLACE_BLOCKS.put("tcwm:shading_panel_type_2", "tcwm:anti_glare_board_type_2");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_1", "tcwm:road_railings_concrete_bj");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_1_sh", "tcwm:road_railings_concrete_sh");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_1_bj_4", "tcwm:road_railings_concrete_bj_4");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_1_oc_new", "tcwm:road_railings_concrete_gb_fa");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_1_oc_new_ref", "tcwm:road_railings_concrete_gb_fa_ref");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_1_oc_new_2", "tcwm:road_railings_concrete_gb_f");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_1_oc_new_2_ref", "tcwm:road_railings_concrete_gb_f_ref");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2", "tcwm:road_railings_iron_2w_gray");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_green", "tcwm:road_railings_iron_2w_green");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_new_gray", "tcwm:road_railings_iron_3w_gray");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_new_green", "tcwm:road_railings_iron_3w_green");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_double_gray", "tcwm:road_railings_iron_4w_gray");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_double_green", "tcwm:road_railings_iron_4w_green");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_new_double_gray", "tcwm:road_railings_iron_5w_gray");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_new_double_green", "tcwm:road_railings_iron_5w_green");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_placeholder", "tcwm:road_railings_iron_2w_v_gray");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_placeholder_green", "tcwm:road_railings_iron_2w_v_green");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_new_placeholder_gray", "tcwm:road_railings_iron_3w_v_gray");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_new_placeholder_green", "tcwm:road_railings_iron_3w_v_green");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_double_placeholder_gray", "tcwm:road_railings_iron_4w_v_gray");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_double_placeholder_green", "tcwm:road_railings_iron_4w_v_green");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_new_double_placeholder_gray", "tcwm:road_railings_iron_5w_v_gray");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_2_new_double_placeholder_green", "tcwm:road_railings_iron_5w_v_green");
+        REPLACE_BLOCKS.put("tcwm:expwy_bar_type_3", "tcwm:road_railings_iron_4p");
     }
 
     public static void server() {

@@ -107,51 +107,61 @@ public class PacketModifyAirConditionerState {
                 }
                 case UP_TEMPERATURE -> {
                     float v = ((AirConditioner.AirConditionerEntity) entity).getTemperature();
-                    ((AirConditioner.AirConditionerEntity) entity).setTemperature(Math.max(19.0f, Math.min(32.0f, v + 1)));
-                    ((AirConditioner.AirConditionerEntity) entity).syncTwoSidesData(level, 0);
-                    level.playSound(null, linkedPos, SoundEvents.NOTE_BLOCK_CHIME.value(), SoundSource.PLAYERS, 0.8f, 1.3f);
-                    entity.setChanged();
-                    level.players().forEach((p) -> {
-                        long l =
-                                (long) Math.floor(
-                                        Math.sqrt(Math.pow((long) Math.abs(linkedPos.getX() - p.position().x), 2) +
-                                                Math.pow((long) Math.abs(linkedPos.getZ() - p.position().z), 2))
-                                );
-                        //? < 1.20.5 {
+                    int w = state.getValue(AirConditioner.OPEN);
+                    if (w > 1) {
+                        var temperature = Math.max(19.0f, Math.min(32.0f, v + 1));
+                        ((AirConditioner.AirConditionerEntity) entity).setTemperature(temperature);
+                        ((AirConditioner.AirConditionerEntity) entity).syncTwoSidesData(level, 0);
+                        if (temperature != v)
+                            level.playSound(null, linkedPos, SoundEvents.NOTE_BLOCK_CHIME.value(), SoundSource.PLAYERS, 0.8f, 1.3f);
+                        entity.setChanged();
+                        level.players().forEach((p) -> {
+                            long l =
+                                    (long) Math.floor(
+                                            Math.sqrt(Math.pow((long) Math.abs(linkedPos.getX() - p.position().x), 2) +
+                                                    Math.pow((long) Math.abs(linkedPos.getZ() - p.position().z), 2))
+                                    );
+                            //? < 1.20.5 {
                         /*if (l > 32 * 16) {
                             return;
                         }
                         *///? } else {
-                    if (l > p.requestedViewDistance() * 16) {
-                        return;
+                            if (l > p.requestedViewDistance() * 16) {
+                                return;
+                            }
+                            //? }
+                            p.connection.send(((AirConditioner.AirConditionerEntity) entity).getUpdatePacket());
+                        });
                     }
-                    //? }
-                        p.connection.send(((AirConditioner.AirConditionerEntity) entity).getUpdatePacket());
-                    });
                 }
                 case DOWN_TEMPERATURE -> {
                     float v = ((AirConditioner.AirConditionerEntity) entity).getTemperature();
-                    ((AirConditioner.AirConditionerEntity) entity).setTemperature(Math.max(19.0f, Math.min(32.0f, v - 1)));
-                    ((AirConditioner.AirConditionerEntity) entity).syncTwoSidesData(level, 0);
-                    level.playSound(null, linkedPos, SoundEvents.NOTE_BLOCK_CHIME.value(), SoundSource.PLAYERS, 0.8f, 1.3f);
-                    entity.setChanged();
-                    level.players().forEach((p) -> {
-                        long l =
-                                (long) Math.floor(
-                                        Math.sqrt(Math.pow((long) Math.abs(linkedPos.getX() - p.position().x), 2) +
-                                                Math.pow((long) Math.abs(linkedPos.getZ() - p.position().z), 2))
-                                );
-                        //? < 1.20.5 {
+                    int w = state.getValue(AirConditioner.OPEN);
+                    if (w > 1) {
+                        var temperature = Math.max(19.0f, Math.min(32.0f, v - 1));
+                        ((AirConditioner.AirConditionerEntity) entity).setTemperature(temperature);
+                        ((AirConditioner.AirConditionerEntity) entity).syncTwoSidesData(level, 0);
+                        if (temperature != v)
+                            level.playSound(null, linkedPos, SoundEvents.NOTE_BLOCK_CHIME.value(), SoundSource.PLAYERS, 0.8f, 1.3f);
+                        entity.setChanged();
+                        level.players().forEach((p) -> {
+                            long l =
+                                    (long) Math.floor(
+                                            Math.sqrt(Math.pow((long) Math.abs(linkedPos.getX() - p.position().x), 2) +
+                                                    Math.pow((long) Math.abs(linkedPos.getZ() - p.position().z), 2))
+                                    );
+                            //? < 1.20.5 {
                         /*if (l > 32 * 16) {
                             return;
                         }
                         *///? } else {
-                    if (l > p.requestedViewDistance() * 16) {
-                        return;
+                            if (l > p.requestedViewDistance() * 16) {
+                                return;
+                            }
+                            //? }
+                            p.connection.send(((AirConditioner.AirConditionerEntity) entity).getUpdatePacket());
+                        });
                     }
-                    //? }
-                        p.connection.send(((AirConditioner.AirConditionerEntity) entity).getUpdatePacket());
-                    });
                 }
             }
 

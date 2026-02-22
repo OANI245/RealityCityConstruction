@@ -329,7 +329,7 @@ public class SoundListScreen extends MVScreen {
 
         public SoundList(List<ResourceLocation> sounds, ResourceLocation selected) {
             //? < 1.20.3 {
-            /*super(SoundListScreen.this.minecraft, SoundListScreen.this.width, SoundListScreen.this.height, 43, SoundListScreen.this.height - 32, 24);
+            /*super(SoundListScreen.this.minecraft, SoundListScreen.this.width, SoundListScreen.this.height, 43, SoundListScreen.this.height - 32, SoundListScreen.LIST_ENTRY_HEIGHT);
             *///? } else {
             super(SoundListScreen.this.minecraft, SoundListScreen.this.width, SoundListScreen.this.layout.getContentHeight(), SoundListScreen.this.layout.getHeaderHeight(), SoundListScreen.LIST_ENTRY_HEIGHT);
             //? }

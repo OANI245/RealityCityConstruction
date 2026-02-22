@@ -4,7 +4,7 @@
 	"texture_size": [128, 128],
 	"textures": {
 		"0": "tcwm:block/air_conditioner_external_unit",
-		"particle": "block/snow_block"
+		"particle": "block/white_concrete"
 	},
 	"elements": [
 		{

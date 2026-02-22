@@ -128,7 +128,7 @@ public class ExpwyBarType2Placeholder extends MVSimpleCodecHorizontalDirectional
         public void appendHoverText(ItemStack itemStack, @Nullable Item.TooltipContext ctx, List<Component> list, TooltipFlag tooltipFlag) {
          //? }
         super.appendHoverText(itemStack, ctx, list, tooltipFlag);
-        list.add(MCText.translatable("tooltip.expwy_bar_type_2_placeholder"));
+        //list.add(MCText.translatable("tooltip.expwy_bar_type_2_placeholder"));
     }
     //? }
 

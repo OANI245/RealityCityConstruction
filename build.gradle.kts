@@ -4,7 +4,7 @@ plugins {
     id("net.fabricmc.fabric-loom-remap")
 
     // `maven-publish`
-    // id("me.modmuss50.mod-publish-plugin")
+//    id("me.modmuss50.mod-publish-plugin")
 }
 
 version = "${property("mod.version")}+${sc.current.version}"
@@ -108,13 +108,13 @@ tasks {
     register<Copy>("buildAndCollect") {
         group = "build"
         from(remapJar.map { it.archiveFile }, remapSourcesJar.map { it.archiveFile })
-        into(rootProject.layout.buildDirectory.file("libs/RCC-fabric-${sc.current.version}-${project.property("mod.version")}"))
+        into(rootProject.layout.buildDirectory.file("libs/RCC-${project.property("mod.version")}+${sc.current.version}"))
         dependsOn("build")
     }
 }
 
-/*
-// Publishes builds to Modrinth and Curseforge with changelog from the CHANGELOG.md file
+
+/*// Publishes builds to Modrinth and Curseforge with changelog from the CHANGELOG.md file
 publishMods {
     file = tasks.remapJar.map { it.archiveFile.get() }
     additionalFiles.from(tasks.remapSourcesJar.map { it.archiveFile.get() })
@@ -145,8 +145,7 @@ publishMods {
         }
     }
 }
- */
-/*
+
 // Publishes builds to a maven repository under `com.example:template:0.1.0+mc`
 publishing {
     repositories {
@@ -170,5 +169,5 @@ publishing {
             from(components["java"])
         }
     }
-}
- */
+}*/
+

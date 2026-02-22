@@ -275,9 +275,11 @@ public class StationBroadcaster extends Block implements EntityBlock {
         /*@Override
         public void saveToItem(ItemStack itemStack) {
             CompoundTag compoundTag = new CompoundTag();
-            CompoundTag displayTag = new CompoundTag();
-            displayTag.putString("Name", "[\"" + this.name + "\"]");
-            compoundTag.put("display", displayTag);
+            if (!this.name.isEmpty()) {
+                CompoundTag displayTag = new CompoundTag();
+                displayTag.putString("Name", "[\"" + this.name + "\"]");
+                compoundTag.put("display", displayTag);
+            }
             itemStack.setTag(itemStack.getTag().merge(compoundTag));
         }
         *///? } else if < 1.21.5 {

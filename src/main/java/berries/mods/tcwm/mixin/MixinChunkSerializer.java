@@ -62,55 +62,89 @@ public class MixinChunkSerializer {
         *///? }
         //? >= 1.21.5 {
         /*Tag sections = compoundTag3.get("sections");
-        if (sections instanceof ListTag) {
-            for (int i = 0; i < ((ListTag) sections).size(); i++) {
-                Tag v = ((ListTag) sections).get(i);
-                if (v instanceof CompoundTag && ((CompoundTag) v).contains("block_states")) {
-                    CompoundTag blockStates = ((CompoundTag) v).getCompound("block_states").orElse(new CompoundTag());
-                    if (blockStates.isEmpty()) return;
-                    ListTag palette = blockStates.getList("palette").orElse(new ListTag());
-                    if (palette.isEmpty()) return;
-                    for (int j = 0; j < palette.size(); j++) {
-                        CompoundTag block = Packets.getReadValue(palette.getCompound(j), new CompoundTag());
-                        if (block.isEmpty()) continue;
-                        String id = Packets.getReadValue(block.getString("Name"), "");
-                        String newId = RealityCityConstruction.REPLACE_BLOCKS.getOrDefault(id, id);
-                        block.putString("Name", newId);
-                        palette.set(j, block);
-                    }
-                    blockStates.put("palette", palette);
-                    ((CompoundTag) v).put("block_states", blockStates);
-                    ((ListTag) sections).set(i, v);
-                }
+          if (((CompoundTag) compoundTag3).contains("block_states")) {
+             CompoundTag blockStates = ((CompoundTag) compoundTag3).getCompound("block_states").orElse(new CompoundTag());
+             if (blockStates.isEmpty()) return;
+             ListTag palette = blockStates.getList("palette").orElse(new ListTag());
+             if (palette.isEmpty()) return;
+             for (int j = 0; j < palette.size(); j++) {
+                CompoundTag block = Packets.getReadValue(palette.getCompound(j), new CompoundTag());
+                if (block.isEmpty()) continue;
+                String id = Packets.getReadValue(block.getString("Name"), "");
+                String newId = RealityCityConstruction.REPLACE_BLOCKS.getOrDefault(id, id);
+                block.putString("Name", newId);
+                palette.set(j, block);
             }
+            blockStates.put("palette", palette);
+            ((CompoundTag) compoundTag3).put("block_states", blockStates);
+        } else {
+            if (sections instanceof ListTag) {
+                for (int i = 0; i < ((ListTag) sections).size(); i++) {
+                    Tag v = ((ListTag) sections).get(i);
+                    if (v instanceof CompoundTag && ((CompoundTag) v).contains("block_states")) {
+                        CompoundTag blockStates = ((CompoundTag) v).getCompound("block_states").orElse(new CompoundTag());
+                        if (blockStates.isEmpty()) return;
+                        ListTag palette = blockStates.getList("palette").orElse(new ListTag());
+                        if (palette.isEmpty()) return;
+                        for (int j = 0; j < palette.size(); j++) {
+                            CompoundTag block = Packets.getReadValue(palette.getCompound(j), new CompoundTag());
+                            if (block.isEmpty()) continue;
+                            String id = Packets.getReadValue(block.getString("Name"), "");
+                            String newId = RealityCityConstruction.REPLACE_BLOCKS.getOrDefault(id, id);
+                            block.putString("Name", newId);
+                            palette.set(j, block);
+                        }
+                        blockStates.put("palette", palette);
+                        ((CompoundTag) v).put("block_states", blockStates);
+                        ((ListTag) sections).set(i, v);
+                    }
+                }
 
-            compoundTag3.put("sections", sections);
+                compoundTag3.put("sections", sections);
+            }
         }
         *///? } else {
-        Tag sections = compoundTag2.get("sections");
-        if (sections instanceof ListTag) {
-            for (int i = 0; i < ((ListTag) sections).size(); i++) {
-                Tag v = ((ListTag) sections).get(i);
-                if (v instanceof CompoundTag && ((CompoundTag) v).contains("block_states")) {
-                    CompoundTag blockStates = ((CompoundTag) v).getCompound("block_states");
-                    if (blockStates.isEmpty()) return;
-                    ListTag palette = blockStates.getList("palette", 10);
-                    if (palette.isEmpty()) return;
-                    for (int j = 0; j < palette.size(); j++) {
-                        CompoundTag block = Packets.getReadValue(palette.getCompound(j), new CompoundTag());
-                        if (block.isEmpty()) continue;
-                        String id = Packets.getReadValue(block.getString("Name"), "");
-                        String newId = RealityCityConstruction.REPLACE_BLOCKS.getOrDefault(id, id);
-                        block.putString("Name", newId);
-                        palette.set(j, block);
-                    }
-                    blockStates.put("palette", palette);
-                    ((CompoundTag) v).put("block_states", blockStates);
-                    ((ListTag) sections).set(i, v);
-                }
+        if (((CompoundTag) compoundTag2).contains("block_states")) {
+            CompoundTag blockStates = ((CompoundTag) compoundTag2).getCompound("block_states");
+            if (blockStates.isEmpty()) return;
+            ListTag palette = blockStates.getList("palette", 10);
+            if (palette.isEmpty()) return;
+            for (int j = 0; j < palette.size(); j++) {
+                CompoundTag block = Packets.getReadValue(palette.getCompound(j), new CompoundTag());
+                if (block.isEmpty()) continue;
+                String id = Packets.getReadValue(block.getString("Name"), "");
+                String newId = RealityCityConstruction.REPLACE_BLOCKS.getOrDefault(id, id);
+                block.putString("Name", newId);
+                palette.set(j, block);
             }
+            blockStates.put("palette", palette);
+            ((CompoundTag) compoundTag2).put("block_states", blockStates);
+        } else {
+            Tag sections = compoundTag2.get("sections");
+            if (sections instanceof ListTag) {
+                for (int i = 0; i < ((ListTag) sections).size(); i++) {
+                    Tag v = ((ListTag) sections).get(i);
+                    if (v instanceof CompoundTag && ((CompoundTag) v).contains("block_states")) {
+                        CompoundTag blockStates = ((CompoundTag) v).getCompound("block_states");
+                        if (blockStates.isEmpty()) return;
+                        ListTag palette = blockStates.getList("palette", 10);
+                        if (palette.isEmpty()) return;
+                        for (int j = 0; j < palette.size(); j++) {
+                            CompoundTag block = Packets.getReadValue(palette.getCompound(j), new CompoundTag());
+                            if (block.isEmpty()) continue;
+                            String id = Packets.getReadValue(block.getString("Name"), "");
+                            String newId = RealityCityConstruction.REPLACE_BLOCKS.getOrDefault(id, id);
+                            block.putString("Name", newId);
+                            palette.set(j, block);
+                        }
+                        blockStates.put("palette", palette);
+                        ((CompoundTag) v).put("block_states", blockStates);
+                        ((ListTag) sections).set(i, v);
+                    }
+                }
 
-            compoundTag2.put("sections", sections);
+                compoundTag2.put("sections", sections);
+            }
         }
         //? }
         /*
