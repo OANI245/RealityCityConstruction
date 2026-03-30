@@ -14,8 +14,10 @@ import berries.mods.tcwm.render.AirConditionerRenderer;
 import berries.mods.tcwm.util.settings.Settings;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;//? < 26.1
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+//? >= 26.1
+//import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
@@ -50,6 +52,15 @@ public class RealityCityConstructionClient implements ClientModInitializer {
     //? >= 1.21.9
     //protected KeyMapping.Category category;
 
+    public KeyMapping registerKeyBinding(KeyMapping km) {
+        return
+
+        //? >= 26.1
+        //KeyMappingHelper.registerKeyMapping(km);
+        //? < 26.1
+        KeyBindingHelper.registerKeyBinding(km);
+    }
+
     @SuppressWarnings("all")
     public void onInitializeClient() {
         LOGGER.info("RCCmod Client Task Loading");
@@ -69,7 +80,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
         //? >= 1.21.9
         //category = KeyMapping.Category.register(MVIdentifier.get(RealityCityConstruction.MOD_ID, "general"));
 
-        KeyMapping binding0 = KeyBindingHelper.registerKeyBinding(
+        KeyMapping binding0 = registerKeyBinding(
                 new KeyMapping(
                         "key.tcwm.air_conditioner.direction_down",
                         InputConstants.Type.KEYSYM,
@@ -81,7 +92,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                 )
         );
 
-        KeyMapping binding1 = KeyBindingHelper.registerKeyBinding(
+        KeyMapping binding1 = registerKeyBinding(
                 new KeyMapping(
                         "key.tcwm.air_conditioner.direction_up",
                         InputConstants.Type.KEYSYM,
@@ -93,7 +104,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                 )
         );
 
-        KeyMapping binding2 = KeyBindingHelper.registerKeyBinding(
+        KeyMapping binding2 = registerKeyBinding(
                 new KeyMapping(
                         "key.tcwm.air_conditioner.temperature_up",
                         InputConstants.Type.KEYSYM,
@@ -105,7 +116,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                 )
         );
 
-        KeyMapping binding3 = KeyBindingHelper.registerKeyBinding(
+        KeyMapping binding3 = registerKeyBinding(
                 new KeyMapping(
                         "key.tcwm.air_conditioner.temperature_down",
                         InputConstants.Type.KEYSYM,

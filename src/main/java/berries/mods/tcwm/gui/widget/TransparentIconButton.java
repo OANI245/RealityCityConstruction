@@ -3,7 +3,10 @@ package berries.mods.tcwm.gui.widget;
 import berries.mods.tcwm.gui.FlueroUI;
 import com.mojang.blaze3d.systems.RenderSystem;
 import berries.mods.tcwm.mvapi.MVComponent;
+//? < 26.1
 import net.minecraft.client.gui.GuiGraphics;
+//? >= 26.1
+//import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 //? >= 1.21.9 {
@@ -50,8 +53,10 @@ public class TransparentIconButton extends AbstractButton {
     @Override
             //? < 1.21.11 {
     protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            //? } else if < 26.1 {
+    /*protected void renderContents(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {*/
             //? } else {
-    /*protected void renderContents(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    /*protected void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
         *///? }
         //? < 1.21.6 {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);

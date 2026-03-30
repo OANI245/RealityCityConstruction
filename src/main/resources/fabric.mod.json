@@ -30,9 +30,10 @@
   "mixins": [
     "tcwm.mixins.json"
   ],
-  "accessWidener": "tcwm.accesswidener",
+  "accessWidener": "tcwm.ct",
   "depends": {
     "fabricloader": ">=0.17",
-    "minecraft": "${minecraft}"
+    "minecraft": "${minecraft}",
+    "java": ">=17 <=29"
   }
 }

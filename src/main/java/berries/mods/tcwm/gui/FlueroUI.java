@@ -1,6 +1,6 @@
 package berries.mods.tcwm.gui;
 
-import net.minecraft.client.gui.GuiGraphics;
+import berries.mods.tcwm.mvapi.MVScreen;
 //? >= 1.21.6 {
 /*import net.minecraft.util.ARGB;
 *///? } else {
@@ -8,16 +8,16 @@ import net.minecraft.util.FastColor;
 //? }
 
 public class FlueroUI {
-    public static void renderCenteredDialog(GuiGraphics graphics, int screenWidth, int screenHeight, int width, int height) {
+    public static void renderCenteredDialog(MVScreen.GuiGraphicsData graphics, int screenWidth, int screenHeight, int width, int height) {
         int minX = screenWidth / 2 - width / 2;
         int minY = screenHeight / 2 - height / 2;
         int maxX = screenWidth / 2 + width / 2;
         int maxY = screenHeight / 2 + height / 2;
-        graphics.fill(minX, minY, maxX, maxY, rgb(32, 32, 32));
-        graphics.fill(minX, minY, maxX, minY + 1, rgb(59, 59, 59));
-        graphics.fill(minX, minY, minX + 1, maxY, rgb(59, 59, 59));
-        graphics.fill(minX, maxY - 1, maxX, maxY, rgb(59, 59, 59));
-        graphics.fill(maxX - 1, minY, maxX, maxY, rgb(59, 59, 59));
+        graphics.get().fill(minX, minY, maxX, maxY, rgb(32, 32, 32));
+        graphics.get().fill(minX, minY, maxX, minY + 1, rgb(59, 59, 59));
+        graphics.get().fill(minX, minY, minX + 1, maxY, rgb(59, 59, 59));
+        graphics.get().fill(minX, maxY - 1, maxX, maxY, rgb(59, 59, 59));
+        graphics.get().fill(maxX - 1, minY, maxX, maxY, rgb(59, 59, 59));
     }
 
     public static int rgb(int r, int g, int b) {

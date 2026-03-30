@@ -1,5 +1,6 @@
 package berries.mods.tcwm.gui.screen;
 
+import berries.mods.tcwm.mvapi.MVTextDrawer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import berries.mods.tcwm.block.StationBroadcaster;
 import berries.mods.tcwm.gui.Icons;
@@ -12,7 +13,6 @@ import berries.mods.tcwm.mvapi.MVComponent;
 import berries.mods.tcwm.mvapi.MVScreen;
 import berries.mods.tcwm.network.PacketUpdateBlockEntity;
 import berries.mods.tcwm.util.TcwmBlockEntity;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.EditBox;
 //? >= 1.21.9 {
@@ -219,7 +219,7 @@ public class EditSoundPlayerScreen extends MVScreen {
                 pitch = pitchComboBox.getValue();
             } catch (NumberFormatException e) {
                 if (minecraft.player != null) {
-                    //? < 1.21.5 {
+                    //? < 1.21.5 || >= 26.1 {
                     minecraft.player.sendSystemMessage(MVComponent.translatable("gui.tcwm.SSBAS.failed_message"));
                     //? } else {
                     /*minecraft.player.displayClientMessage(MVComponent.translatable("gui.tcwm.SSBAS.failed_message"), true);
@@ -230,7 +230,7 @@ public class EditSoundPlayerScreen extends MVScreen {
     }
 
     @Override
-    public void renderScreen(GuiGraphics graphics, int mouseX, int mouseY, float f) {
+    public void renderScreen(GuiGraphicsData graphics, int mouseX, int mouseY, float f) {
         if (minecraft == null) return;
         if (this.name == null || this.soundID == null) minecraft.setScreen(null);
 
@@ -239,9 +239,9 @@ public class EditSoundPlayerScreen extends MVScreen {
         }
 
         //? < 1.20.5 {
-        /*renderBackground(graphics);
+        /*renderBackground(graphics.get());
          *///? } else if < 1.21.6 {
-        this.renderBackground(graphics, mouseX, mouseY, f);
+        this.renderBackground(graphics.get(), mouseX, mouseY, f);
         //? }
         int dialogWidth = 225;
         int dialogHeight = 182;
@@ -256,26 +256,30 @@ public class EditSoundPlayerScreen extends MVScreen {
                                 : 1.5f
                         : 2.0f;
         //? < 1.21.6 {
-        PoseStack poseStack = graphics.pose();
+        PoseStack poseStack = graphics.get().pose();
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);
-        graphics.drawString(minecraft.font, title, (int) Math.floor((width / 2f - 95) / scale), (int) Math.ceil((height / 2f - 71) / scale), FlueroUI.textColor(0xFFFFFF), false);
+        graphics.get().drawString(minecraft.font, title, (int) Math.floor((width / 2f - 95) / scale), (int) Math.ceil((height / 2f - 71) / scale), FlueroUI.textColor(0xFFFFFF), false);
         poseStack.popPose();
         //? } else {
-        /*graphics.nextStratum();
-        Matrix3x2fStack poseStack = graphics.pose();
+        /*graphics.get().nextStratum();
+        Matrix3x2fStack poseStack = graphics.get().pose();
         poseStack.pushMatrix();
         poseStack.scale(scale, scale);
-        graphics.drawString(minecraft.font, title, (int)Math.floor((width / 2f - 95) / scale), (int)Math.ceil((height / 2f - 71) / scale), FlueroUI.textColor(0xFFFFFF), false);
+        MVTextDrawer.drawText(graphics, minecraft.font, title, MVTextDrawer.Alignment.LEFT, (int)Math.floor((width / 2f - 95) / scale), (int)Math.ceil((height / 2f - 71) / scale), FlueroUI.textColor(0xFFFFFF), false);
         poseStack.popMatrix();
-        graphics.nextStratum();
+        graphics.get().nextStratum();
         *///? }
 
-        for (PropertiesList.Item<AbstractWidget> item : list.items) {
-            item.render(graphics, mouseX, mouseY, f);
+        for (PropertiesList.Item<AbstractWidget> item : list.items) {//? < 26.1
+            item.render(graphics.get(), mouseX, mouseY, f);
+            //? >= 26.1
+            //item.extractRenderState(graphics.get(), mouseX, mouseY, f);
         }
-        for (PropertiesList.Item<PropertiesList.StackPanel> item : list.stackPanels) {
-            item.render(graphics, mouseX, mouseY, f);
+        for (PropertiesList.Item<PropertiesList.StackPanel> item : list.stackPanels) {//? < 26.1
+            item.render(graphics.get(), mouseX, mouseY, f);
+            //? >= 26.1
+            //item.extractRenderState(graphics.get(), mouseX, mouseY, f);
         }
         super.renderScreen(graphics, mouseX, mouseY, f);
     }

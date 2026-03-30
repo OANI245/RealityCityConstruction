@@ -5,10 +5,14 @@ import berries.mods.tcwm.gui.widget.Button;
 import berries.mods.tcwm.mvapi.MVComponent;
 import berries.mods.tcwm.mvapi.MVIdentifier;
 import berries.mods.tcwm.mvapi.MVScreen;
+import berries.mods.tcwm.mvapi.MVTextDrawer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+//? >= 26.1
+//import net.minecraft.client.gui.GuiGraphicsExtractor;
+//? < 26.1
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -17,7 +21,6 @@ import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.worldselection.EditGameRulesScreen;
 //? >= 1.21.9 {
 /*import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -144,13 +147,13 @@ public class SoundListScreen extends MVScreen {
     }
 
     @Override
-    public void renderScreen(GuiGraphics graphics, int mouseX, int mouseY, float f) {
+    public void renderScreen(GuiGraphicsData graphics, int mouseX, int mouseY, float f) {
         //? < 1.20.5 {
-        /*this.renderBackground(graphics);
-        this.listWidget.render(graphics, mouseX, mouseY, f);
-        graphics.drawCenteredString(this.font, this.title, this.width / 2, 7, 16777215);
+        /*this.renderBackground(graphics.get());
+        this.listWidget.render(graphics.get(), mouseX, mouseY, f);
+        graphics.get().drawCenteredString(this.font, this.title, this.width / 2, 7, 16777215);
         *///? } else if < 1.21.6 {
-        this.renderBackground(graphics, mouseX, mouseY, f);
+        this.renderBackground(graphics.get(), mouseX, mouseY, f);
         //? }
         super.renderScreen(graphics, mouseX, mouseY, f);
     }
@@ -193,9 +196,9 @@ public class SoundListScreen extends MVScreen {
 
         @Override
         //? < 1.21.9 {
-        public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) //? } else {
-        /*public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)
-        *///? }
+        public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) //? } else if < 26.1 {
+        /*public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)*///? } else {
+        /*public void extractContent(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, boolean hovered, float partialTick)*///? }
         {
             //? >= 1.21.9 {
             /*int top = getContentY();
@@ -203,16 +206,22 @@ public class SoundListScreen extends MVScreen {
             int width = getContentWidth();
             int height = getContentHeight();
             *///? }
-            guiGraphics.drawCenteredString(SoundListScreen.this.minecraft.font, MVComponent.text(currentPage + "/" + pageCount), (left * 2 + width) / 2, top + height / 2 - minecraft.font.lineHeight / 2, -1);
+            MVTextDrawer.drawText(new GuiGraphicsData(guiGraphics), SoundListScreen.this.minecraft.font, MVComponent.text(currentPage + "/" + pageCount), MVTextDrawer.Alignment.CENTER, (left * 2 + width) / 2, top + height / 2 - minecraft.font.lineHeight / 2, -1);
             nextPageButton.setX(left + width - 18);
             previousPageButton.setX(left);
             nextPageButton.setY(top);
             previousPageButton.setY(top);
             if (currentPage > 1) {
-                previousPageButton.render(guiGraphics, mouseX, mouseY, partialTick);
+                //? < 26.1 {
+                previousPageButton.render(guiGraphics, mouseX, mouseY, partialTick);//? } else {
+                /*previousPageButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
+                *///? }
             }
             if (currentPage < pageCount) {
-                nextPageButton.render(guiGraphics, mouseX, mouseY, partialTick);
+                //? < 26.1 {
+                nextPageButton.render(guiGraphics, mouseX, mouseY, partialTick);//? } else {
+                /*nextPageButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
+                *///? }
             }
         }
 
@@ -283,14 +292,15 @@ public class SoundListScreen extends MVScreen {
             this.selected = selected;
         }
 
-        protected void renderLabel(GuiGraphics guiGraphics, int x, int y) {
-            guiGraphics.drawString(SoundListScreen.this.minecraft.font, selected ? this.text.copy().withStyle(ChatFormatting.BOLD, ChatFormatting.GREEN) : this.text, y, x + 5, -1, false);
+        protected void renderLabel(GuiGraphicsData guiGraphics, int x, int y) {
+            MVTextDrawer.drawText(guiGraphics, SoundListScreen.this.minecraft.font, selected ? this.text.copy().withStyle(ChatFormatting.BOLD, ChatFormatting.GREEN) : this.text, MVTextDrawer.Alignment.LEFT, y, x + 5, -1, false);
         }
 
         @Override
         //? < 1.21.9 {
-        public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) //? } else {
-        /*public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)
+        public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) //? } else if < 26.1 {
+        /*public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)*///? } else {
+        /*public void extractContent(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)
         *///? }
         {
             //? >= 1.21.9 {
@@ -299,13 +309,17 @@ public class SoundListScreen extends MVScreen {
             int width = getContentWidth();
             int height = getContentHeight();
             *///? }
-            this.renderLabel(guiGraphics, top, left);
+            this.renderLabel(new GuiGraphicsData(guiGraphics), top, left);
             playButton.setX(left + width - 35);
             selectButton.setX(left + width - 16);
             playButton.setY(top + 1);
             selectButton.setY(top + 1);
+            //? < 26.1 {
             playButton.render(guiGraphics, mouseX, mouseY, partialTick);
-            selectButton.render(guiGraphics, mouseX, mouseY, partialTick);
+            selectButton.render(guiGraphics, mouseX, mouseY, partialTick);//? } else {
+            /*playButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
+            selectButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
+            *///? }
         }
 
         @Override
@@ -407,5 +421,10 @@ public class SoundListScreen extends MVScreen {
                 setPage(currentPage + (isForward ? 1 : -1));
             }, currentPage, queriedPages > 0 ? queriedPages : pages));
         }
+    }
+
+    @Override
+    public boolean isPauseScreen() {
+        return false;
     }
 }

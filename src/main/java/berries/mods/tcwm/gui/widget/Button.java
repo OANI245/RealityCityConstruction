@@ -1,8 +1,13 @@
 package berries.mods.tcwm.gui.widget;
 
 import berries.mods.tcwm.gui.FlueroUI;
+import berries.mods.tcwm.mvapi.MVScreen;
+import berries.mods.tcwm.mvapi.MVTextDrawer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
+//? >= 26.1
+//import net.minecraft.client.gui.GuiGraphicsExtractor;
+//? < 26.1
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
@@ -80,8 +85,10 @@ public class Button extends AbstractButton {
     @Override
     //? < 1.21.11 {
     protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        //? } else if < 26.1 {
+    /*protected void renderContents(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {*/
         //? } else {
-    /*protected void renderContents(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        /*protected void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
         *///? }
         Minecraft minecraft = Minecraft.getInstance();
         int buttonBackground = (this.isAccentStyle ?
@@ -114,7 +121,7 @@ public class Button extends AbstractButton {
             /*guiGraphics.blit(RenderPipelines.GUI_TEXTURED, icon, this.getX() + width / 2 - minecraft.font.width(formattedCharSequence) / 2 - this.getHeight() / 2, this.getY(), 0, 0, height, height, height, height);
             *///? }
         }
-        guiGraphics.drawString(minecraft.font, this.getMessage(), (this.getX() + width / 2) - fontWidth, (this.getY() + height / 2 - minecraft.font.lineHeight / 2), this.isAccentStyle ? FlueroUI.textColor(0) : FlueroUI.textColor(0xFFFFFF), false);
+        MVTextDrawer.drawText(new MVScreen.GuiGraphicsData(guiGraphics), minecraft.font, this.getMessage(), MVTextDrawer.Alignment.LEFT, (this.getX() + width / 2) - fontWidth, (this.getY() + height / 2 - minecraft.font.lineHeight / 2), this.isAccentStyle ? FlueroUI.textColor(0) : FlueroUI.textColor(0xFFFFFF), false);
         //this.renderString(guiGraphics, minecraft.font, i | Mth.ceil(this.alpha * 255.0F) << 24);
     }
 }

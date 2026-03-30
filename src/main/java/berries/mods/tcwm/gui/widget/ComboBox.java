@@ -1,13 +1,18 @@
 package berries.mods.tcwm.gui.widget;
 
 import berries.mods.tcwm.gui.FlueroUI;
+import berries.mods.tcwm.mvapi.MVScreen;
+import berries.mods.tcwm.mvapi.MVTextDrawer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import berries.mods.tcwm.gui.Icons;
 import berries.mods.tcwm.mvapi.MVComponent;
 import net.minecraft.client.Minecraft;
+//? < 26.1
 import net.minecraft.client.gui.GuiGraphics;
 //? >= 1.21.9 {
-/*import net.minecraft.client.input.InputWithModifiers;
+/*//? >= 26.1
+//import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.input.InputWithModifiers;
 import net.minecraft.client.input.MouseButtonEvent;
 *///? }
 import net.minecraft.client.renderer.GameRenderer;
@@ -116,8 +121,10 @@ public class ComboBox extends Button {
     @Override
             //? < 1.21.11 {
     protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            //? } else if < 26.1 {
+    /*protected void renderContents(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {*/
             //? } else {
-    /*protected void renderContents(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    /*protected void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
         *///? }
         Minecraft minecraft = Minecraft.getInstance();
         int buttonBackground = (
@@ -135,7 +142,7 @@ public class ComboBox extends Button {
             guiGraphics.fill(getX(), getY() - 1, getX() + width, getY(), FlueroUI.rgb(255, 255, 255));
             guiGraphics.fill(getX() + width, getY(), getX() + width + 1, getY() + height, FlueroUI.rgb(255, 255, 255));
         }
-        guiGraphics.drawString(minecraft.font, this.getMessage(), (this.getX() + 5), (this.getY() + height / 2 - minecraft.font.lineHeight / 2), FlueroUI.textColor(0xFFFFFF), false);
+        MVTextDrawer.drawText(new MVScreen.GuiGraphicsData(guiGraphics), minecraft.font, this.getMessage(), MVTextDrawer.Alignment.LEFT, (this.getX() + 5), (this.getY() + height / 2 - minecraft.font.lineHeight / 2), FlueroUI.textColor(0xFFFFFF), false);
         //? < 1.21.6 {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -147,18 +154,18 @@ public class ComboBox extends Button {
         *///? }
 
         if (opened) {
-            renderComboBoxList(guiGraphics, mouseX, mouseY);
+            renderComboBoxList(new MVScreen.GuiGraphicsData(guiGraphics), mouseX, mouseY);
         }
     }
 
-    protected void renderComboBoxList(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.fill(getX(), getY() + 2 + this.height, getX() + this.width, getY() + 3 + this.height + items.size() * 16, FlueroUI.rgb(60, 60, 60));
+    protected void renderComboBoxList(MVScreen.GuiGraphicsData guiGraphics, int mouseX, int mouseY) {
+        guiGraphics.get().fill(getX(), getY() + 2 + this.height, getX() + this.width, getY() + 3 + this.height + items.size() * 16, FlueroUI.rgb(60, 60, 60));
         for (int i = 0; i < items.size(); i++) {
             var item = items.get(i);
             if (mouseX > getX() && mouseY > getY() + 2 + this.height + (16 * i) && mouseX < getX() + this.width && mouseY < getY() + 3 + this.height + (16 * (i + 1))) {
-                guiGraphics.fill(getX(), getY() + 2 + this.height + (16 * i), getX() + this.width, getY() + 2 + this.height + (16 * (i + 1)), FlueroUI.rgb(72, 72, 72));
+                guiGraphics.get().fill(getX(), getY() + 2 + this.height + (16 * i), getX() + this.width, getY() + 2 + this.height + (16 * (i + 1)), FlueroUI.rgb(72, 72, 72));
             }
-            guiGraphics.drawString(Minecraft.getInstance().font, item, getX() + 5, getY() + 2 + this.height + (8 - Minecraft.getInstance().font.lineHeight / 2) + 16 * i, FlueroUI.textColor(0xFFFFFF), false);
+            MVTextDrawer.drawText(guiGraphics, Minecraft.getInstance().font, item, MVTextDrawer.Alignment.LEFT, getX() + 5, getY() + 2 + this.height + (8 - Minecraft.getInstance().font.lineHeight / 2) + 16 * i, FlueroUI.textColor(0xFFFFFF), false);
         }
     }
 }

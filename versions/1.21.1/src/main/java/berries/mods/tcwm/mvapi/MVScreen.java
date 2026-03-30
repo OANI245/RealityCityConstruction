@@ -20,14 +20,14 @@ public abstract class MVScreen extends Screen {
 
     public abstract void initScreen();
 
-    public void renderScreen(GuiGraphics graphics, int mouseX, int mouseY, float f) {
+    public void renderScreen(GuiGraphicsData graphics, int mouseX, int mouseY, float f) {
         //super.render(graphics, mouseX, mouseY, f);
         try {
             Field field0 = Screen.class.getDeclaredField("field_33816");
             field0.setAccessible(true);
             List<Renderable> lr = (List<Renderable>) (field0.get(this));
             for (Renderable r : lr) {
-                r.render(graphics, mouseX, mouseY, f);
+                r.render(graphics.g, mouseX, mouseY, f);
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
             try {
@@ -35,7 +35,7 @@ public abstract class MVScreen extends Screen {
                 field1.setAccessible(true);
                 List<Renderable> lr = (List<Renderable>) (field1.get(this));
                 for (Renderable r : lr) {
-                    r.render(graphics, mouseX, mouseY, f);
+                    r.render(graphics.g, mouseX, mouseY, f);
                 }
             } catch (NoSuchFieldException | IllegalAccessException g) {
                 if (minecraft != null) {
@@ -52,6 +52,12 @@ public abstract class MVScreen extends Screen {
 
     @Override
     public final void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        renderScreen(guiGraphics, mouseX, mouseY, partialTick);
+        renderScreen(new GuiGraphicsData(guiGraphics), mouseX, mouseY, partialTick);
+    }
+
+    public record GuiGraphicsData(GuiGraphics g) {
+        public GuiGraphics get() {
+            return g;
+        }
     }
 }

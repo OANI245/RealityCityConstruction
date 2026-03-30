@@ -19,8 +19,8 @@ public abstract class MVScreen extends Screen {
 
     public abstract void initScreen();
 
-    public void renderScreen(GuiGraphics graphics, int mouseX, int mouseY, float f) {
-        super.render(graphics, mouseX, mouseY, f);
+    public void renderScreen(GuiGraphicsData graphics, int mouseX, int mouseY, float f) {
+        super.render(graphics.g, mouseX, mouseY, f);
     }
 
     @Override
@@ -30,6 +30,12 @@ public abstract class MVScreen extends Screen {
 
     @Override
     public final void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        renderScreen(guiGraphics, mouseX, mouseY, partialTick);
+        renderScreen(new GuiGraphicsData(guiGraphics), mouseX, mouseY, partialTick);
+    }
+
+    public record GuiGraphicsData(GuiGraphics g)  {
+        public GuiGraphics get() {
+            return g;
+        }
     }
 }

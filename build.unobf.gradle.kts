@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurper
 
 plugins {
-    id("net.fabricmc.fabric-loom-remap")
+    id("net.fabricmc.fabric-loom")
 
     // `maven-publish`
 //    id("me.modmuss50.mod-publish-plugin")
@@ -12,10 +12,7 @@ base.archivesName = "RCC"
 
 val requiredJava = when {
     sc.current.parsed >= "26.1" -> JavaVersion.VERSION_25
-    sc.current.parsed >= "1.20.6" -> JavaVersion.VERSION_21
-    sc.current.parsed >= "1.18" -> JavaVersion.VERSION_17
-    sc.current.parsed >= "1.17" -> JavaVersion.VERSION_16
-    else -> JavaVersion.VERSION_1_8
+    else -> JavaVersion.VERSION_21
 }
 
 repositories {
@@ -41,15 +38,14 @@ dependencies {
      */
     fun fapi(vararg modules: String) {
         for (it in modules) {
-            modImplementation(fabricApi.module(it, property("deps.fabric_api") as String))
+            implementation(fabricApi.module(it, property("deps.fabric_api") as String))
         }
     }
 
     minecraft("com.mojang:minecraft:${sc.current.version}")
-    mappings(loom.officialMojangMappings())
-    modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
-    modImplementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    implementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader_nvr")}")
+    implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
+    implementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
 
     /*fapi(
         "fabric-lifecycle-events-v1",
@@ -108,7 +104,7 @@ tasks {
     // Builds the version into a shared folder in `build/libs/${mod version}/`
     register<Copy>("buildAndCollect") {
         group = "build"
-        from(remapJar.map { it.archiveFile }, remapSourcesJar.map { it.archiveFile })
+        from(jar.map { it.archiveFile }, jar.map { it.archiveFile })
         into(rootProject.layout.buildDirectory.file("libs/RCC-${project.property("mod.version")}+${sc.current.version}"))
         dependsOn("build")
     }

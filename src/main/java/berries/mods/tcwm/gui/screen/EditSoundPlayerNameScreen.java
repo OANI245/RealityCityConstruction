@@ -4,7 +4,7 @@ import berries.mods.tcwm.gui.FlueroUI;
 import berries.mods.tcwm.gui.widget.Button;
 import berries.mods.tcwm.mvapi.MVComponent;
 import berries.mods.tcwm.mvapi.MVScreen;
-import net.minecraft.client.gui.GuiGraphics;
+import berries.mods.tcwm.mvapi.MVTextDrawer;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.resources.language.I18n;
 
@@ -41,15 +41,20 @@ public class EditSoundPlayerNameScreen extends MVScreen {
     }
 
     @Override
-    public void renderScreen(GuiGraphics graphics, int mouseX, int mouseY, float f) {
+    public void renderScreen(GuiGraphicsData graphics, int mouseX, int mouseY, float f) {
         if (minecraft == null) return;
         //? < 1.20.5 {
-        /*renderBackground(graphics);
+        /*renderBackground(graphics.get());
         *///? } else if < 1.21.6 {
-        renderBackground(graphics, mouseX, mouseY, f);
+        renderBackground(graphics.get(), mouseX, mouseY, f);
         //? }
         FlueroUI.renderCenteredDialog(graphics, this.width, this.height, 120, 74);
         super.renderScreen(graphics, mouseX, mouseY, f);
-        graphics.drawCenteredString(minecraft.font, this.getTitle(), width / 2, height / 2 - 29, FlueroUI.textColor(0xFFFFFF));
+        MVTextDrawer.drawText(graphics, minecraft.font, this.getTitle(), MVTextDrawer.Alignment.CENTER, width / 2, height / 2 - 29, FlueroUI.textColor(0xFFFFFF));
+    }
+
+    @Override
+    public boolean isPauseScreen() {
+        return false;
     }
 }

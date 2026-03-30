@@ -1,8 +1,13 @@
 package berries.mods.tcwm.gui.widget;
 
 import berries.mods.tcwm.gui.FlueroUI;
+import berries.mods.tcwm.mvapi.MVScreen;
+import berries.mods.tcwm.mvapi.MVTextDrawer;
 import net.minecraft.client.Minecraft;
+//? < 26.1
 import net.minecraft.client.gui.GuiGraphics;
+//? >= 26.1
+//import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -136,9 +141,12 @@ public class PropertiesList {
         *///? }
 
         @Override
-        protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        //? >= 26.1 {
+        /*protected void extractWidgetRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
+        *///? } else {
+        protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {//?}
             Minecraft minecraft = Minecraft.getInstance();
-            guiGraphics.drawString(minecraft.font, this.getMessage(), getX() + 10, getY() + height / 2, FlueroUI.textColor(0xFFFFFF));
+            MVTextDrawer.drawText(new MVScreen.GuiGraphicsData(guiGraphics), minecraft.font, this.getMessage(), MVTextDrawer.Alignment.LEFT, getX() + 10, getY() + height / 2, FlueroUI.textColor(0xFFFFFF));
         }
 
         @Override
