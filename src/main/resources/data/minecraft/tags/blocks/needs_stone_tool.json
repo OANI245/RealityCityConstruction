@@ -1,7 +1,5 @@
 {
     "replace": false,
     "values": [
-        "tcwm:metal",
-        "tcwm:signpole"
     ]
 }

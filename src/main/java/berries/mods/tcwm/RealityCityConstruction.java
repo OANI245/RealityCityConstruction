@@ -47,8 +47,8 @@ public class RealityCityConstruction implements ModInitializer {
         MVRegistry.BLOCK.register(modIdLocation("ceiling_normal_grille"), CeilingNoDirection::new, Blocks.copyProperties(IRON_BLOCK).noOcclusion());
         MVRegistry.BLOCK.register(modIdLocation("ceiling_light_grille"), (pf) -> new Ceiling(pf, 15), Blocks.copyProperties(IRON_BLOCK).noOcclusion());
 
-        MVRegistry.BLOCK.register(modIdLocation("tunnel_wires_style_1"), TunnelWires1::new, Blocks.copyProperties(LIGHT_GRAY_CONCRETE).noOcclusion());
-        MVRegistry.BLOCK.register(modIdLocation("tunnel_wires_style_2"), TunnelWires2::new, Blocks.copyProperties(COPPER_BLOCK).noOcclusion());
+        MVRegistry.BLOCK.register(modIdLocation("tunnel_wires_style_1"), TunnelWires1::new, Blocks.copyProperties(STONE).noOcclusion());
+        MVRegistry.BLOCK.register(modIdLocation("tunnel_wires_style_2"), TunnelWires2::new, Blocks.copyProperties(IRON_BARS).noOcclusion());
         MVRegistry.BLOCK.register(modIdLocation("tunnel_light"), TunnelLight::new, Blocks.copyProperties(SEA_LANTERN).noOcclusion());
         /*MVRegistry.BLOCK.register(modIdLocation("platform"), Blocks.PLATFORM.get());
         MVRegistry.ITEM.register(modIdLocation("platform"), defaultBlockItem(Blocks.PLATFORM.get()));
@@ -61,9 +61,9 @@ public class RealityCityConstruction implements ModInitializer {
         MVRegistry.ITEM.register(modIdLocation("homo_station_broadcaster"), (pf) -> new StationBroadCasterBlockItem((StationBroadcaster) Blocks.STATION_BROADCASTER, pf), new Item.Properties());
         //? }
         MVRegistry.BLOCK.register(modIdLocation("conveyer_belt"), ConveyerBelt::new, Blocks.copyProperties(DEEPSLATE));
-        MVRegistry.BLOCK.register(modIdLocation("expwy_caution_bar"), ExpwyCautionBar::new, Blocks.copyProperties(LIGHT_GRAY_CONCRETE));
-        MVRegistry.BLOCK.register(modIdLocation("anti_glare_board_type_1"), AntiGlareBoard::new, Blocks.copyProperties(GREEN_STAINED_GLASS));
-        MVRegistry.BLOCK.register(modIdLocation("anti_glare_board_type_2"), AntiGlareBoard::new, Blocks.copyProperties(GREEN_STAINED_GLASS));
+        MVRegistry.BLOCK.register(modIdLocation("expwy_caution_bar"), ExpwyCautionBar::new, Blocks.copyProperties(STONE));
+        MVRegistry.BLOCK.register(modIdLocation("anti_glare_board_type_1"), AntiGlareBoard::new, Blocks.copyProperties(GLASS_PANE));
+        MVRegistry.BLOCK.register(modIdLocation("anti_glare_board_type_2"), AntiGlareBoard::new, Blocks.copyProperties(GLASS_PANE));
         //sys.bi("air_conditioner", Blocks.AIR_CONDITIONER);
         //sys.bi("air_conditioner_external_unit", Blocks.AIR_CONDITIONER_EU);
         MVRegistry.BLOCK_ENTITY_TYPE.register(modIdLocation("homo_station_broadcaster_entity"), null, Blocks.BlockEntityTypes.HOMO_STATION_BROADCASTER);

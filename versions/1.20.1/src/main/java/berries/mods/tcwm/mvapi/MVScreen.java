@@ -5,6 +5,12 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 public abstract class MVScreen extends Screen {
+    protected final MVScreenHelper screenHelper;
+
+    {
+        this.screenHelper = new MVScreenHelper(() -> minecraft);
+    }
+
     public MVScreen(Component title) {
         super(title);
     }

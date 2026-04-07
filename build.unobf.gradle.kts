@@ -45,7 +45,9 @@ dependencies {
     minecraft("com.mojang:minecraft:${sc.current.version}")
     implementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader_nvr")}")
     implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
-    implementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    if ((property("deps.disable_modmenu")) == "false") {
+        implementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    }
 
     /*fapi(
         "fabric-lifecycle-events-v1",

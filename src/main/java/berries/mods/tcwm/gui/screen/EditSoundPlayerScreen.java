@@ -93,7 +93,7 @@ public class EditSoundPlayerScreen extends MVScreen {
                             default -> StationBroadcaster.StationBroadcasterEntity.Pitch.DEFAULT;
                         }
                 );
-            } else minecraft.setScreen(null);
+            } else screenHelper.setScreen(null);
         } else if (pos != null) {
             blockEntity = minecraft.level.getBlockEntity(pos);
             if (blockEntity instanceof StationBroadcaster.StationBroadcasterEntity) {
@@ -190,7 +190,7 @@ public class EditSoundPlayerScreen extends MVScreen {
                                 18,
                                 idBox,
                                 new Button(0, 0, 18, 18, MVComponent.text("..."), true, (button) -> {
-                                    minecraft.setScreen(new SoundListScreen(EditSoundPlayerScreen.this));
+                                    screenHelper.setScreen(new SoundListScreen(EditSoundPlayerScreen.this));
                                 })
                         )
                 ),
@@ -203,13 +203,13 @@ public class EditSoundPlayerScreen extends MVScreen {
 
         this.finishButton = addRenderableWidget(new Button(width / 2 + 34, height / 2 + 56, 60, 18, MVComponent.translatable("gui.tcwm.global.submit_button"), true, (button) -> {
             saveChanges();
-            minecraft.setScreen(null);
+            screenHelper.setScreen(null);
         }));
 
         list.reload(this::addRenderableWidget, this::removeWidget, this.children()::contains);
 
         addRenderableWidget(new TransparentIconButton(width / 2 + 80, height / 2 - 69, 15, Icons.EDIT, (button) -> {
-            minecraft.setScreen(new EditSoundPlayerNameScreen(EditSoundPlayerScreen.this));
+            screenHelper.setScreen(new EditSoundPlayerNameScreen(EditSoundPlayerScreen.this));
         }));
 
         saveWidgetChanges = () -> {
@@ -232,7 +232,7 @@ public class EditSoundPlayerScreen extends MVScreen {
     @Override
     public void renderScreen(GuiGraphicsData graphics, int mouseX, int mouseY, float f) {
         if (minecraft == null) return;
-        if (this.name == null || this.soundID == null) minecraft.setScreen(null);
+        if (this.name == null || this.soundID == null) screenHelper.setScreen(null);
 
         if (finishButton != null) {
             finishButton.active = !pitchComboBox.isOpened();

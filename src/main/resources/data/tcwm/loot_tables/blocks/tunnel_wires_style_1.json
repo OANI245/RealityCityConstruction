@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tcwm:tunnelline"
+          "name": "tcwm:tunnel_wires_style_1"
         }
       ],
       "conditions": [

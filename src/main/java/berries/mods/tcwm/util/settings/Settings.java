@@ -63,7 +63,7 @@ public class Settings {
         return new Settings(path);
     }
 
-    public static void setScreenCreator(Function<Screen, Screen> creator) {
+    /*public static void setScreenCreator(Function<Screen, Screen> creator) {
         screenCreator = creator;
     }
 
@@ -79,5 +79,5 @@ public class Settings {
             e.printStackTrace();
             return e;
         }
-    }
+    }*/
 }

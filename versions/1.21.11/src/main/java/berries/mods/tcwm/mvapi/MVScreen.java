@@ -9,6 +9,12 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public abstract class MVScreen extends Screen {
+    protected final MVScreenHelper screenHelper;
+
+    {
+        this.screenHelper = new MVScreenHelper(() -> minecraft);
+    }
+
     public MVScreen(Component title) {
         super(title);
     }

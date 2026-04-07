@@ -95,7 +95,7 @@ public class SoundListScreen extends MVScreen {
         this.listWidget = this.layout.addToContents(new SoundList(availableSounds.toList(), currentSound));
         LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(SPACING_MEDIUM));
         this.cancelButton = footer.addChild(new Button(0, 0, 100, BUTTON_SIZE, MVComponent.translatable("gui.tcwm.SPSLS.back_button"), true, (button) -> {
-            minecraft.setScreen(previous);
+            screenHelper.setScreen(previous);
         }));
         this.layout.setHeaderHeight(HEADER_HEIGHT);
         LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(SPACING_SMALL));
@@ -137,13 +137,13 @@ public class SoundListScreen extends MVScreen {
 
     public void saveChangeAndBack(ResourceLocation id) {
         previous.soundID = id.toString();
-        getMinecraftOrNull(() -> minecraft.setScreen(previous));
+        getMinecraftOrNull(() -> screenHelper.setScreen(previous));
     }
 
 
     @Override
     public void onClose() {
-        getMinecraftOrNull(() -> minecraft.setScreen(previous));
+        getMinecraftOrNull(() -> screenHelper.setScreen(previous));
     }
 
     @Override

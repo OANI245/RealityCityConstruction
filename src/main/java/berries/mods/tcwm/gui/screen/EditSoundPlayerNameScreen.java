@@ -36,7 +36,7 @@ public class EditSoundPlayerNameScreen extends MVScreen {
     public void saveChangesAndBack() {
         this.previous.name = nameEditBox.getValue();
         if (minecraft != null) {
-            minecraft.setScreen(previous);
+            screenHelper.setScreen(previous);
         }
     }
 

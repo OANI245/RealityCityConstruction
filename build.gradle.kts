@@ -49,7 +49,9 @@ dependencies {
     mappings(loom.officialMojangMappings())
     modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
-    modImplementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    if ((property("deps.disable_modmenu")) == "false") {
+        implementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    }
 
     /*fapi(
         "fabric-lifecycle-events-v1",

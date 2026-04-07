@@ -150,6 +150,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                         return;
                     }
                     if (l >= 6) {
+                        //? <= 26.1
                         mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
@@ -160,6 +161,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                         return;
                     }
                     if (l >= 6) {
+                        //? <= 26.1
                         mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
@@ -170,6 +172,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                         return;
                     }
                     if (l >= 6) {
+                        //? <= 26.1
                         mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
@@ -180,6 +183,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                         return;
                     }
                     if (l >= 6) {
+                        //? <= 26.1
                         mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
