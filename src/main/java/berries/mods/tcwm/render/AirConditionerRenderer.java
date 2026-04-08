@@ -62,10 +62,10 @@ public class AirConditionerRenderer extends MVBlockEntityRenderer<AirConditioner
         if (submitNodeCollector != null) {
             renderText(stack, renderState,
                     //? < 1.21.9 {
-                    Minecraft.getInstance().font
-                    //? } else {
-                    /*submitNodeCollector
-                     *///? }
+                    /*Minecraft.getInstance().font
+                    *///? } else {
+                    submitNodeCollector
+                     //? }
                     , -width / 2, -4f, text, false, 0, 0xffffffff, 0, 0, submitNodeCollector);
         }
         stack.popPose();

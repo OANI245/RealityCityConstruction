@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "O",
+    "L",""
+  ],
+  "key": {
+    "O": "tcwm:ceiling_normal_grille",
+    "L": "minecraft:prismarine_crystals"
+  },
+  "result": {
+    "id": "tcwm:ceiling_light_grille",
+    "item": "tcwm:ceiling_light_grille",
+    "count": 1
+  }
+}

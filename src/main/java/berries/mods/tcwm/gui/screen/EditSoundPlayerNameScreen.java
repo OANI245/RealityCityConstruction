@@ -46,8 +46,8 @@ public class EditSoundPlayerNameScreen extends MVScreen {
         //? < 1.20.5 {
         /*renderBackground(graphics.get());
         *///? } else if < 1.21.6 {
-        renderBackground(graphics.get(), mouseX, mouseY, f);
-        //? }
+        /*renderBackground(graphics.get(), mouseX, mouseY, f);
+        *///? }
         FlueroUI.renderCenteredDialog(graphics, this.width, this.height, 120, 74);
         super.renderScreen(graphics, mouseX, mouseY, f);
         MVTextDrawer.drawText(graphics, minecraft.font, this.getTitle(), MVTextDrawer.Alignment.CENTER, width / 2, height / 2 - 29, FlueroUI.textColor(0xFFFFFF));

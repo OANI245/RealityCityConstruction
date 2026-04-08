@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_custom_data",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "soundID",
+                  "target": "station_broadcaster_entity_data.soundID"
+                },
+                {
+                  "op": "replace",
+                  "source": "range",
+                  "target": "station_broadcaster_entity_data.range"
+                },
+                {
+                  "op": "replace",
+                  "source": "pitch",
+                  "target": "station_broadcaster_entity_data.pitch"
+                }
+              ],
+              "source": {
+                "type": "context",
+                "target": "block_entity"
+              }
+            }
+          ],
+          "name": "tcwm:homo_station_broadcaster"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ]
+}

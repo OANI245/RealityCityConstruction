@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "I I",
+    "I I"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "tcwm:ceiling_normal",
+    "item": "tcwm:ceiling_normal",
+    "count": 1
+  }
+}

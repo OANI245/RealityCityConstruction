@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "III",
+    "I I"
+  ],
+  "key": {
+    "I": {"item": "minecraft:iron_ingot"}
+  },
+  "result": {
+    "id": "tcwm:ceiling_normal_grille",
+    "item": "tcwm:ceiling_normal_grille",
+    "count": 1
+  }
+}

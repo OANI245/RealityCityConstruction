@@ -11,9 +11,9 @@ import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 //? >= 26.1
-//import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 //? < 26.1
-import net.minecraft.client.gui.GuiGraphics;
+//import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.layouts.GridLayout;
@@ -22,13 +22,13 @@ import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 //? >= 1.21.9 {
-/*import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-*///? }
+//? }
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import org.jetbrains.annotations.NotNull;
@@ -56,7 +56,7 @@ public class SoundListScreen extends MVScreen {
     protected SoundList listWidget;
     protected AbstractButton cancelButton;
     protected EditBox searchBox;
-    protected ResourceLocation currentSound;
+    protected Identifier currentSound;
 
     public SoundListScreen(EditSoundPlayerScreen previous) {
         super(MVComponent.translatable("gui.tcwm.SPSLS.title"));
@@ -102,12 +102,12 @@ public class SoundListScreen extends MVScreen {
         header.defaultCellSetting().alignHorizontallyCenter();
         Component titleComponent = MVComponent.translatable("gui.tcwm.SPSLS.title");
         //? < 1.21.11 {
-        header.addChild(new StringWidget(minecraft.font.width(titleComponent.getVisualOrderText()), minecraft.font.lineHeight, titleComponent, minecraft.font));
+        /*header.addChild(new StringWidget(minecraft.font.width(titleComponent.getVisualOrderText()), minecraft.font.lineHeight, titleComponent, minecraft.font));
         this.searchBox = header.addChild(new EditBox(minecraft.font, SEARCH_BOX_WIDTH, SEARCH_BOX_HEIGHT, MVComponent.EMPTY));
-        //? } else {
-        /*header.addChild(new StringWidget(titleComponent, this.font));
+        *///? } else {
+        header.addChild(new StringWidget(titleComponent, this.font));
         this.searchBox = header.addChild(new EditBox(this.font, 0, 0, SEARCH_BOX_WIDTH, SEARCH_BOX_HEIGHT, MVComponent.EMPTY));
-        *///? }
+        //? }
         searchBox.setResponder((str) -> {
             listWidget.search(searchBox.getValue());
         });
@@ -135,7 +135,7 @@ public class SoundListScreen extends MVScreen {
     }
 
 
-    public void saveChangeAndBack(ResourceLocation id) {
+    public void saveChangeAndBack(Identifier id) {
         previous.soundID = id.toString();
         getMinecraftOrNull(() -> screenHelper.setScreen(previous));
     }
@@ -153,8 +153,8 @@ public class SoundListScreen extends MVScreen {
         this.listWidget.render(graphics.get(), mouseX, mouseY, f);
         graphics.get().drawCenteredString(this.font, this.title, this.width / 2, 7, 16777215);
         *///? } else if < 1.21.6 {
-        this.renderBackground(graphics.get(), mouseX, mouseY, f);
-        //? }
+        /*this.renderBackground(graphics.get(), mouseX, mouseY, f);
+        *///? }
         super.renderScreen(graphics, mouseX, mouseY, f);
     }
 
@@ -196,16 +196,16 @@ public class SoundListScreen extends MVScreen {
 
         @Override
         //? < 1.21.9 {
-        public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) //? } else if < 26.1 {
+        /*public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) *///? } else if < 26.1 {
         /*public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)*///? } else {
-        /*public void extractContent(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, boolean hovered, float partialTick)*///? }
+        public void extractContent(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, boolean hovered, float partialTick)//? }
         {
             //? >= 1.21.9 {
-            /*int top = getContentY();
+            int top = getContentY();
             int left = getContentX();
             int width = getContentWidth();
             int height = getContentHeight();
-            *///? }
+            //? }
             MVTextDrawer.drawText(new GuiGraphicsData(guiGraphics), SoundListScreen.this.minecraft.font, MVComponent.text(currentPage + "/" + pageCount), MVTextDrawer.Alignment.CENTER, (left * 2 + width) / 2, top + height / 2 - minecraft.font.lineHeight / 2, -1);
             nextPageButton.setX(left + width - 18);
             previousPageButton.setX(left);
@@ -213,15 +213,15 @@ public class SoundListScreen extends MVScreen {
             previousPageButton.setY(top);
             if (currentPage > 1) {
                 //? < 26.1 {
-                previousPageButton.render(guiGraphics, mouseX, mouseY, partialTick);//? } else {
-                /*previousPageButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
-                *///? }
+                /*previousPageButton.render(guiGraphics, mouseX, mouseY, partialTick);*///? } else {
+                previousPageButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
+                //? }
             }
             if (currentPage < pageCount) {
                 //? < 26.1 {
-                nextPageButton.render(guiGraphics, mouseX, mouseY, partialTick);//? } else {
-                /*nextPageButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
-                *///? }
+                /*nextPageButton.render(guiGraphics, mouseX, mouseY, partialTick);*///? } else {
+                nextPageButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
+                //? }
             }
         }
 
@@ -241,11 +241,11 @@ public class SoundListScreen extends MVScreen {
         protected final MutableComponent text;
         protected final Button playButton;
         protected final Button selectButton;
-        protected final ResourceLocation id;
+        protected final Identifier id;
         protected boolean selected = false;
         protected boolean playing = false;
 
-        protected SoundListEntry(ResourceLocation id) {
+        protected SoundListEntry(Identifier id) {
             this.id = id;
             this.text = MVComponent.text(id.toString()).copy();
             // 提取按钮创建：复用逻辑+简化匿名类
@@ -298,28 +298,28 @@ public class SoundListScreen extends MVScreen {
 
         @Override
         //? < 1.21.9 {
-        public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) //? } else if < 26.1 {
+        /*public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) *///? } else if < 26.1 {
         /*public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)*///? } else {
-        /*public void extractContent(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)
-        *///? }
+        public void extractContent(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, boolean hovering, float partialTick)
+        //? }
         {
             //? >= 1.21.9 {
-            /*int top = getContentY();
+            int top = getContentY();
             int left = getContentX();
             int width = getContentWidth();
             int height = getContentHeight();
-            *///? }
+            //? }
             this.renderLabel(new GuiGraphicsData(guiGraphics), top, left);
             playButton.setX(left + width - 35);
             selectButton.setX(left + width - 16);
             playButton.setY(top + 1);
             selectButton.setY(top + 1);
             //? < 26.1 {
-            playButton.render(guiGraphics, mouseX, mouseY, partialTick);
-            selectButton.render(guiGraphics, mouseX, mouseY, partialTick);//? } else {
-            /*playButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
+            /*playButton.render(guiGraphics, mouseX, mouseY, partialTick);
+            selectButton.render(guiGraphics, mouseX, mouseY, partialTick);*///? } else {
+            playButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
             selectButton.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
-            *///? }
+            //? }
         }
 
         @Override
@@ -334,21 +334,21 @@ public class SoundListScreen extends MVScreen {
     }
 
     public class SoundList extends ContainerObjectSelectionList<ListEntry> {
-        protected final List<ResourceLocation> sounds;
-        protected List<ResourceLocation> queriedSounds = new ArrayList<>();
-        protected ResourceLocation currentSound;
+        protected final List<Identifier> sounds;
+        protected List<Identifier> queriedSounds = new ArrayList<>();
+        protected Identifier currentSound;
         protected final int pages;
         protected int queriedPages = 0;
         protected int currentPage = 1;
 
-        public SoundList(List<ResourceLocation> sounds, ResourceLocation selected) {
+        public SoundList(List<Identifier> sounds, Identifier selected) {
             //? < 1.20.3 {
             /*super(SoundListScreen.this.minecraft, SoundListScreen.this.width, SoundListScreen.this.height, 43, SoundListScreen.this.height - 32, SoundListScreen.LIST_ENTRY_HEIGHT);
             *///? } else {
             super(SoundListScreen.this.minecraft, SoundListScreen.this.width, SoundListScreen.this.layout.getContentHeight(), SoundListScreen.this.layout.getHeaderHeight(), SoundListScreen.LIST_ENTRY_HEIGHT);
             //? }
             this.sounds = new ArrayList<>(sounds);
-            this.sounds.sort(ResourceLocation::compareTo);
+            this.sounds.sort(Identifier::compareTo);
             this.currentSound = selected;
             int pages = 1;
             if (sounds.size() > PAGE_SIZE) {
@@ -378,14 +378,14 @@ public class SoundListScreen extends MVScreen {
             this.clearEntries();
             this.addEntries();
             //? < 1.21.9 {
-            layout.visitWidgets(SoundListScreen.this::removeWidget);
+            /*layout.visitWidgets(SoundListScreen.this::removeWidget);
             layout.visitWidgets(SoundListScreen.this::addRenderableWidget);
-            //? }
-            //? < 1.21.6 {
-            this.setScrollAmount(0);
-            //? } else {
-            /*this.refreshScrollAmount();
             *///? }
+            //? < 1.21.6 {
+            /*this.setScrollAmount(0);
+            *///? } else {
+            this.refreshScrollAmount();
+            //? }
             SoundListScreen.this.triggerImmediateNarration(true);
         }
 
@@ -396,20 +396,20 @@ public class SoundListScreen extends MVScreen {
             this.clearEntries();
             this.addEntries();
             //? < 1.21.9 {
-            layout.visitWidgets(SoundListScreen.this::removeWidget);
+            /*layout.visitWidgets(SoundListScreen.this::removeWidget);
             layout.visitWidgets(SoundListScreen.this::addRenderableWidget);
-            //? }
+            *///? }
         }
 
         private void addEntries() {
-            List<ResourceLocation> targetList = queriedSounds.isEmpty() ? sounds : queriedSounds;
+            List<Identifier> targetList = queriedSounds.isEmpty() ? sounds : queriedSounds;
             int totalSize = targetList.size();
             // 修正：索引从0开始，计算分页起始/结束位置
             int start = (currentPage - 1) * 100;
             int end = Math.min(start + 100, totalSize);
             // 遍历分页区间（闭区间[start, end)）
             for (int i = start; i < end; i++) {
-                ResourceLocation sound = targetList.get(i);
+                Identifier sound = targetList.get(i);
                 SoundListEntry entry = new SoundListEntry(sound);
                 if (sound.equals(currentSound)) { // 简化：直接用ResourceLocation的equals，避免toString
                     entry.setSelected(true);

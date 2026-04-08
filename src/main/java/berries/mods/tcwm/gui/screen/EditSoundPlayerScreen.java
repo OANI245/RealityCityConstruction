@@ -16,13 +16,13 @@ import berries.mods.tcwm.util.TcwmBlockEntity;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.EditBox;
 //? >= 1.21.9 {
-/*import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-*///? }
+//? }
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 //? < 1.21.6
-import net.minecraft.util.FastColor;
+//import net.minecraft.util.FastColor;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.joml.Matrix3x2fStack;
@@ -125,12 +125,12 @@ public class EditSoundPlayerScreen extends MVScreen {
         EditBox rangeEditBox = new EditBox(minecraft.font, 0, 0, 75, 18, MVComponent.EMPTY) {
             @Override
                     //? < 1.21.9 {
-            public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+            /*public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
                 var temp = super.keyPressed(keyCode, scanCode, modifiers);
-                //? } else {
-            /*public boolean keyPressed(KeyEvent e) {
+                *///? } else {
+            public boolean keyPressed(KeyEvent e) {
                 var temp = super.keyPressed(e);
-                *///? }
+                //? }
                 try {
                     range = Float.parseFloat(this.getValue());
                     this.setTextColor(FlueroUI.rgb(255, 255, 255));
@@ -146,12 +146,12 @@ public class EditSoundPlayerScreen extends MVScreen {
         EditBox idBox = new EditBox(minecraft.font, 0, 0, 85, 18, MVComponent.EMPTY) {
             @Override
                     //? < 1.21.9 {
-            public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+            /*public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
                 var temp = super.keyPressed(keyCode, scanCode, modifiers);
-                //? } else {
-            /*public boolean keyPressed(KeyEvent e) {
+                *///? } else {
+            public boolean keyPressed(KeyEvent e) {
                 var temp = super.keyPressed(e);
-                *///? }
+                //? }
                 soundID = this.getValue();
                 if (!soundID.matches("[a-z0-9_.]+:[a-z0-9_.]+$")) {
                     this.setTextColor(FlueroUI.rgb(255, 180, 171));
@@ -241,8 +241,8 @@ public class EditSoundPlayerScreen extends MVScreen {
         //? < 1.20.5 {
         /*renderBackground(graphics.get());
          *///? } else if < 1.21.6 {
-        this.renderBackground(graphics.get(), mouseX, mouseY, f);
-        //? }
+        /*this.renderBackground(graphics.get(), mouseX, mouseY, f);
+        *///? }
         int dialogWidth = 225;
         int dialogHeight = 182;
         FlueroUI.renderCenteredDialog(graphics, this.width, this.height, dialogWidth, dialogHeight);
@@ -256,30 +256,30 @@ public class EditSoundPlayerScreen extends MVScreen {
                                 : 1.5f
                         : 2.0f;
         //? < 1.21.6 {
-        PoseStack poseStack = graphics.get().pose();
+        /*PoseStack poseStack = graphics.get().pose();
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);
         graphics.get().drawString(minecraft.font, title, (int) Math.floor((width / 2f - 95) / scale), (int) Math.ceil((height / 2f - 71) / scale), FlueroUI.textColor(0xFFFFFF), false);
         poseStack.popPose();
-        //? } else {
-        /*graphics.get().nextStratum();
+        *///? } else {
+        graphics.get().nextStratum();
         Matrix3x2fStack poseStack = graphics.get().pose();
         poseStack.pushMatrix();
         poseStack.scale(scale, scale);
         MVTextDrawer.drawText(graphics, minecraft.font, title, MVTextDrawer.Alignment.LEFT, (int)Math.floor((width / 2f - 95) / scale), (int)Math.ceil((height / 2f - 71) / scale), FlueroUI.textColor(0xFFFFFF), false);
         poseStack.popMatrix();
         graphics.get().nextStratum();
-        *///? }
+        //? }
 
         for (PropertiesList.Item<AbstractWidget> item : list.items) {//? < 26.1
-            item.render(graphics.get(), mouseX, mouseY, f);
+            //item.render(graphics.get(), mouseX, mouseY, f);
             //? >= 26.1
-            //item.extractRenderState(graphics.get(), mouseX, mouseY, f);
+            item.extractRenderState(graphics.get(), mouseX, mouseY, f);
         }
         for (PropertiesList.Item<PropertiesList.StackPanel> item : list.stackPanels) {//? < 26.1
-            item.render(graphics.get(), mouseX, mouseY, f);
+            //item.render(graphics.get(), mouseX, mouseY, f);
             //? >= 26.1
-            //item.extractRenderState(graphics.get(), mouseX, mouseY, f);
+            item.extractRenderState(graphics.get(), mouseX, mouseY, f);
         }
         super.renderScreen(graphics, mouseX, mouseY, f);
     }
@@ -309,10 +309,10 @@ public class EditSoundPlayerScreen extends MVScreen {
         return pitchComboBox.mouseClicked(d, e, i) || super.mouseClicked(d, e, i);
     }
     *///? } else if >= 1.21.9 {
-    /*@Override public boolean mouseClicked(MouseButtonEvent e, boolean bl) {
+    @Override public boolean mouseClicked(MouseButtonEvent e, boolean bl) {
         return pitchComboBox.mouseClicked(e, bl) || super.mouseClicked(e, bl);
     }
-    *///? }
+    //? }
 
     @Override
     public void onClose() {

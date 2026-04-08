@@ -4,7 +4,8 @@
   "compatibilityLevel": "${java}",
   "mixins": [
     "MixinChunkSerializer",
-    "MixinMinecraft"
+    "MixinMinecraft",
+    "MixinSulfurCube"
   ],
   "injectors": {
     "defaultRequire": 1

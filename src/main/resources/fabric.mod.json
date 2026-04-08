@@ -30,7 +30,7 @@
   "mixins": [
     "tcwm.mixins.json"
   ],
-  "accessWidener": "tcwm.ct",
+  "accessWidener": "${awxname}",
   "depends": {
     "fabricloader": ">=0.17",
     "minecraft": "${minecraft}",

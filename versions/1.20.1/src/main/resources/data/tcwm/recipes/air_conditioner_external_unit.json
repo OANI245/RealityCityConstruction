@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "IBI",
+    "CCC"
+  ],
+  "key": {
+    "B": {"item": "minecraft:stick"},
+    "C": {"item": "minecraft:white_concrete"},
+    "I": {"item": "minecraft:iron_ingot"}
+  },
+  "result": {
+    "id": "tcwm:air_conditioner_external_unit",
+    "item": "tcwm:air_conditioner_external_unit",
+    "count": 4
+  }
+}

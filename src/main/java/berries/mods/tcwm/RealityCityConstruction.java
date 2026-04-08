@@ -17,7 +17,9 @@ import berries.mods.tcwm.network.legacynetwork.LegacyPacketUpdateBlockEntity;
 *///? }
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -57,9 +59,9 @@ public class RealityCityConstruction implements ModInitializer {
         MVRegistry.BLOCK.register(modIdLocation("platform_indented"), Blocks.PLATFORM_INDENTED.get());
         MVRegistry.ITEM.register(modIdLocation("platform_indented"), defaultBlockItem(Blocks.PLATFORM_INDENTED.get()));*/
         //? >= 1.21.5 {
-        /*MVRegistry.ITEM.register(modIdLocation("homo_station_broadcaster"), (pf) -> new StationBroadCasterBlockItem((StationBroadcaster) Blocks.STATION_BROADCASTER, pf), new Item.Properties().useBlockDescriptionPrefix());*///?} else {
-        MVRegistry.ITEM.register(modIdLocation("homo_station_broadcaster"), (pf) -> new StationBroadCasterBlockItem((StationBroadcaster) Blocks.STATION_BROADCASTER, pf), new Item.Properties());
-        //? }
+        MVRegistry.ITEM.register(modIdLocation("homo_station_broadcaster"), (pf) -> new StationBroadCasterBlockItem((StationBroadcaster) Blocks.STATION_BROADCASTER, pf), new Item.Properties().useBlockDescriptionPrefix());//?} else {
+        /*MVRegistry.ITEM.register(modIdLocation("homo_station_broadcaster"), (pf) -> new StationBroadCasterBlockItem((StationBroadcaster) Blocks.STATION_BROADCASTER, pf), new Item.Properties());
+        *///? }
         MVRegistry.BLOCK.register(modIdLocation("conveyer_belt"), ConveyerBelt::new, Blocks.copyProperties(DEEPSLATE));
         MVRegistry.BLOCK.register(modIdLocation("expwy_caution_bar"), ExpwyCautionBar::new, Blocks.copyProperties(STONE));
         MVRegistry.BLOCK.register(modIdLocation("anti_glare_board_type_1"), AntiGlareBoard::new, Blocks.copyProperties(GLASS_PANE));
@@ -128,7 +130,7 @@ public class RealityCityConstruction implements ModInitializer {
         //? }
     }
 
-    public static ResourceLocation modIdLocation(String path) {
+    public static Identifier modIdLocation(String path) {
         return MVIdentifier.get(RealityCityConstruction.MOD_ID, path);
     }
 

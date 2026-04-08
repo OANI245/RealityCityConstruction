@@ -4,7 +4,7 @@ import berries.mods.tcwm.mvapi.MVRegistry;
 import berries.mods.tcwm.util.RegistryObject;
 import net.minecraft.world.item.Item;
 //? >= 1.21.4
-//import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.ToolMaterial;
 
 import static berries.mods.tcwm.RealityCityConstruction.modIdLocation;
 
@@ -25,6 +25,6 @@ public interface Items {
     Item FORGE_TOOL = MVRegistry.ITEM.register(modIdLocation("forge_tool"), Item::new, new Item.Properties());
     Item AIR_CONDITIONER_CONTROLLER = MVRegistry.ITEM.register(modIdLocation("air_conditioner_controller"), AirConditionerController::new, new Item.Properties()
             //? >= 1.21.11
-            //.spear(ToolMaterial.STONE, 0.75f, 0.82f, 0.7f, 4.5f, 10.0f, 9.0f, 5.1f, 13.75f, 4.6f)
+            .spear(ToolMaterial.STONE, 0.75f, 0.82f, 0.7f, 4.5f, 10.0f, 9.0f, 5.1f, 13.75f, 4.6f)
     );
 }

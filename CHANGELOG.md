@@ -3,20 +3,33 @@
     <li>
         Blocks
         <ol>
-            <li>Renamed All Road Railings.</li>
+            <li>The all blocks can use tools to break in Survival Mode.</li>
+            <li>Added partial block loot tables and recipes.</li>
+            <li>Sound Player item mined by pickaxe will record Block Entity now.</li>
         </ol>
     </li>
     <li>
-        UI
+        Versioning
         <ol>
-            <li>Rescale the Sound Select screen item display height in 1.20.1 version.</li>
+            <li>Support partial Minecraft Snapshot versions.</li>
+        </ol>
+    </li>
+    <li>
+        Mobs (Only 26.2)
+        <ol>
+            <li>Partial mod blocks can put in Sulfur Cube. There are the blocks supported:</li>
+            <ul>
+                <li>Sound Player</li><li>Blind Sidewalk Blocks</li><li>Marble Blocks</li>
+            </ul>
+            <br/>
+            <li>Sulfur Cube contains Sound Player can play sound when attack. you can propertied sound in Sound Block and use pickaxe mined and get the item and put it in Sulfur Cube, the sound is your setting.</li>
         </ol>
     </li>
     <li>
         Fixes
         <ol>
-            <li>Fixed when air conditioner temperature is lowest or highest, it's always play "Ding" sound when press arrow left or arrow right.</li>
-            <li>Fixed air conditioner external unit particle is undefined texture</li>
+            <li>Fixed in 26.1, Builtin PBR resource pack show incompatible.</li>
+            <li>Fixed in 26.2, The Player too far from air conditioner message cannot show in HUD.</li>
         </ol>
     </li>
 </ul>

@@ -18,7 +18,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 //? < 1.21.5
-import net.minecraft.world.InteractionResultHolder;
+//import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -86,17 +86,17 @@ public class AirConditionerController extends Item {
     @Override
     public @NotNull
         //? >= 1.21.5 {
-    /*InteractionResult
-    *///? } else {
-    InteractionResultHolder<ItemStack> //? }
+    InteractionResult
+    //? } else {
+    /*InteractionResultHolder<ItemStack> *///? }
     use(@NotNull Level level, Player player, @NotNull InteractionHand interactionHand) {
         ItemStack stack = player.getItemInHand(interactionHand);
         BlockPos blockPos = getLinkedBlockPos(stack);
         if (blockPos == null) {
             //? >= 1.21.5
-            //return InteractionResult.PASS;
+            return InteractionResult.PASS;
             //? < 1.21.5
-            return InteractionResultHolder.pass(player.getItemInHand(interactionHand));
+            //return InteractionResultHolder.pass(player.getItemInHand(interactionHand));
         }
         long l =
                 (long) Math.floor(
@@ -108,9 +108,9 @@ public class AirConditionerController extends Item {
                 ((ServerPlayer) player).connection.send(new ClientboundSetActionBarTextPacket(MVComponent.translatable("gui.tcwm.air_conditioner.too_far")));
             }
             //? >= 1.21.5
-            //return InteractionResult.FAIL;
+            return InteractionResult.FAIL;
             //? < 1.21.5
-            return InteractionResultHolder.fail(player.getItemInHand(interactionHand));
+            //return InteractionResultHolder.fail(player.getItemInHand(interactionHand));
         }
         BlockState blockState = level.getBlockState(blockPos);
         if (blockState.hasProperty(AirConditioner.OPEN)) {
@@ -118,9 +118,9 @@ public class AirConditionerController extends Item {
                 PacketModifyAirConditionerState.modifyState(level.getServer(), player, blockState.getValue(AirConditioner.OPEN) == 0 ? 0 : 1, blockPos);
             }
             //? >= 1.21.5
-            //return InteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS;
             //? < 1.21.5
-            return InteractionResultHolder.success(player.getItemInHand(interactionHand));
+            //return InteractionResultHolder.success(player.getItemInHand(interactionHand));
         }
         return super.use(level, player, interactionHand);
     }

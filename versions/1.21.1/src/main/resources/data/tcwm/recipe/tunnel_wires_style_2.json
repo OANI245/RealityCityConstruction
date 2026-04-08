@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "O",
+    "L"
+  ],
+  "key": {
+    "O": {"item": "tcwm:tunnel_wires_style_2"},
+    "L": {"item": "minecraft:light_gray_concrete"}
+  },
+  "result": {
+    "id": "tcwm:tunnel_wires_style_1",
+    "item": "tcwm:tunnel_wires_style_1",
+    "count": 1
+  }
+}

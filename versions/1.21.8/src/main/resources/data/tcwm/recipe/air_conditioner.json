@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CBC",
+    "LRI",
+    "CDC"
+  ],
+  "key": {
+    "B": "minecraft:blue_ice",
+    "C": "minecraft:white_concrete",
+    "D": "minecraft:iron_door",
+    "I": "minecraft:redstone_lamp",
+    "L": "minecraft:lightning_rod",
+    "R": "minecraft:redstone"
+  },
+  "result": {
+    "id": "tcwm:air_conditioner",
+    "item": "tcwm:air_conditioner",
+    "count": 8
+  }
+}

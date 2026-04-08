@@ -15,9 +15,9 @@ import berries.mods.tcwm.util.settings.Settings;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;//? < 26.1
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+//import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 //? >= 26.1
-//import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
@@ -43,22 +43,22 @@ import java.util.concurrent.atomic.AtomicLong;
 /*import berries.mods.tcwm.network.legacynetwork.LegacyPacketOpenSoundPlayerScreen;
  *///? }
 //? < 1.21.6
-import org.slf4j.LoggerFactory;
+//import org.slf4j.LoggerFactory;
 
 public class RealityCityConstructionClient implements ClientModInitializer {
     public String MIN_MTRVERSION = "3.2.0";
     public final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(RealityCityConstruction.MOD_ID);
     //private Runtime rn = Runtime.getRuntime();
     //? >= 1.21.9
-    //protected KeyMapping.Category category;
+    protected KeyMapping.Category category;
 
     public KeyMapping registerKeyBinding(KeyMapping km) {
         return
 
         //? >= 26.1
-        //KeyMappingHelper.registerKeyMapping(km);
+        KeyMappingHelper.registerKeyMapping(km);
         //? < 26.1
-        KeyBindingHelper.registerKeyBinding(km);
+        //KeyBindingHelper.registerKeyBinding(km);
     }
 
     @SuppressWarnings("all")
@@ -78,7 +78,7 @@ public class RealityCityConstructionClient implements ClientModInitializer {
         );
 
         //? >= 1.21.9
-        //category = KeyMapping.Category.register(MVIdentifier.get(RealityCityConstruction.MOD_ID, "general"));
+        category = KeyMapping.Category.register(MVIdentifier.get(RealityCityConstruction.MOD_ID, "general"));
 
         KeyMapping binding0 = registerKeyBinding(
                 new KeyMapping(
@@ -86,9 +86,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                         InputConstants.Type.KEYSYM,
                         GLFW.GLFW_KEY_DOWN,
                         //? >= 1.21.9 {
-                        /*category*///? } else {
-                        "key.category.tcwm.general"
-                        //? }
+                        category//? } else {
+                        /*"key.category.tcwm.general"
+                        *///? }
                 )
         );
 
@@ -98,9 +98,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                         InputConstants.Type.KEYSYM,
                         GLFW.GLFW_KEY_UP,                         
                         //? >= 1.21.9 {
-                        /*category*///? } else {
-                        "key.category.tcwm.general"
-                        //? }
+                        category//? } else {
+                        /*"key.category.tcwm.general"
+                        *///? }
                 )
         );
 
@@ -110,9 +110,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                         InputConstants.Type.KEYSYM,
                         GLFW.GLFW_KEY_RIGHT,
                         //? >= 1.21.9 {
-                        /*category*///? } else {
-                        "key.category.tcwm.general"
-                         //? }
+                        category//? } else {
+                        /*"key.category.tcwm.general"
+                         *///? }
                 )
         );
 
@@ -122,9 +122,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                         InputConstants.Type.KEYSYM,
                         GLFW.GLFW_KEY_LEFT,
                         //? >= 1.21.9 {
-                        /*category*///? } else {
-                        "key.category.tcwm.general"
-                         //? }
+                        category//? } else {
+                        /*"key.category.tcwm.general"
+                         *///? }
                 )
         );
 
@@ -151,7 +151,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                     }
                     if (l >= 6) {
                         //? <= 26.1
-                        mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //? > 26.1
+                        mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
                     PacketModifyAirConditionerState.sendC2S(2, blockPos0);
@@ -162,7 +164,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                     }
                     if (l >= 6) {
                         //? <= 26.1
-                        mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //? > 26.1
+                        mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
                     PacketModifyAirConditionerState.sendC2S(3, blockPos0);
@@ -173,7 +177,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                     }
                     if (l >= 6) {
                         //? <= 26.1
-                        mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //? > 26.1
+                        mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
                     PacketModifyAirConditionerState.sendC2S(4, blockPos0);
@@ -184,7 +190,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                     }
                     if (l >= 6) {
                         //? <= 26.1
-                        mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //? > 26.1
+                        mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
                     PacketModifyAirConditionerState.sendC2S(5, blockPos0);

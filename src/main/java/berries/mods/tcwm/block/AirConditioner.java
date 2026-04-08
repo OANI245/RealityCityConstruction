@@ -74,22 +74,22 @@ public class AirConditioner extends MVSimpleCodecHorizontalDirectionalBlock impl
 
     @Override
             //? >= 1.21.5 {
-    /*protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource randomSource) {
+    protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource randomSource) {
         if (direction == getNeighbourDirection(state.getValue(SIDE), state.getValue(FACING))) {
             return neighborState.is(this) && neighborState.getValue(SIDE) != state.getValue(SIDE) ? state : Blocks.AIR.defaultBlockState();
         } else {
             return super.updateShape(state, levelReader, scheduledTickAccess, blockPos, direction, neighborPos, neighborState, randomSource);
         }
     }
-    *///? } else {
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+    //? } else {
+    /*public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (direction == getNeighbourDirection(state.getValue(SIDE), state.getValue(FACING))) {
             return neighborState.is(this) && neighborState.getValue(SIDE) != state.getValue(SIDE) ? state : Blocks.AIR.defaultBlockState();
         } else {
             return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
         }
     }
-    //? }
+    *///? }
 
     Direction getNeighbourDirection(EnumSide side, Direction direction) {
         return side == EnumSide.LEFT ? direction.getCounterClockWise() : direction.getClockWise();

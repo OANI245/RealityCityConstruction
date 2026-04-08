@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "ILI",
+    "I I"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "L": "minecraft:prismarine_crystals"
+  },
+  "result": {
+    "id": "tcwm:ceiling_light",
+    "item": "tcwm:ceiling_light",
+    "count": 1
+  }
+}

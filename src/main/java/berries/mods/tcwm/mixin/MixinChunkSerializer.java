@@ -12,13 +12,13 @@ import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 //? >= 1.21.9
-//import net.minecraft.world.level.chunk.PalettedContainerFactory;
+import net.minecraft.world.level.chunk.PalettedContainerFactory;
 import net.minecraft.world.level.chunk.ProtoChunk;
 //? < 1.21.5 {
-import net.minecraft.world.level.chunk.storage.ChunkSerializer;
-//? } else {
-/*import net.minecraft.world.level.chunk.storage.SerializableChunkData;
-*///? }
+/*import net.minecraft.world.level.chunk.storage.ChunkSerializer;
+*///? } else {
+import net.minecraft.world.level.chunk.storage.SerializableChunkData;
+//? }
 //? > 1.20.5
 import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Optional;
 
 //? < 1.21.5 {
-@Mixin(ChunkSerializer.class)
+/*@Mixin(ChunkSerializer.class)
 public class MixinChunkSerializer {
     @Inject(
         method = "read",
@@ -41,10 +41,10 @@ public class MixinChunkSerializer {
     //? > 1.20.5 {
     private static void read(ServerLevel serverLevel, PoiManager poiManager, RegionStorageInfo regionStorageInfo, ChunkPos chunkPos, CompoundTag compoundTag, CallbackInfoReturnable<ProtoChunk> cir, @Local(ordinal = 0) CompoundTag compoundTag2) {
         //? } else {
-    /*private static void read(ServerLevel serverLevel, PoiManager poiManager, ChunkPos chunkPos, CompoundTag compoundTag, CallbackInfoReturnable<ProtoChunk> cir, @Local(ordinal = 0) CompoundTag compoundTag2) {
-        *///? }
-        //? } else {
-/*@Mixin(SerializableChunkData.class)
+    /^private static void read(ServerLevel serverLevel, PoiManager poiManager, ChunkPos chunkPos, CompoundTag compoundTag, CallbackInfoReturnable<ProtoChunk> cir, @Local(ordinal = 0) CompoundTag compoundTag2) {
+        ^///? }
+        *///? } else {
+@Mixin(SerializableChunkData.class)
 public class MixinChunkSerializer {
     @Shadow
     @Final
@@ -55,13 +55,13 @@ public class MixinChunkSerializer {
         at = @At(value = "INVOKE", target = "Ljava/util/Optional;get()Ljava/lang/Object;", ordinal = 0, shift = At.Shift.AFTER)
     )
     //? < 1.21.9 {
-    private static void read(LevelHeightAccessor levelHeightAccessor, RegistryAccess registryAccess, CompoundTag compoundTag, CallbackInfoReturnable<SerializableChunkData> cir, @Local(ordinal = 0) CompoundTag compoundTag3) {
-    //? } else {
-    /^private static void read(LevelHeightAccessor levelHeightAccessor, PalettedContainerFactory palettedContainerFactory, CompoundTag compoundTag, CallbackInfoReturnable<SerializableChunkData> cir, @Local(ordinal = 0) CompoundTag compoundTag3) {
-    ^///? }
-        *///? }
+    /*private static void read(LevelHeightAccessor levelHeightAccessor, RegistryAccess registryAccess, CompoundTag compoundTag, CallbackInfoReturnable<SerializableChunkData> cir, @Local(ordinal = 0) CompoundTag compoundTag3) {
+    *///? } else {
+    private static void read(LevelHeightAccessor levelHeightAccessor, PalettedContainerFactory palettedContainerFactory, CompoundTag compoundTag, CallbackInfoReturnable<SerializableChunkData> cir, @Local(ordinal = 0) CompoundTag compoundTag3) {
+    //? }
+        //? }
         //? >= 1.21.5 {
-        /*Tag sections = compoundTag3.get("sections");
+        Tag sections = compoundTag3.get("sections");
           if (((CompoundTag) compoundTag3).contains("block_states")) {
              CompoundTag blockStates = ((CompoundTag) compoundTag3).getCompound("block_states").orElse(new CompoundTag());
              if (blockStates.isEmpty()) return;
@@ -103,8 +103,8 @@ public class MixinChunkSerializer {
                 compoundTag3.put("sections", sections);
             }
         }
-        *///? } else {
-        if (((CompoundTag) compoundTag2).contains("block_states")) {
+        //? } else {
+        /*if (((CompoundTag) compoundTag2).contains("block_states")) {
             CompoundTag blockStates = ((CompoundTag) compoundTag2).getCompound("block_states");
             if (blockStates.isEmpty()) return;
             ListTag palette = blockStates.getList("palette", 10);
@@ -146,7 +146,7 @@ public class MixinChunkSerializer {
                 compoundTag2.put("sections", sections);
             }
         }
-        //? }
+        *///? }
         /*
         * CompoundTag blockStatesBlock = Packets.getReadValue(compoundTag2.getCompound("block_states"), new CompoundTag());
         if (blockStatesBlock.isEmpty()) return;

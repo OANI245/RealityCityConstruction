@@ -5,7 +5,7 @@ plugins {
     // id("me.modmuss50.mod-publish-plugin") version "1.0.+" apply false
 }
 
-stonecutter active "1.21.1"
+stonecutter active "26.2-snapshot-1"
 
 /*
 // Make newer versions be published last
@@ -39,6 +39,10 @@ stonecutter parameters {
 
         replacements.string(current.parsed > "26.0") {
             replace("classTweaker v1 named", "classTweaker v1 official")
+        }
+
+        replacements.string(current.parsed >= "1.21.9") {
+            replace("tcwm.awx.accesswidener", "tcwm.awx.ct")
         }
     }
 }

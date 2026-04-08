@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "tcwm:homo_station_broadcaster",
+    "tcwm:marble",
+    "tcwm:white_marble",
+    "tcwm:yellow_blind_sidewalk",
+    "tcwm:yellow_blind_sidewalk_corner",
+    "tcwm:black_blind_sidewalk",
+    "tcwm:black_blind_sidewalk_corner",
+    "tcwm:andesite_blind_sidewalk",
+    "tcwm:andesite_blind_sidewalk_corner"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "O",
+    "L",""
+  ],
+  "key": {
+    "O": "tcwm:ceiling_normal",
+    "L": "minecraft:prismarine_crystals"
+  },
+  "result": {
+    "id": "tcwm:ceiling_light",
+    "item": "tcwm:ceiling_light",
+    "count": 1
+  }
+}

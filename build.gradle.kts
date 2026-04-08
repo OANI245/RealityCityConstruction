@@ -65,10 +65,17 @@ dependencies {
 
 loom {
     fabricModJsonPath = rootProject.file("src/main/resources/fabric.mod.json") // Useful for interface injection
-    accessWidenerPath = sc.process(
-        rootProject.file("src/main/resources/tcwm.ct"),
-        "build/processed.ct"
-    )
+    if (sc.current.parsed >= "1.21.9") {
+        accessWidenerPath = sc.process(
+            rootProject.file("src/main/resources/tcwm.awx.ct"),
+            "build/processed.ct"
+        )
+    } else {
+        accessWidenerPath = sc.process(
+            rootProject.file("src/main/resources/tcwm.awx.accesswidener"),
+            "build/processed.accesswidener"
+        )
+    }
 
     decompilerOptions.named("vineflower") {
         options.put("mark-corresponding-synthetics", "1") // Adds names to lambdas - useful for mixins
@@ -93,12 +100,14 @@ tasks {
         inputs.property("name", project.property("mod.name"))
         inputs.property("version", project.property("mod.version"))
         inputs.property("minecraft", project.property("mod.mc_dep"))
+        inputs.property("awxname", if (sc.current.parsed >= "26.1") "tcwm.awx.ct" else "tcwm.awx.accesswidener")
 
         val props = mapOf(
             "id" to project.property("mod.id"),
             "name" to project.property("mod.name"),
             "version" to project.property("mod.version"),
-            "minecraft" to project.property("mod.mc_dep")
+            "minecraft" to project.property("mod.mc_dep"),
+            "awxname" to if (sc.current.parsed >= "26.1") "tcwm.awx.ct" else "tcwm.awx.accesswidener"
         )
 
         filesMatching("fabric.mod.json") { expand(props) }

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    "IBI",
+    " B "
+  ],
+  "key": {
+    "B": {"item": "minecraft:stone_button"},
+    "L": {"item": "minecraft:redstone_torch"},
+    "I": {"item": "minecraft:iron_ingot"}
+  },
+  "result": {
+    "id": "tcwm:air_conditioner_controller",
+    "item": "tcwm:air_conditioner_controller",
+    "count": 1
+  }
+}

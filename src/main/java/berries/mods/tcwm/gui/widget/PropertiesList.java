@@ -5,16 +5,16 @@ import berries.mods.tcwm.mvapi.MVScreen;
 import berries.mods.tcwm.mvapi.MVTextDrawer;
 import net.minecraft.client.Minecraft;
 //? < 26.1
-import net.minecraft.client.gui.GuiGraphics;
+//import net.minecraft.client.gui.GuiGraphics;
 //? >= 26.1
-//import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 //? >= 1.21.9
-//import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 
 import java.util.ArrayList;
@@ -109,7 +109,7 @@ public class PropertiesList {
 
         //? < 1.21.9 {
 
-        @Override
+        /*@Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
             return false;
         }
@@ -123,8 +123,8 @@ public class PropertiesList {
         public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
             return false;
         }
-        //? } else {
-        /*@Override
+        *///? } else {
+        @Override
         public boolean mouseClicked(MouseButtonEvent e, boolean b) {
             return false;
         }
@@ -138,13 +138,13 @@ public class PropertiesList {
         public boolean mouseDragged(MouseButtonEvent e, double d, double g) {
             return false;
         }
-        *///? }
+        //? }
 
         @Override
         //? >= 26.1 {
-        /*protected void extractWidgetRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
-        *///? } else {
-        protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {//?}
+        protected void extractWidgetRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
+        //? } else {
+        /*protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {*///?}
             Minecraft minecraft = Minecraft.getInstance();
             MVTextDrawer.drawText(new MVScreen.GuiGraphicsData(guiGraphics), minecraft.font, this.getMessage(), MVTextDrawer.Alignment.LEFT, getX() + 10, getY() + height / 2, FlueroUI.textColor(0xFFFFFF));
         }

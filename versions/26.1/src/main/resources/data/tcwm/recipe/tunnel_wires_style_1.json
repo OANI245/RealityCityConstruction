@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    " I ",
+    "WWW"
+  ],
+  "key": {
+    "W": "minecraft:gray_wool",
+    "I": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "tcwm:tunnel_wires_style_2",
+    "item": "tcwm:tunnel_wires_style_2",
+    "count": 6
+  }
+}

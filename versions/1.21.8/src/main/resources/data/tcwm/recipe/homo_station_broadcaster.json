@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RSR",
+    "SHS",
+    "RSR"
+  ],
+  "key": {
+    "S": "minecraft:smooth_stone",
+    "R": "minecraft:redstone",
+    "H": "minecraft:goat_horn"
+  },
+  "result": {
+    "id": "tcwm:homo_station_broadcaster",
+    "item": "tcwm:homo_station_broadcaster",
+    "count": 4
+  }
+}

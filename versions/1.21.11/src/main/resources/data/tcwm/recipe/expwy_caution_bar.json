@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G",
+    "C",
+    "C"
+  ],
+  "key": {
+    "G": "minecraft:copper_ingot",
+    "C": "minecraft:light_gray_concrete"
+  },
+  "result": {
+    "id": "tcwm:expwy_caution_bar",
+    "item": "tcwm:expwy_caution_bar",
+    "count": 4
+  }
+}

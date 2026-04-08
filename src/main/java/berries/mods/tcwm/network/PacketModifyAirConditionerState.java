@@ -9,7 +9,7 @@ import net.minecraft.core.BlockPos;
 //? >= 1.20.5
 import net.minecraft.network.codec.StreamCodec;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
@@ -30,7 +30,7 @@ public class PacketModifyAirConditionerState {
     public static final int UP_TEMPERATURE = 4;
     public static final int DOWN_TEMPERATURE = 5;
 
-    public static final ResourceLocation PACKET_MODIFY_AIR_CONDITIONER_STATE = MVIdentifier.get(RealityCityConstruction.MOD_ID, "modify_air_conditioner_state");
+    public static final Identifier PACKET_MODIFY_AIR_CONDITIONER_STATE = MVIdentifier.get(RealityCityConstruction.MOD_ID, "modify_air_conditioner_state");
     public record PacketChangeAirConditionerStatePayload(Integer typ, BlockPos linkedPos) implements MVCustomPayload {
         public static final MVPayloadType<PacketChangeAirConditionerStatePayload> TYPE = new MVPayloadType<>(PACKET_MODIFY_AIR_CONDITIONER_STATE);
         public static final MVPayloadCodec<PacketChangeAirConditionerStatePayload> CODEC = new MVPayloadCodec<>(
@@ -75,7 +75,7 @@ public class PacketModifyAirConditionerState {
     public static void modifyState(Object platform, Player player, int typ, BlockPos linkedPos) {
         if (!(platform instanceof MinecraftServer)) return;
         //? < 1.21.5
-        ((MinecraftServer) platform).tell(new TickTask(0, () -> {
+        //((MinecraftServer) platform).tell(new TickTask(0, () -> {
             ServerLevel level = (ServerLevel) ((ServerPlayer) player).level();
             BlockState state = level.getBlockState(linkedPos);
             BlockEntity entity = level.getBlockEntity(linkedPos);
@@ -167,7 +167,7 @@ public class PacketModifyAirConditionerState {
 
             updateTwoSides(level, linkedPos, state);
             //? < 1.21.5
-        }));
+        //}));
     }
 
     public static void updateTwoSides(Level level, BlockPos linkedPos, BlockState state) {
