@@ -151,9 +151,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                     }
                     if (l >= 6) {
                         //? <= 26.1
-                        //mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         //? > 26.1
-                        mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
                     PacketModifyAirConditionerState.sendC2S(2, blockPos0);
@@ -164,9 +164,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                     }
                     if (l >= 6) {
                         //? <= 26.1
-                        //mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         //? > 26.1
-                        mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
                     PacketModifyAirConditionerState.sendC2S(3, blockPos0);
@@ -177,9 +177,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                     }
                     if (l >= 6) {
                         //? <= 26.1
-                        //mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         //? > 26.1
-                        mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
                     PacketModifyAirConditionerState.sendC2S(4, blockPos0);
@@ -190,9 +190,9 @@ public class RealityCityConstructionClient implements ClientModInitializer {
                     }
                     if (l >= 6) {
                         //? <= 26.1
-                        //mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        mc.gui.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         //? > 26.1
-                        mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
+                        //mc.gui.hud.setOverlayMessage(MVComponent.translatable("gui.tcwm.air_conditioner.too_far"), false);
                         return;
                     }
                     PacketModifyAirConditionerState.sendC2S(5, blockPos0);

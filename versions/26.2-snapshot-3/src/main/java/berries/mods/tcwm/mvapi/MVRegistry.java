@@ -3,6 +3,7 @@ package berries.mods.tcwm.mvapi;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
@@ -44,9 +45,9 @@ public final class MVRegistry<V, T, U, R> {
         var block = Blocks.register(ResourceKey.create(Registries.BLOCK, k), f, v);
         Item item;
         try {
-            var fun = Items.class.getDeclaredMethod("registerBlock", Block.class);
+            var fun = Items.class.getDeclaredMethod("registerBlock", BlockItemId.class, Block.class);
             fun.setAccessible(true);
-            item = (Item) fun.invoke(null, block);
+            item = (Item) fun.invoke(null, BlockItemId.create(k, k), block);
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
