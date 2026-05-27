@@ -132,7 +132,11 @@ public class RealityCityConstructionClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register((mc) -> {
             if (mc.player != null && mc.player.isHolding((stack) -> stack.getItem() instanceof AirConditionerController)) {
                 ItemStack stack0 = mc.player.getMainHandItem();
-                BlockPos blockPos0 = ((AirConditionerController) stack0.getItem()).getLinkedBlockPos(stack0);
+                var item = stack0.getItem();
+                if (!(item instanceof AirConditionerController)) {
+                    return;
+                }
+                BlockPos blockPos0 = ((AirConditionerController) item).getLinkedBlockPos(stack0);
                 if (blockPos0 == null) {
                     return;
                 }
